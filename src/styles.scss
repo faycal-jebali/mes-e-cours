@@ -28,3 +28,13 @@ h4,
 h5 {
     font-weight: normal;
 }
+
+
+/* carrousel*/
+
+mdb-card {
+    .card {
+        border: 0;
+        border-radius: 0 !important;
+    }
+}

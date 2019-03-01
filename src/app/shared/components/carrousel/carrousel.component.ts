@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CarrouselComponent implements OnInit {
   itemsParPage = 4;
+  @Input() titre: string;
   @Input() formations: any;
 
   slides: any = [[]];

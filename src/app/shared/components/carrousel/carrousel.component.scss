@@ -1,0 +1,89 @@
+.bc-carrousel {
+    margin: 15px 0;
+    .h3 {
+        font-size: 18px !important;
+    }
+    .card {
+        border: 1px solid rgba(0, 0, 0, .125);
+        border-radius: 0 !important;
+    }
+    .vignette-prix {
+        text-align: right;
+        span {
+            color: #17aa1c;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 14px;
+            padding-left: 5px;
+            &.ancien-prix {
+                font-size: 12px;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                color: #999;
+                text-decoration: line-through;
+            }
+        }
+    }
+    mdb-card-title {
+        h4 {
+            font-size: 16px;
+        }
+    }
+}
+
+.animated {
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    transition: height 0.2s;
+}
+
+.rating {
+    float: left;
+}
+
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+    follow these rules. Every browser that supports :checked also supports :not(), so
+    it doesn’t make the test unnecessarily selective */
+
+.rating:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
+    clip: rect(0, 0, 0, 0);
+}
+
+.rating:not(:checked)>label {
+    float: right;
+    width: 0.4em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 300%;
+    color: #ddd;
+}
+
+.rating:not(:checked)>label:before {
+    font-size: 20px;
+    content: '★ ';
+}
+
+.rating>input:checked~label {
+    color: #17aa1c;
+}
+
+.rating:not(:checked)>label:hover,
+.rating:not(:checked)>label:hover~label {
+    color: #17aa1c;
+}
+
+.rating>input:checked+label:hover,
+.rating>input:checked+label:hover~label,
+.rating>input:checked~label:hover,
+.rating>input:checked~label:hover~label,
+.rating>label:hover~input:checked~label {
+    color: #17aa1c;
+}
+
+.rating>label:active {
+    position: relative;
+    top: 2px;
+    left: 2px;
+}
