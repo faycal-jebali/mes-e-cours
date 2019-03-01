@@ -8,11 +8,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { TodoService } from './todo.service';
-import { UserService } from './user.service';
+import { TodoService } from './services/todo.service';
+import { UserService } from './services/user.service';
+import { FormationsService } from './services/formations.service';
 import { LoginComponent } from './login/login.component';
-import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -58,10 +59,10 @@ export function tokenGetter() {
         blacklistedRoutes: ['localhost:4000/api/auth']
       }
     }),
-    NgbModule.forRoot(),    
+    NgbModule.forRoot(),
     BrowserAnimationsModule,
     HttpModule,
-    MatInputModule, 
+    MatInputModule,
     MatButtonModule,
     MatSelectModule,
     MatIconModule,
@@ -76,7 +77,8 @@ export function tokenGetter() {
     TodoService,
     UserService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    FormationsService,
   ],
   bootstrap: [AppComponent]
 })

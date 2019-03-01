@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +8,12 @@ import { AuthService } from './auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  selectedValue: string = "";
+  selectedValue = '';
   items = [
-    { value: "0", view: "zero" },
-    { value: "1", view: "one" },
-    { value: "2", view: "Two" }
+    { value: '0', view: 'zero' },
+    { value: '1', view: 'one' },
+    { value: '2', view: 'Two' }
   ];
-  
+
   constructor(private auth: AuthService, private router: Router) { }
 }

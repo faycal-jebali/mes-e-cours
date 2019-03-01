@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Todo } from '../todo';
-import { TodoService } from '../todo.service';
+import { Formation } from '../business-objects/formation';
+import { FormationsService } from '../services/formations.service';
 
 @Component({
   selector: 'app-accueil',
@@ -9,11 +9,20 @@ import { TodoService } from '../todo.service';
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
-  todo$: Observable<Todo[]>;
+  formations: Formation[];
 
-  constructor(private todos: TodoService) { }
+  constructor(
+    private formationsService: FormationsService,
+    ) { }
 
   ngOnInit() {
-    this.todo$ = this.todos.getTodos();
+    this.formationsService.getFormations().subscribe(
+      (formations) => {
+        this.formations = formations;
+        console.log('AccueilComponent formations : ', this.formations);
+      },
+      (error) => {
+        console.log('AccueilComponent getFormations() Erreur: ', this.formations);
+      });
   }
 }
