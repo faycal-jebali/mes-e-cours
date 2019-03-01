@@ -7,79 +7,72 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CarrouselComponent implements OnInit {
   itemsParPage = 4;
+  @Input() titre: string;
 
-  cards = [
+  liste = [
     {
-      title: 'Card Title 1',
-      description: 'Some quick example text to',
+      title: 'Formation compléte Développement web 1',
+      ription: 'Some quick example text to',
       buttonText: 'Button',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+      prix: '200 €',
+      prixPromotion: '10 €',
     },
     {
-      title: 'Card Title 2',
-      description: 'Some quick example text to',
+      title: 'Formation compléte Développement web 2',
+      ription: 'Some quick example text to',
       buttonText: 'Button',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+      prix: '200 €',
+      prixPromotion: '10 €',
     },
     {
-      title: 'Card Title 3',
-      description: 'Some quick example text to',
+      title: 'Formation compléte Développement web 3',
+      ription: 'Some quick example text to',
       buttonText: 'Button',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+      prix: '200 €',
+      prixPromotion: '10 €',
     },
     {
-      title: 'Card Title 4',
-      description: 'Some quick example text to',
+      title: 'Formation compléte Développement web 4',
+      ription: 'Some quick example text to',
       buttonText: 'Button',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+      prix: '200 €',
+      prixPromotion: '10 €',
     },
     {
-      title: 'Card Title 5',
-      description: 'Some quick example text to',
+      title: 'Formation compléte Développement web 5',
+      ription: 'Some quick example text to',
       buttonText: 'Button',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+      prix: '200 €',
+      prixPromotion: '10 €',
     },
     {
-      title: 'Card Title 6',
-      description: 'Some quick example text to',
+      title: 'Formation compléte Développement web 6',
+      ription: 'Some quick example text to',
       buttonText: 'Button',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+      prix: '200 €',
+      prixPromotion: '10 €',
     },
     {
-      title: 'Card Title 7',
-      description: 'Some quick example text to',
+      title: 'Formation compléte Développement web 7',
+      ription: 'Some quick example text to',
       buttonText: 'Button',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+      prix: '200 €',
+      prixPromotion: '10 €',
     },
     {
-      title: 'Card Title 8',
-      description: 'Some quick example text to',
+      title: 'Formation compléte Développement web 8',
+      ription: 'Some quick example text to',
       buttonText: 'Button',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
-    },
-    {
-      title: 'Card Title 9',
-      description: 'Some quick example text to',
-      buttonText: 'Button',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
-    },
-    {
-      title: 'Card Title 10',
-      description: 'Some quick example text to',
-      buttonText: 'Button',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
-    },
-    {
-      title: 'Card Title 11',
-      description: 'Some quick example text to',
-      buttonText: 'Button',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
-    },
-    {
-      title: 'Card Title 12',
-      description: 'Some quick example text to',
-      buttonText: 'Button',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg',
+      prix: '200 €',
+      prixPromotion: '10 €',
     },
   ];
 
@@ -93,6 +86,6 @@ export class CarrouselComponent implements OnInit {
     return R;
   }
   ngOnInit() {
-    this.slides = this.chunk(this.cards, this.itemsParPage);
+    this.slides = this.chunk(this.liste, this.itemsParPage);
   }
 }

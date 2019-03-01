@@ -1,18 +1,26 @@
-<mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'" [animation]="'slide'">
-    <mdb-carousel-item *ngFor="let item of slides; let i = index">
-        <div class="row">
-            <div class="col-md-3" [ngClass]="{'d-none d-md-block': cardIndex !== 0}" *ngFor="let card of item; let cardIndex = index">
-                <mdb-card class="my-1">
-                    <mdb-card-img [src]="card.img" alt="Card image cap"></mdb-card-img>
-                    <mdb-card-body>
-                        <mdb-card-title>
-                            <h4>{{card.title}}</h4>
-                        </mdb-card-title>
-                        <p>{{card.description}}</p>
-                        <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a>
-                    </mdb-card-body>
-                </mdb-card>
+<div class="bc-carrousel">
+    <!--Catégorie-->
+    <h3>{{ titre }}</h3>
+    <mdb-carousel [isControls]="false" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'">
+        <mdb-carousel-item *ngFor="let item of slides; let i = index">
+            <div class="row">
+                <div class="col-md-3" [ngClass]="{'d-none d-md-block': cardIndex !== 0}" *ngFor="let card of item; let cardIndex = index">
+                    <mdb-card class="my-1">
+                        <mdb-card-img [src]="card.img" alt="Card image cap"></mdb-card-img>
+                        <mdb-card-body>
+                            <mdb-card-title>
+                                <h4>{{card.title}}</h4>
+                            </mdb-card-title>
+                            <div class="vignette-auteur">Fayçal Jebali</div>
+                            <div class="vignette-prix">
+                                <span [class.ancien-prix]="card.prixPromotion">{{card.prix}}</span>
+                                <span *ngIf="card.prixPromotion">{{card.prixPromotion}}</span>
+                            </div>
+                            <!-- <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a> -->
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
             </div>
-        </div>
-    </mdb-carousel-item>
-</mdb-carousel>
+        </mdb-carousel-item>
+    </mdb-carousel>
+</div>

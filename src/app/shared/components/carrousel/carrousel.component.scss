@@ -1,0 +1,29 @@
+.bc-carrousel {
+    margin: 15px 0;
+    .h3 {
+        font-size: 18px !important;
+    }
+    .card {
+        border-radius: 0;
+    }
+    .vignette-prix {
+        text-align: right;
+        span {
+            color: #17aa1c;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 14px;
+            padding-left: 5px;
+            &.ancien-prix {
+                font-size: 12px;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                color: #999;
+                text-decoration: line-through;
+            }
+        }
+    }
+    mdb-card-title {
+        h4 {
+            font-size: 16px;
+        }
+    }
+}
