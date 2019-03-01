@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
@@ -18,7 +18,7 @@ export class LoginComponent {
     this.auth.login(this.username, this.password)
       .pipe(first())
       .subscribe(
-        result => this.router.navigate(['todos']),
+        result => this.router.navigate(['/']),
         err => this.error = 'Could not authenticate'
       );
   }
