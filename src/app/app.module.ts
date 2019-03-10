@@ -30,6 +30,11 @@ import { FooterComponent } from './main-layout/footer/footer.component';
 import { NavigationComponent } from './main-layout/navigation/navigation.component';
 import { BanniereComponent } from './main-layout/banniere/banniere.component';
 import { SharedModule } from './shared/shared.module';
+import { ProductAddComponent } from './product-add/product-add.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
+import { ProductComponent } from './product/product.component';
+import { RestService } from './services/rest.service';
 
 
 export function tokenGetter() {
@@ -46,6 +51,10 @@ export function tokenGetter() {
     TodoListComponent,
     UserListComponent,
     LoginComponent,
+    ProductAddComponent,
+    ProductDetailComponent,
+    ProductComponent,
+    ProductEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +88,7 @@ export function tokenGetter() {
     AuthService,
     AuthGuard,
     FormationsService,
+    RestService,
   ],
   bootstrap: [AppComponent]
 })
