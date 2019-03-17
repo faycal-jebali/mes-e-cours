@@ -4,11 +4,12 @@ import { Observable, of, empty } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
 const endpoint = 'http://localhost:4000/api/';
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsImlhdCI6MTU1MjI1Nzc4NCwiZXhwIjoxNTUyMjY0OTg0fQ.rGVX1DQYtiQPDVhWW6nJT6JhL9Lk7fYC5OziJLsb35w';
+// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsImlhdCI6MTU1MjI1Nzc4NCwiZXhwIjoxNTUyMjY0OTg0fQ.rGVX1DQYtiQPDVhWW6nJT6JhL9Lk7fYC5OziJLsb35w';
+const acces_tocken = localStorage.getItem('access_token');
+console.log('acces_tocken : ', acces_tocken);
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Authorization' : `Bearer ${token}`
+    'Content-Type':  'application/json'
   })
 };
 
