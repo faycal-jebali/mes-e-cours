@@ -50,6 +50,9 @@
                 <a class="nav-link" (click)="logout()" href="#" *ngIf="auth.loggedIn">Logout</a>
             </li>
         </ul>
+
+        <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
+        <app-login></app-login>
         <!-- <nav class="nav nav-pills">
                     <a class="nav-link" routerLink="todos" routerLinkActive="active" *ngIf="auth.loggedIn">Todo List</a>
                     <a class="nav-link" routerLink="users" routerLinkActive="active" *ngIf="auth.loggedIn">Users</a>

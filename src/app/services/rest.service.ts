@@ -10,7 +10,8 @@ console.log('acces_tocken : ', acces_token);
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': `Bearer ${acces_token}`
+    'Authorization': `Bearer ${acces_token}`,
+    observe: 'response' 
   })
 };
 
@@ -28,13 +29,6 @@ const httpOptionsPost = {
 export class RestService {
 
   constructor(private http: HttpClient) {}
-
-  private extractData(res: Response) {
-    let body = res;
-    console.log('ExtratData body : ', body);
-    return body || { };
-  }
-
   getProducts(): Observable<any> {
     return this.http.get(endpoint + 'products').pipe(
       map(this.extractData));
@@ -52,10 +46,24 @@ export class RestService {
       catchError(this.handleError<any>('addProduct'))
     );
   }
+
+  private extractData(res: Response) {
+    let body = res;
+    console.log('ExtratData body : ', body);
+    console.log('ExtratData Loca  tion : ', res.headers);
+    return body || { };
+  }
+
   addProduct(product): Observable<any> {
     console.log(product);
-    return this.http.post<any>(endpoint + 'products', JSON.stringify(product), httpOptions).pipe(
-      map(this.extractData));
+    return this.http.post<any>(endpoint + 'products', JSON.stringify(product), {
+      headers: new HttpHeaders()
+          .set('Content-Type', 'application/json'),
+      observe: 'response'
+  }).pipe(
+      tap(resp => setTimeout(() => {  console.log('header :::: ', resp.headers) }, 3000))
+      // map(this.extractData)
+    );
   }
 
   updateProduct (id, product): Observable<any> {
@@ -85,18 +93,5 @@ export class RestService {
       return of(result as T);
     };
   }
-
-  // private handleAngularJsonBug (error: HttpErrorResponse) {
-	// 	const JsonParseError = 'Http failure during parsing for';
-	// 	const matches = error.message.match(new RegExp(JsonParseError, 'ig'));
-
-	// 	if (error.status === 200 && matches.length === 1) {
-	// 		// return obs that completes;
-	// 		return Observable.empty();
-	// 	} else {
-	// 		console.log('re-throwing ');
-	// 		return Observable.throw(error);		// re-throw
-	// 	}
-  // }
   
 }

@@ -38,3 +38,24 @@ mdb-card {
         border-radius: 0 !important;
     }
 }
+
+
+/*****MODAL****/
+
+.modal-content .close {
+    position: absolute;
+    top: -30px;
+    right: -30px !important;
+    z-index: 9999;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+    /* font-size: 20px; */
+    background: #000;
+    opacity: 1;
+}
+
+.modal-body {
+    padding: 0 !important;
+}
