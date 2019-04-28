@@ -1,7 +1,12 @@
+@import "src/assets/variables.scss";
 .bc-carrousel {
-    margin: 15px 0;
-    .h3 {
-        font-size: 18px !important;
+    margin: 100px 0;
+    h3 {
+        font-size: 25px !important;
+        &::first-letter {
+            color: $primary;
+            font-weight: bold;
+        }
     }
     .card {
         border: 1px solid rgba(0, 0, 0, .125);
