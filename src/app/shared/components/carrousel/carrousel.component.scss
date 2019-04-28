@@ -15,15 +15,16 @@
     .vignette-prix {
         text-align: right;
         span {
-            color: #17aa1c;
+            color: $primary;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            font-size: 14px;
-            padding-left: 5px;
+            font-size: 25px;
+            padding-left: 10px;
             &.ancien-prix {
-                font-size: 12px;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                color: #999;
+                font-size: 16px;
+                // font-family: Verdana, Geneva, Tahoma, sans-serif;
+                color: $primary;
                 text-decoration: line-through;
+                opacity: 0.5;
             }
         }
     }

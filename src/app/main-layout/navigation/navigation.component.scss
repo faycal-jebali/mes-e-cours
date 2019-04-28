@@ -1,4 +1,8 @@
 @import "src/assets/variables.scss";
+button {
+    outline: none;
+}
+
 .sidebar-fixed {
     height: 100vh;
     width: 270px;
