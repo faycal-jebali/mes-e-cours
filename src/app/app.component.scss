@@ -2,26 +2,3 @@
 nav {
     margin-bottom: 10px;
 }
-
-.info-accueil {
-    background: #eee;
-    border: 1px solid #ddd;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    position: relative;
-    z-index: 99;
-    margin-top: -50px;
-    .info-box {
-        i {
-            font-size: 45px;
-            padding-right: 25px;
-            color: $primary;
-        }
-        align-items: center;
-        display: flex;
-        align-content: center;
-        /* text-align: center; */
-        justify-content: center;
-        flex-direction: row;
-    }
-}

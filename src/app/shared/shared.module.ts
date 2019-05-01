@@ -7,9 +7,13 @@ import { CascadingCardComponent } from './components/cascading-card/cascading-ca
 import { OverlayCardComponent } from './components/overlay-card/overlay-card.component';
 import { PanelComponent } from './components/panel/panel.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
+import { RouterModule } from '@angular/router';
+import { ItemCarrouselComponent } from './components/carrousel/item-carrousel/item-carrousel.component';
+
 
 @NgModule({
   imports: [
+    RouterModule,
     CommonModule,
     MDBBootstrapModule.forRoot(),
   ],
@@ -20,6 +24,7 @@ import { CarrouselComponent } from './components/carrousel/carrousel.component';
     PanelComponent,
     ModalComponent,
     CarrouselComponent,
+    ItemCarrouselComponent,
   ],
   exports: [
     MDBBootstrapModule,
@@ -29,6 +34,7 @@ import { CarrouselComponent } from './components/carrousel/carrousel.component';
     PanelComponent,
     ModalComponent,
     CarrouselComponent,
+    ItemCarrouselComponent,
   ],
   providers: [
   ],

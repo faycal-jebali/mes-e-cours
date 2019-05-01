@@ -6,15 +6,23 @@ import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
-import { AccueilComponent } from './accueil/accueil.component';
+import { AccueilComponent } from './pages/accueil/accueil.component';
 import { ProductComponent } from './product/product.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { DetailsComponent } from './pages/details/details.component';
+import { FormationsComponent } from './pages/formations/formations.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent},
   { path: 'todos', component: TodoListComponent, canActivate: [AuthGuard] },
   { path: 'users', component: UserListComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent},
+  { path: 'formations', component: FormationsComponent},
+  {
+    path: 'details/:id',
+    component: DetailsComponent,
+    data: { title: 'formation Details' }
+  },
   {
     path: 'products',
     component: ProductComponent,

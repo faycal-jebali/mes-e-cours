@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Formation } from '../business-objects/formation';
-import { FormationsService } from '../services/formations.service';
+import { Formation } from '../../business-objects/formation';
+import { FormationsService } from '../../services/formations.service';
 
 @Component({
   selector: 'app-accueil',

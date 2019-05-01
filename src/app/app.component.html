@@ -6,36 +6,11 @@
 
 <!--Main-->
 <main role="main">
-    <!--Bannière-->
-    <app-banniere></app-banniere>
-
-    <div class="info-accueil container">
-        <div class="row">
-            <div class="col-4 info-box">
-                <i class="material-icons">school</i>
-                <p><b>Découvrez</b> plus de 100 cours enseignés par nos formateurs experts</p>
-            </div>
-            <div class="col-4 info-box">
-                <i class="material-icons">person_add</i>
-                <p><b>Inscrivez-vous</b> à des cours à tout moment et bénéficiez d'un accès illimité</p>
-            </div>
-            <div class="col-4 info-box">
-                <i class="material-icons">ondemand_video</i>
-                <p><b>Apprenez</b> à votre rythme, depuis tous types d'appareils</p>
-            </div>
-        </div>
-    </div>
-    <!--end Bannière-->
-    <div class="container">
-        <div class="row">
-            <router-outlet></router-outlet>
-            <!--end liste-->
-        </div>
-    </div>
+    <router-outlet></router-outlet>
+    <!--end liste-->
 </main>
 <!--end Main-->
 
 <!--footer-->
 <app-footer></app-footer>
 <!--end Footer-->
-<!--end new-->

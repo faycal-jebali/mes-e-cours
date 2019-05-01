@@ -11,7 +11,16 @@ export class FormationsService {
   getFormations() {
     return this.http.get<Formation[]>('http://localhost:4000/api/formations');
   }
-  // setFormation2() {
+
+  getFormation(id: string) {
+    return this.http.get<Formation>(`http://localhost:4000/api/formations/${id}`);
+  }
+
+  getFormationByCategorie(id: number) {
+    return this.http.get<Formation>(`http://localhost:4000/api/formations/categorie/${id}`);
+  }
+
+    // setFormation2() {
   //   return this.http.post<Formation[]>('http://localhost:4000/api/formation');
   // }
 
@@ -21,12 +30,4 @@ export class FormationsService {
   //     .map(this.extractData)
   //     .catch(this.handleError);
   // }
-
-  getFormation(id: number) {
-    return this.http.get<Formation>(`http://localhost:4000/api/formation/${id}`);
-  }
-
-  getFormationByCategorie(id: number) {
-    return this.http.get<Formation>(`http://localhost:4000/api/formations/categorie/${id}`);
-  }
 }

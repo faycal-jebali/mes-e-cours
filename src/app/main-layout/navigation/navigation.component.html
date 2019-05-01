@@ -2,7 +2,7 @@
     <mat-toolbar class="menu">
         <ul class="menu-left">
             <li>
-                <a class="logo">Mes E-cours</a>
+                <a class="logo" routerLink="/">Mes E-cours</a>
             </li>
             <li>
                 <!--catégories-->
@@ -38,7 +38,10 @@
                 <a class="nav-link" routerLink="todos" routerLinkActive="active" *ngIf="auth.loggedIn">Todo List</a>
             </li>
             <li>
-                <a class="nav-link" routerLink="users" routerLinkActive="active" *ngIf="auth.loggedIn">Users</a>
+                <a class="nav-link" [routerLink]="['formations']" routerLinkActive="active" *ngIf="auth.loggedIn">Formations</a>
+            </li>
+            <li>
+                <a class="nav-link" [routerLink]="['details', 1]" routerLinkActive="active" *ngIf="auth.loggedIn">Détails</a>
             </li>
 
             <li>

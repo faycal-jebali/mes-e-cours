@@ -10,25 +10,26 @@
             "prefix": "app",
             "schematics": {
                 "@schematics/angular:class": {
-                    "spec": false
+                    "spec": true
                 },
                 "@schematics/angular:component": {
-                    "spec": false
+                    "spec": true,
+                    "styleext": "scss"
                 },
                 "@schematics/angular:directive": {
-                    "spec": false
+                    "spec": true
                 },
                 "@schematics/angular:guard": {
-                    "spec": false
+                    "spec": true
                 },
                 "@schematics/angular:module": {
-                    "spec": false
+                    "spec": true
                 },
                 "@schematics/angular:pipe": {
-                    "spec": false
+                    "spec": true
                 },
                 "@schematics/angular:service": {
-                    "spec": false
+                    "spec": true
                 }
             },
             "architect": {

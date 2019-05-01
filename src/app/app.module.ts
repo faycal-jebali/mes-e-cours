@@ -25,7 +25,7 @@ import {
   MatCheckboxModule, MatDatepickerModule,
   MatNativeDateModule,
 } from '@angular/material';
-import { AccueilComponent } from './accueil/accueil.component';
+import { AccueilComponent } from './pages/accueil/accueil.component';
 import { FooterComponent } from './main-layout/footer/footer.component';
 import { NavigationComponent } from './main-layout/navigation/navigation.component';
 import { BanniereComponent } from './main-layout/banniere/banniere.component';
@@ -35,6 +35,10 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductComponent } from './product/product.component';
 import { RestService } from './services/rest.service';
+import { DetailsComponent } from './pages/details/details.component';
+import { FormationsComponent } from './pages/formations/formations.component';
+import { MonCompteComponent } from './pages/utilisateur/mon-compte/mon-compte.component';
+import { MesFormationsComponent } from './pages/utilisateur/mes-formations/mes-formations.component';
 
 
 export function tokenGetter() {
@@ -55,6 +59,10 @@ export function tokenGetter() {
     ProductDetailComponent,
     ProductComponent,
     ProductEditComponent,
+    DetailsComponent,
+    FormationsComponent,
+    MonCompteComponent,
+    MesFormationsComponent,
   ],
   imports: [
     BrowserModule,
