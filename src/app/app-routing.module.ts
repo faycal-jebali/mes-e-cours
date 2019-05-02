@@ -11,6 +11,7 @@ import { ProductComponent } from './product/product.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { FormationsComponent } from './pages/formations/formations.component';
+import { MonCompteComponent } from './pages/utilisateur/mon-compte/mon-compte.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent},
@@ -19,9 +20,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'formations', component: FormationsComponent},
   {
-    path: 'details/:id',
-    component: DetailsComponent,
-    data: { title: 'formation Details' }
+    path: 'mon-compte',
+    component: MonCompteComponent,
+    data: { title: 'Mon Compte' }
   },
   {
     path: 'products',

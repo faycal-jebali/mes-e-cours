@@ -1,3 +1,25 @@
-<p>
-  mon-compte works!
-</p>
+<div class="mat-typography">
+    <h1>Mon compte</h1>
+
+    <div class="profil-form">
+        <form novalidate [formGroup]="profilForm">
+            <!-- <identite-form (formReady)="formInitialized('identite', $event)"></identite-form>   -->
+            <mat-tab-group>
+                <mat-tab label="Identité">
+                    <identite-form (formReady)="formInitialized('identite', $event)"></identite-form>
+                </mat-tab>
+                <mat-tab label="Adresse">
+                    <adresse-form (formReady)="formInitialized('adresse', $event)"></adresse-form>
+                </mat-tab>
+                <mat-tab label="Contact">
+                    <contact-form (formReady)="formInitialized('contact', $event)"></contact-form>
+                </mat-tab>
+            </mat-tab-group>
+        </form>
+    </div>
+
+    <h2 class='mat-h2'>Form Value</h2>
+    <pre>
+      {{profilForm.value | json}}
+    </pre>
+</div>

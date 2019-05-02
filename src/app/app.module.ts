@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,9 @@ import {
   MatToolbarModule, MatMenuModule,
   MatCheckboxModule, MatDatepickerModule,
   MatNativeDateModule,
+  MatTabsModule,
+  MatFormFieldModule,
+
 } from '@angular/material';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { FooterComponent } from './main-layout/footer/footer.component';
@@ -39,7 +42,9 @@ import { DetailsComponent } from './pages/details/details.component';
 import { FormationsComponent } from './pages/formations/formations.component';
 import { MonCompteComponent } from './pages/utilisateur/mon-compte/mon-compte.component';
 import { MesFormationsComponent } from './pages/utilisateur/mes-formations/mes-formations.component';
-
+import { AdresseFormComponent } from './pages/utilisateur/mon-compte/adresse-form/adresse-form.component';
+import { ContactFormComponent } from './pages/utilisateur/mon-compte/contact-form/contact-form.component';
+import { IdentiteFormComponent } from './pages/utilisateur/mon-compte/identite-form/identite-form.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -63,12 +68,16 @@ export function tokenGetter() {
     FormationsComponent,
     MonCompteComponent,
     MesFormationsComponent,
+    AdresseFormComponent,
+    ContactFormComponent,
+    IdentiteFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -88,6 +97,8 @@ export function tokenGetter() {
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTabsModule,
+    MatFormFieldModule,
     SharedModule,
   ],
   providers: [
