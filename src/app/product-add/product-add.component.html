@@ -1,15 +1,45 @@
-<div>
-    <h2>Product Add</h2>
-    <div>
-        <label>Product Name:
-      <input [(ngModel)]="productData.prod_name" placeholder="Product Name"/>
-    </label><br>
-        <label>Product Desc:
-      <input [(ngModel)]="productData.prod_desc" placeholder="Product Description"/>
-    </label><br>
-        <label>Product Price:
-      <input [(ngModel)]="productData.prod_price" placeholder="Product Price"/>
-    </label><br>
+<form [formGroup]="formationForm" (ngSubmit)="addProduct()">
+    <h2>Nouvelle Formation</h2>
+    <div class="row">
+        <div class="col-12">
+            <mat-form-field>
+                <label>Titre</label>
+                <input matInput type="text" placeholder="Titre" formControlName='title'>
+            </mat-form-field>
+        </div>
+
+        <div class="col-12">
+            <mat-form-field>
+                <label>Description</label>
+                <input matInput type="text" placeholder="Description" formControlName='description'>
+            </mat-form-field>
+        </div>
+
+
+        <div class="col-12">
+            <mat-form-field>
+                <label>Prix</label>
+                <input matInput type="text" placeholder="Prix" formControlName='price'>
+            </mat-form-field>
+        </div>
+
+        <div class="col-12">
+            <mat-form-field>
+                <label>Prix Promotionel</label>
+                <input matInput type="text" placeholder="Prix Promotionel" formControlName='promotionPrice'>
+            </mat-form-field>
+        </div>
+
+        <div class="col-12">
+            <mat-form-field>
+                <label>Catégories</label>
+                <input matInput type="text" placeholder="Catégories" formControlName='categoriesId'>
+            </mat-form-field>
+        </div>
     </div>
-    <button (click)="addProduct()">Save</button>
-</div>
+    <button type="submit" [disabled]="!formationForm.valid">Ajouter</button>
+</form>
+
+<pre>
+    {{formationForm.value | json}}
+  </pre>

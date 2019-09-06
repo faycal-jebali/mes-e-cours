@@ -54,9 +54,9 @@ export class RestService {
     return body || { };
   }
 
-  addProduct(product): Observable<any> {
-    console.log(product);
-    return this.http.post<any>(pathBack + 'products', JSON.stringify(product), {
+  addProduct(request): Observable<any> {
+    console.log(request);
+    return this.http.post<any>(pathBack + 'products', JSON.stringify(request), {
       headers: new HttpHeaders()
           .set('Content-Type', 'application/json'),
       observe: 'response'

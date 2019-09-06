@@ -1,23 +1,37 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RestService } from '../services/rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-add',
   templateUrl: './product-add.component.html',
-  styleUrls: ['./product-add.component.css']
+  styleUrls: ['./product-add.component.scss']
 })
 export class ProductAddComponent implements OnInit {
 
-  @Input() productData = { prod_name:'', prod_desc: '', prod_price: 0 };
+  @Input() productData = { prod_name:'Test Title', prod_desc: 'Test Descrip', prod_price: 160 };
+  formationForm: FormGroup;
 
-  constructor(public rest:RestService, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    public rest: RestService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+    this.formationForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      price: ['', Validators.required],
+      promotionPrice: ['', Validators.required],
+      categoriesId: ['', Validators.required],      
+    });
   }
 
   addProduct() {
-    this.rest.addProduct(this.productData).subscribe(
+    this.rest.addProduct(this.formationForm.value).subscribe(
       (result) => {
         console.log('AddPrd OK : ', result);
       // this.router.navigate(['/product-details/'+result._id]);

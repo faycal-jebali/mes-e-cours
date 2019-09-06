@@ -4,7 +4,7 @@ export class Formation {
   description: string;
   buttonText: string;
   img: string;
-  prix: any;
-  prixPromotion: any;
-  categorieId: any;
+  price: any;
+  promotionPrice: any;
+  categoriesId: any;
 }
