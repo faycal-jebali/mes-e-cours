@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RestService } from '../services/rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-product-add',
@@ -26,11 +26,29 @@ export class ProductAddComponent implements OnInit {
       description: ['', Validators.required],
       price: ['', Validators.required],
       promotionPrice: ['', Validators.required],
-      categoriesId: ['', Validators.required],      
+      categoriesId: ['', Validators.required], 
+      chapiters: this.formBuilder.array([
+        this.createChapiter()
+      ])     
     });
   }
 
+  createChapiter(): FormGroup {
+    return this.formBuilder.group({
+      title: ['', Validators.compose([Validators.required])],
+      description: ['', Validators.compose([Validators.required])],
+    });
+  }
+  get chapiters() {
+    return this.formationForm.get('chapiters') as FormArray;
+  }
+
+  addChapiter() {
+    this.chapiters.push(this.createChapiter());
+  }
+
   addProduct() {
+    console.log('this.formationForm.value : ', this.formationForm.value);
     this.rest.addProduct(this.formationForm.value).subscribe(
       (result) => {
         console.log('AddPrd OK : ', result);

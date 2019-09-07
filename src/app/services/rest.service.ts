@@ -50,13 +50,12 @@ export class RestService {
   private extractData(res: Response) {
     let body = res;
     console.log('ExtratData body : ', body);
-    console.log('ExtratData Loca  tion : ', res.headers);
+    console.log('ExtratData Location : ', res.headers);
     return body || { };
   }
 
   addProduct(request): Observable<any> {
-    console.log(request);
-    return this.http.post<any>(pathBack + 'products', JSON.stringify(request), {
+    return this.http.post<any>(pathBack + 'formation', JSON.stringify(request), {
       headers: new HttpHeaders()
           .set('Content-Type', 'application/json'),
       observe: 'response'
