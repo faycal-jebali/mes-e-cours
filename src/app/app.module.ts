@@ -46,6 +46,8 @@ import { AdresseFormComponent } from './pages/utilisateur/mon-compte/adresse-for
 import { ContactFormComponent } from './pages/utilisateur/mon-compte/contact-form/contact-form.component';
 import { IdentiteFormComponent } from './pages/utilisateur/mon-compte/identite-form/identite-form.component';
 
+import { FileSelectDirective } from 'ng2-file-upload';
+
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
@@ -71,6 +73,7 @@ export function tokenGetter() {
     AdresseFormComponent,
     ContactFormComponent,
     IdentiteFormComponent,
+    FileSelectDirective,
   ],
   imports: [
     BrowserModule,

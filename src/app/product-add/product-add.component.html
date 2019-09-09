@@ -3,6 +3,15 @@
     <mat-tab-group>
         <mat-tab label="Données">
             <div class="row">
+                <!--
+                <div class="col-6">
+
+                    <label>Image</label>
+                    <input type="file" (change)="onFileChanged($event)" formControlName='image' #fileInput>
+                    <a (click)="fileInput.click()">Select File</a>
+                    <a (click)="onUpload()">Upload!</a>
+
+                </div> -->
                 <div class="col-6">
                     <mat-form-field>
                         <label>Titre</label>
@@ -37,6 +46,16 @@
                         <label>Catégories</label>
                         <input matInput type="text" placeholder="Catégories" formControlName='categoriesId'>
                     </mat-form-field>
+                </div>
+
+                <div class="col-6">
+                    <label>Catégories</label>
+                    <input #fileInput type="file" name="photo" ng2FileSelect [uploader]="uploader" formControlName="image" />
+                    <a (click)="fileInput.click()">Select File</a>
+                    <!--a type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()">
+                        Upload an Image
+                    </a-->
+
                 </div>
             </div>
         </mat-tab>
