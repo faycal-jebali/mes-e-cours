@@ -1,17 +1,8 @@
-<form novalidate [formGroup]="formationForm" (ngSubmit)="addProduct()">
+<form novalidate [formGroup]="formationForm" (ngSubmit)="addFormation()">
     <h2>Nouvelle Formation</h2>
     <mat-tab-group>
         <mat-tab label="Données">
             <div class="row">
-                <!--
-                <div class="col-6">
-
-                    <label>Image</label>
-                    <input type="file" (change)="onFileChanged($event)" formControlName='image' #fileInput>
-                    <a (click)="fileInput.click()">Select File</a>
-                    <a (click)="onUpload()">Upload!</a>
-
-                </div> -->
                 <div class="col-6">
                     <mat-form-field>
                         <label>Titre</label>
@@ -60,26 +51,79 @@
             </div>
         </mat-tab>
         <mat-tab label="Chapitres">
-            <div class="row">
-                <div class="col-6">
-                    <div formArrayName="chapiters">
-                        <h3>Chapitres</h3>
-                        <div *ngFor="let chapiter of chapiters.controls; let i=index">
-                            <!-- The repeated alias template -->
-                            <div [formGroupName]="i">
+            <div>
+
+                <div formArrayName="chapiters">
+                    <h2>Chapitres</h2>
+                    <div *ngFor="let chapiter of chapiters.controls; let iChapiter = index">
+                        <!-- The repeated alias template -->
+                        <div class="row" [formGroupName]="iChapiter">
+
+                            <div class="col-6">
                                 <mat-form-field>
-                                    <label>Titre {{ i }} :</label>
+                                    <label>Titre {{ iChapiter }} :</label>
                                     <input matInput type="text" placeholder="Titre" formControlName="title">
                                 </mat-form-field>
+                            </div>
 
+                            <div class="col-6">
                                 <mat-form-field>
-                                    <label>Description {{ i }} :</label>
+                                    <label>Description {{ iChapiter }} :</label>
                                     <input matInput type="text" placeholder="Description" formControlName="description">
                                 </mat-form-field>
                             </div>
+
+                            <!-- Y -->
+                            <div class="col-12" formArrayName="lessons">
+                                <h2>Cours</h2>
+                                <div *ngFor="let lessson of chapiter['controls'].lessons['controls']; let iLesson = index">
+                                    <div formGroupName="{{iLesson}}" class="list-Lessons row">
+                                        <div class="col-6">
+                                            <mat-form-field>
+                                                <label>Titre {{ iLesson }} :</label>
+                                                <input matInput type="text" placeholder="Titre" formControlName="title">
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <mat-form-field>
+                                                <label>Description {{ iLesson }} :</label>
+                                                <input matInput type="text" placeholder="Description" formControlName="description">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a (click)="addLesson(iChapiter)">Add</a>
+                            </div>
+                            <!-- Y End-->
+
+                            <!--Lessons
+                            <div class="col-12" formArrayName="lessons">
+                                <h2>Cours</h2>
+                                <div *ngFor="let lesson of chapiter.lessons.controls; let j=index">
+                                    <div class="row" [formGroupName]="j">
+
+                                        <div class="col-6">
+                                            <mat-form-field>
+                                                <label>Titre {{ j }} :</label>
+                                                <input matInput type="text" placeholder="Titre" formControlName="title">
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <mat-form-field>
+                                                <label>Description {{ i }} :</label>
+                                                <input matInput type="text" placeholder="Description" formControlName="description">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a (click)="addChapiter()">Ajouter Chapitre</a>
+                            </div>
+                            <!--/lessons-->
                         </div>
-                        <a (click)="addChapiter()">Ajouter Chapitre</a>
                     </div>
+                    <a (click)="addChapiter()">Ajouter Chapitre</a>
                 </div>
             </div>
         </mat-tab>

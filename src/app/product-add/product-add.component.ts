@@ -29,6 +29,9 @@ export class ProductAddComponent implements OnInit {
     private http: HttpClient,
   ) { }
 
+  /**
+   * NgOnInit
+   */
   ngOnInit() {
     this.formationForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -38,11 +41,12 @@ export class ProductAddComponent implements OnInit {
       categoriesId: ['', Validators.required], 
       image: ['', Validators.required], 
       chapiters: this.formBuilder.array([
-        this.createChapiter()
+        this.initChapiter()
       ])     
     });
 
 
+    // Upload Files
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
          console.log('FileUpload:uploaded:', item, status, response);
@@ -50,33 +54,63 @@ export class ProductAddComponent implements OnInit {
      };
   }
 
-  
-  onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
-    console.log('selectedFile : ', this.selectedFile);
+  /**
+   * Créer FormGroup chapitres
+   */
+  initChapiter(): FormGroup {
+    return this.formBuilder.group({
+      title: ['', Validators.compose([Validators.required])],
+      description: ['', Validators.compose([Validators.required])],
+      lessons: this.formBuilder.array([
+        this.initLesson()
+      ])  
+    });
   }
 
-  createChapiter(): FormGroup {
+  /**
+   * Créer FormGroup Cours
+   */
+  initLesson(): FormGroup {
     return this.formBuilder.group({
       title: ['', Validators.compose([Validators.required])],
       description: ['', Validators.compose([Validators.required])],
     });
   }
+
+  /**
+   * Get Chapitres
+   */
   get chapiters() {
     return this.formationForm.get('chapiters') as FormArray;
   }
 
+  /**
+   * Ahjouter Chapitre
+   */
   addChapiter() {
-    this.chapiters.push(this.createChapiter());
+    this.chapiters.push(this.initChapiter());
   }
 
-  addProduct() {
+  /**
+   * Ajouter Lesson
+   * @param i index Chapiter
+   */
+  addLesson(i) {
+    const control = (<FormArray>this.formationForm.controls['chapiters']).at(i).get('lessons') as FormArray;
+    control.push(this.initLesson());
+  }
+
+
+  /**
+   * Ajouter une formation
+   */
+  addFormation() {
     console.log('this.formationForm.value : ', this.formationForm.value);
-    this.rest.addProduct(this.formationForm.value).subscribe(
+    this.rest.addFormation(this.formationForm.value).subscribe(
       (result) => {
         console.log('AddPrd OK : ', result);
         // Add File
-        this.uploader.uploadAll()
+        this.uploader.uploadAll();
       // this.router.navigate(['/product-details/'+result._id]);
     }, (err) => {
       console.log('AddPrd Error :', err);

@@ -39,11 +39,11 @@ export class RestService {
       map(this.extractData));
   }
 
-  addProduct2(product): Observable<any> {
+  addFormation2(product): Observable<any> {
     console.log(product);
     return this.http.post<any>(pathBack + 'products', JSON.stringify(product), httpOptions).pipe(
       tap((product) => console.log(`added product w/ id=${product._id}`)),
-      catchError(this.handleError<any>('addProduct'))
+      catchError(this.handleError<any>('addFormation'))
     );
   }
 
@@ -54,7 +54,7 @@ export class RestService {
     return body || { };
   }
 
-  addProduct(request): Observable<any> {
+  addFormation(request): Observable<any> {
     return this.http.post<any>(pathBack + 'formation', JSON.stringify(request), {
       headers: new HttpHeaders()
           .set('Content-Type', 'application/json'),
