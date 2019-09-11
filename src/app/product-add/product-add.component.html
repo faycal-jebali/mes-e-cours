@@ -1,136 +1,118 @@
-<form novalidate [formGroup]="formationForm" (ngSubmit)="addFormation()">
-    <h2>Nouvelle Formation</h2>
-    <mat-tab-group>
-        <mat-tab label="Données">
-            <div class="row">
-                <div class="col-6">
-                    <mat-form-field>
-                        <label>Titre</label>
-                        <input matInput type="text" placeholder="Titre" formControlName='title'>
-                    </mat-form-field>
-                </div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form novalidate [formGroup]="formationForm" (ngSubmit)="addFormation()">
+                <h2>Nouvelle Formation</h2>
+                <mat-tab-group>
+                    <!--Tab Données-->
+                    <mat-tab label="Données">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6">
+                                    <mat-form-field>
+                                        <input matInput type="text" placeholder="Titre" formControlName='title'>
+                                    </mat-form-field>
+                                </div>
 
-                <div class="col-6">
-                    <mat-form-field>
-                        <label>Description</label>
-                        <input matInput type="text" placeholder="Description" formControlName='description'>
-                    </mat-form-field>
-                </div>
+                                <div class="col-6">
+                                    <mat-form-field>
+                                        <textarea matInput type="text" placeholder="Description" formControlName='description'></textarea>
+                                    </mat-form-field>
+                                </div>
 
 
-                <div class="col-6">
-                    <mat-form-field>
-                        <label>Prix</label>
-                        <input matInput type="text" placeholder="Prix" formControlName='price'>
-                    </mat-form-field>
-                </div>
+                                <div class="col-6">
+                                    <mat-form-field>
+                                        <input matInput type="text" placeholder="Prix" formControlName='price'>
+                                    </mat-form-field>
+                                </div>
 
-                <div class="col-6">
-                    <mat-form-field>
-                        <label>Prix Promotionel</label>
-                        <input matInput type="text" placeholder="Prix Promotionel" formControlName='promotionPrice'>
-                    </mat-form-field>
-                </div>
+                                <div class="col-6">
+                                    <mat-form-field>
+                                        <input matInput type="text" placeholder="Prix Promotionel" formControlName='promotionPrice'>
+                                    </mat-form-field>
+                                </div>
 
-                <div class="col-6">
-                    <mat-form-field>
-                        <label>Catégories</label>
-                        <input matInput type="text" placeholder="Catégories" formControlName='categoriesId'>
-                    </mat-form-field>
-                </div>
+                                <div class="col-6">
+                                    <mat-form-field>
+                                        <input matInput type="text" placeholder="Catégories" formControlName='categoriesId'>
+                                    </mat-form-field>
+                                </div>
 
-                <div class="col-6">
-                    <label>Catégories</label>
-                    <input #fileInput type="file" name="photo" ng2FileSelect [uploader]="uploader" formControlName="image" />
-                    <a (click)="fileInput.click()">Select File</a>
-                    <!--a type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()">
-                        Upload an Image
-                    </a-->
-
-                </div>
-            </div>
-        </mat-tab>
-        <mat-tab label="Chapitres">
-            <div>
-
-                <div formArrayName="chapiters">
-                    <h2>Chapitres</h2>
-                    <div *ngFor="let chapiter of chapiters.controls; let iChapiter = index">
-                        <!-- The repeated alias template -->
-                        <div class="row" [formGroupName]="iChapiter">
-
-                            <div class="col-6">
-                                <mat-form-field>
-                                    <label>Titre {{ iChapiter }} :</label>
-                                    <input matInput type="text" placeholder="Titre" formControlName="title">
-                                </mat-form-field>
-                            </div>
-
-                            <div class="col-6">
-                                <mat-form-field>
-                                    <label>Description {{ iChapiter }} :</label>
-                                    <input matInput type="text" placeholder="Description" formControlName="description">
-                                </mat-form-field>
-                            </div>
-
-                            <!-- Y -->
-                            <div class="col-12" formArrayName="lessons">
-                                <h2>Cours</h2>
-                                <div *ngFor="let lessson of chapiter['controls'].lessons['controls']; let iLesson = index">
-                                    <div formGroupName="{{iLesson}}" class="list-Lessons row">
-                                        <div class="col-6">
-                                            <mat-form-field>
-                                                <label>Titre {{ iLesson }} :</label>
-                                                <input matInput type="text" placeholder="Titre" formControlName="title">
-                                            </mat-form-field>
-                                        </div>
-
-                                        <div class="col-6">
-                                            <mat-form-field>
-                                                <label>Description {{ iLesson }} :</label>
-                                                <input matInput type="text" placeholder="Description" formControlName="description">
-                                            </mat-form-field>
-                                        </div>
+                                <div class="col-6">
+                                    <!--input #fileInput type="file" name="photo" ng2FileSelect [uploader]="uploader" formControlName="image" />
+                                    <a (click)="fileInput.click()">Select File</a-->
+                                    <div class="btn btn-primary btn-sm float-left">
+                                        <span>Choisir Image</span>
+                                        <input type="file" multiple #fileInput name="photo" ng2FileSelect [uploader]="uploader" formControlName="image">
                                     </div>
                                 </div>
-                                <a (click)="addLesson(iChapiter)">Add</a>
                             </div>
-                            <!-- Y End-->
-
-                            <!--Lessons
-                            <div class="col-12" formArrayName="lessons">
-                                <h2>Cours</h2>
-                                <div *ngFor="let lesson of chapiter.lessons.controls; let j=index">
-                                    <div class="row" [formGroupName]="j">
-
-                                        <div class="col-6">
-                                            <mat-form-field>
-                                                <label>Titre {{ j }} :</label>
-                                                <input matInput type="text" placeholder="Titre" formControlName="title">
-                                            </mat-form-field>
-                                        </div>
-
-                                        <div class="col-6">
-                                            <mat-form-field>
-                                                <label>Description {{ i }} :</label>
-                                                <input matInput type="text" placeholder="Description" formControlName="description">
-                                            </mat-form-field>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a (click)="addChapiter()">Ajouter Chapitre</a>
-                            </div>
-                            <!--/lessons-->
                         </div>
-                    </div>
-                    <a (click)="addChapiter()">Ajouter Chapitre</a>
-                </div>
-            </div>
-        </mat-tab>
-    </mat-tab-group>
-    <button type="submit" [disabled]="!formationForm.valid">Ajouter</button>
-</form>
+                    </mat-tab>
+                    <!--/Tab Données-->
+                    <!--Tab Chapiters-->
+                    <mat-tab label="Chapitres">
+                        <div class="container">
+                            <div formArrayName="chapiters">
+                                <h2>Chapitres</h2>
+                                <!--List Chapiters-->
+                                <div *ngFor="let chapiter of chapiters.controls; let iChapiter = index">
+                                    <div class="row" [formGroupName]="iChapiter" class="itemChapiter">
+                                        <div class="col-12">
+                                            <mat-form-field>
+                                                <input matInput type="text" placeholder="Titre" formControlName="title">
+                                            </mat-form-field>
+                                        </div>
 
-<pre>
-  {{formationForm.value | json}}
-</pre>
+                                        <div class="col-12">
+                                            <mat-form-field>
+                                                <textarea matInput placeholder="Description" formControlName="description">
+                                                </textarea>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <!-- Lessons -->
+                                        <div class="col-12" formArrayName="lessons">
+                                            <h2>Cours</h2>
+                                            <!--List Leçons-->
+                                            <div *ngFor="let lessson of chapiter['controls'].lessons['controls']; let iLesson = index">
+                                                <div class="container">
+                                                    <div formGroupName="{{iLesson}}" class="list-Lessons row">
+                                                        <div class="col-6">
+                                                            <mat-form-field>
+                                                                <input matInput type="text" placeholder="Titre" formControlName="title">
+                                                            </mat-form-field>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <mat-form-field>
+                                                                <textarea matInput type="text" placeholder="Description" formControlName="description"></textarea>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/List Leçons-->
+                                            <a class="btn btn-sm waves-effect btn-info float-right" (click)="addLesson(iChapiter)">+ Cours</a>
+                                        </div>
+                                        <!--/lessons-->
+                                    </div>
+                                </div>
+                                <!--/List Chapiter-->
+                            </div>
+                            <a type="button" class="btn btn-sm waves-effect btn-info float-left" (click)="addChapiter()">+ Chapitre</a>
+                        </div>
+                    </mat-tab>
+                    <!--/Tab Chapiters-->
+                </mat-tab-group>
+                <button type="submit" class="btn btn-sm waves-effect btn-info float-right" [disabled]="!formationForm.valid">Ajouter</button>
+                <!--button type="submit" [disabled]="!formationForm.valid">Ajouter</button-->
+            </form>
+
+            <!--pre>
+            {#{formationForm.value | json}#}
+            </pre-->
+        </div>
+    </div>
+</div>
