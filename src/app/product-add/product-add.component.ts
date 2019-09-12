@@ -34,6 +34,7 @@ export class ProductAddComponent implements OnInit {
    */
   ngOnInit() {
     this.formationForm = this.formBuilder.group({
+      statut: [false, Validators.required],
       title: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required],
@@ -74,6 +75,7 @@ export class ProductAddComponent implements OnInit {
     return this.formBuilder.group({
       title: ['', Validators.compose([Validators.required])],
       description: ['', Validators.compose([Validators.required])],
+      video: ['', [Validators.required]],
     });
   }
 

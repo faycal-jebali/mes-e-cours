@@ -26,6 +26,7 @@ import {
   MatNativeDateModule,
   MatTabsModule,
   MatFormFieldModule,
+  MatRadioModule
 
 } from '@angular/material';
 import { AccueilComponent } from './pages/accueil/accueil.component';
@@ -73,7 +74,7 @@ export function tokenGetter() {
     AdresseFormComponent,
     ContactFormComponent,
     IdentiteFormComponent,
-    FileSelectDirective,
+    FileSelectDirective,   
   ],
   imports: [
     BrowserModule,
@@ -103,6 +104,7 @@ export function tokenGetter() {
     MatTabsModule,
     MatFormFieldModule,
     SharedModule,
+    MatRadioModule,
   ],
   providers: [
     TodoService,
