@@ -42,6 +42,8 @@ import { RestService } from './services/rest.service';
 import { DetailsComponent } from './pages/details/details.component';
 import { FormationsComponent } from './pages/formations/formations.component';
 import { MonCompteComponent } from './pages/utilisateur/mon-compte/mon-compte.component';
+import { UserManagementModule } from './pages/utilisateur/user-management/user-management.module';
+
 import { MesFormationsComponent } from './pages/utilisateur/mes-formations/mes-formations.component';
 import { AdresseFormComponent } from './pages/utilisateur/mon-compte/adresse-form/adresse-form.component';
 import { ContactFormComponent } from './pages/utilisateur/mon-compte/contact-form/contact-form.component';
@@ -92,19 +94,10 @@ export function tokenGetter() {
     NgbModule.forRoot(),
     BrowserAnimationsModule,
     HttpModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatTabsModule,
-    MatFormFieldModule,
+
     SharedModule,
     MatRadioModule,
+    UserManagementModule,
   ],
   providers: [
     TodoService,

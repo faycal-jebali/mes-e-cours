@@ -8,57 +8,62 @@
                     <mat-tab label="Données">
                         <div class="container">
                             <div class="row">
-                                <div class="col-12">
+
+                                <div class="col-4">
+                                    <mat-form-field>
+                                        <input matInput type="text" placeholder="Titre" formControlName='title'>
+                                        <!--mat-hint>Errors appear instantly!</mat-hint-->
+                                        <mat-error *ngIf="formationForm.controls.title.touched && formationForm.controls.title.hasError('required')">
+                                            Champs <strong>obligatoire</strong>!
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-4">
+                                    <mat-form-field>
+                                        <mat-label>Catégories :</mat-label>
+                                        <select matNativeControl formControlName='categoriesId'>
+                                                <option value="Catégorie 1">Catégorie 1</option>
+                                                <option value="Catégorie 2">Catégorie 2</option>
+                                                <option value="Catégorie 3">Catégorie 3</option>
+                                            </select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-4">
                                     <mat-radio-group aria-label="Select an option">
+                                        <br>
                                         <mat-radio-button value="true">Active</mat-radio-button>
                                         <mat-radio-button value="false">Inactive</mat-radio-button>
                                     </mat-radio-group>
                                 </div>
-                                <div class="col-6">
-                                    <mat-form-field>
-                                        <input matInput type="text" placeholder="Titre" formControlName='title'>
-                                    </mat-form-field>
-                                </div>
 
-                                <div class="col-6">
-                                    <mat-form-field>
-                                        <textarea matInput type="text" placeholder="Description" formControlName='description'></textarea>
-                                    </mat-form-field>
-                                </div>
-
-
-                                <div class="col-6">
+                                <div class="col-3">
                                     <mat-form-field>
                                         <input matInput type="text" placeholder="Prix" formControlName='price'>
                                     </mat-form-field>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-3">
                                     <mat-form-field>
                                         <input matInput type="text" placeholder="Prix Promotionel" formControlName='promotionPrice'>
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-6">
-                                    <mat-form-field>
-                                        <input matInput type="text" placeholder="Catégories" formControlName='categoriesId'>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-6">
-                                    <!--input #fileInput type="file" name="photo" ng2FileSelect [uploader]="uploader" formControlName="image" />
-                                    <a (click)="fileInput.click()">Select File</a-->
-                                    <div class="btn btn-primary btn-sm float-left">
-                                        <span>Choisir Image</span>
+                                    <div class="btn btn-primary btn-sm btn-file float-left">
                                         <input type="file" multiple #fileInput name="photo" ng2FileSelect [uploader]="uploader" formControlName="image">
                                     </div>
+                                </div>
+                                <div class="col-12">
+                                    <mat-form-field>
+                                        <textarea matInput matTextareaAutosize matAutosizeMinRows=3 matAutosizeMaxRows=5 placeholder="Description" formControlName='description'></textarea>
+                                    </mat-form-field>
                                 </div>
                             </div>
                         </div>
                     </mat-tab>
                     <!--/Tab Données-->
                     <!--Tab Chapiters-->
-                    <mat-tab label="Chapitres">
+                    <mat-tab label="Chapitres & Cours">
                         <div class="container">
                             <div formArrayName="chapiters">
                                 <h2>Chapitres</h2>

@@ -4,11 +4,11 @@ import { UserService } from '../../../services/user.service';
 
 
 @Component({
-  selector: 'app-mon-compte',
-  templateUrl: './mon-compte.component.html',
-  styleUrls: ['./mon-compte.component.scss']
+  selector: 'app-user-management',
+  templateUrl: './user-management.component.html',
+  styleUrls: ['./user-management.component.scss']
 })
-export class MonCompteComponent implements OnInit {
+export class UserManagementComponent implements OnInit {
   newUserForm: FormGroup;
 
   constructor(
@@ -27,7 +27,7 @@ export class MonCompteComponent implements OnInit {
    */
   newUser() {
     if (this.newUserForm.valid) {
-      console.log('this.formationForm.value : ', this.newUserForm.value);
+      console.log('this.newUserForm.value : ', this.newUserForm.value);
     this.userService.newUser(this.newUserForm.value).subscribe(
       (result) => {
         console.log('new User OK : ', result);
