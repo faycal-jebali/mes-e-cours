@@ -1,0 +1,92 @@
+$primary: #17aa1c;
+$primary-theme: #17aa1c;
+$primary2: #24cf2a;
+$secondary: #314655;
+$danger: #f53d3d;
+$border: #EFEFEF;
+$dark: #222;
+$black: #000;
+$header: rgba(38, 38, 38, 1);
+$error: #E0343D;
+$description: #5f5757;
+$image-overlay: rgba(0, 0, 0, 0.2);
+$background: rgb(38, 38, 38);
+$light: #f4f4f4;
+$title: #ffffff;
+$white: #ffffff;
+// Or Overrides like this
+$primary-font: 'Avenir Next';
+$title-font: 'Arial Black';
+$navbar-ios-height: 35px;
+$navbar-md-height: 50px;
+$toolbar-ios-height: 35px;
+$toolbar-md-height: 50px;
+
+/**MATERIAL**/
+
+.btn-outline-primary {
+    border: 2px solid $primary !important;
+    background-color: transparent !important;
+    color: $primary !important;
+    &:hover {
+        border: 2px solid $white !important;
+        background-color: $primary !important;
+        color: $white !important;
+    }
+    &:focus,
+    &:active {
+        border: 2px solid $secondary !important;
+        color: $secondary !important;
+    }
+}
+
+.btn-outline-light {
+    border: 2px solid $white !important;
+    background-color: transparent !important;
+    color: $white !important;
+    &:hover {
+        border: 2px solid $primary !important;
+        background-color: $white !important;
+        color: $primary !important;
+    }
+    &:focus,
+    &:active {
+        border: 2px solid $secondary !important;
+        color: $secondary !important;
+    }
+}
+
+
+/**Input**/
+
+.md-form input[type=text],
+.md-form input[type=password],
+.md-form input[type=email],
+.md-form input[type=url],
+.md-form input[type=time],
+.md-form input[type=date],
+.md-form input[type=datetime-local],
+.md-form input[type=tel],
+.md-form input[type=number],
+.md-form input[type=search-md],
+.md-form input[type=search],
+.md-form textarea.md-textarea {
+    background: $white !important;
+    color: $black;
+    border-color: $primary;
+    padding-left: 10px;
+    padding-right: 10px;
+    &:focus {
+        box-shadow: 0 1px 0 0 $primary;
+        border-color: $primary;
+    }
+}
+
+input:-internal-autofill-previewed,
+input:-internal-autofill-selected,
+textarea:-internal-autofill-previewed,
+textarea:-internal-autofill-selected,
+select:-internal-autofill-previewed,
+select:-internal-autofill-selected {
+    background-color: transparent !important;
+}

@@ -1,3 +1,4 @@
+@import "src/assets/variables.scss";
 .bg-banniere {
     background-image: url(https://udemy-images.udemy.com/notices/home_banner/image/feebb563-5a86-4499-8cac-6b1b47b669ed.jpg);
     background-color: #cccccc;
@@ -20,4 +21,27 @@
 .banniere-text {
     color: #fff;
     text-align: left;
+}
+
+.info-accueil {
+    background: #eee;
+    border: 1px solid #ddd;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    z-index: 99;
+    margin-top: -50px;
+    .info-box {
+        i {
+            font-size: 45px;
+            padding-right: 25px;
+            color: $primary;
+        }
+        align-items: center;
+        display: flex;
+        align-content: center;
+        /* text-align: center; */
+        justify-content: center;
+        flex-direction: row;
+    }
 }
