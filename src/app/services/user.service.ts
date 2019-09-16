@@ -24,6 +24,9 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers() {
+    return this.http.get<User[]>('http://localhost:4000/api/mock/users');
+  }
+  getAllUsers() {
     return this.http.get<User[]>('http://localhost:4000/api/users');
   }
 

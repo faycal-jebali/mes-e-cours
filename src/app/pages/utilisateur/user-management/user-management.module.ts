@@ -6,9 +6,17 @@ import { UserManagementComponent } from './user-management.component';
 import { IdentiteFormComponent } from './identite-form/identite-form.component';
 import { AdresseFormComponent } from './adresse-form/adresse-form.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { NewUserComponent } from './new-user/new-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { UsersComponent } from './users/users.component';
+
 import { UserService } from '../../../services/user.service';
 import { HttpModule } from '@angular/http';
 import { User } from '../../../business-objects/user';
+
+import { Routes, RouterModule } from '@angular/router';
+
+
 import {
   MatInputModule, MatButtonModule,
   MatSelectModule, MatIconModule,
@@ -17,7 +25,7 @@ import {
   MatNativeDateModule,
   MatTabsModule,
   MatFormFieldModule,
-  MatRadioModule
+  MatRadioModule,
 
 } from '@angular/material';
 
@@ -27,6 +35,9 @@ import {
     IdentiteFormComponent,
     AdresseFormComponent,
     ContactFormComponent,
+    NewUserComponent,
+    UsersComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +61,10 @@ import {
     UserService,
   ],
   exports: [
-    UserManagementComponent  ,
+    UserManagementComponent,
+    NewUserComponent,
+    UsersComponent,
+    EditUserComponent,
     BrowserModule,
     HttpClientModule,
     FormsModule,

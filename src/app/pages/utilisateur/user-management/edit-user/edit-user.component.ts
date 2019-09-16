@@ -1,24 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
 import { UserService } from '../../../../services/user.service';
-
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-new-user',
-  templateUrl: './new-user.component.html',
-  styleUrls: ['./new-user.component.scss']
+  selector: 'admin-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.scss']
 })
-export class NewUserComponent implements OnInit {
+export class EditUserComponent implements OnInit {
   newUserForm: FormGroup;
+  idUser: String;
 
   constructor(
-    private router: Router,
+    private route: ActivatedRoute,
     private fb: FormBuilder,
   private userService: UserService,
 ) {}
 
   ngOnInit() {
+    this.idUser = this.route.snapshot.paramMap.get('id');
+    console.log('idUser : ', this.idUser)
+
     this.newUserForm = this.fb.group({
       fullName: null
     })
