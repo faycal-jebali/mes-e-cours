@@ -37,10 +37,6 @@ export class EditUserComponent implements OnInit {
     this.userService.getUser(id).subscribe(
       (result) => {
         this.userData = result;
-        console.log('get User OK : ', result);
-        console.log('this.userData :: ', this.userData);
-        console.log('this.updateUserForm :: ', this.updateUserForm['controls'].identity['controls']);
-        console.log('this.userData.identity :: ', this.userData[0].identity);
         this.updateUserForm['controls'].identity['controls'].lastname.setValue('ddd');
         this.updateUserForm['controls'].identity.setValue(this.userData[0].identity);
         this.updateUserForm['controls'].address.setValue(this.userData[0].address);
@@ -55,7 +51,6 @@ export class EditUserComponent implements OnInit {
    */
   newUser() {
     if (this.updateUserForm.valid) {
-      console.log('this.updateUserForm.value : ', this.updateUserForm.value);
     this.userService.newUser(this.updateUserForm.value).subscribe(
       (result) => {
         console.log('new User OK : ', result);
@@ -69,12 +64,11 @@ export class EditUserComponent implements OnInit {
    */
   updateUser() {
     if (this.updateUserForm.valid) {
-      console.log('this.updateUserForm.value : ', this.updateUserForm.value);
     this.userService.updateUser(this.idUser, this.updateUserForm.value).subscribe(
       (result) => {
-        console.log('new User OK : ', result);
+        console.log('update User OK : ', result);
     }, (err) => {
-      console.log('new User Error :', err);
+      console.log('update User Error :', err);
     });
     }
   }
