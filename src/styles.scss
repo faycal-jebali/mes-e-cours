@@ -30,6 +30,28 @@ h5 {
     font-weight: normal;
 }
 
+.container-main {
+    padding: 20px 0;
+}
+
+.mat-tab-body {
+    padding: 20px;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+mat-radio-group {
+    mat-radio-button {
+        padding-right: 10px;
+    }
+}
+
+.btn-file {
+    width: 100%;
+}
+
 
 /* carrousel*/
 

@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
-import { UserService } from '../../../services/user.service';
+import { UserService } from '../../../../services/user.service';
 
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-mon-compte',
-  templateUrl: './mon-compte.component.html',
-  styleUrls: ['./mon-compte.component.scss']
+  selector: 'app-new-user',
+  templateUrl: './new-user.component.html',
+  styleUrls: ['./new-user.component.scss']
 })
-export class MonCompteComponent implements OnInit {
+export class NewUserComponent implements OnInit {
   newUserForm: FormGroup;
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
   private userService: UserService,
 ) {}
@@ -27,7 +29,7 @@ export class MonCompteComponent implements OnInit {
    */
   newUser() {
     if (this.newUserForm.valid) {
-      console.log('this.formationForm.value : ', this.newUserForm.value);
+      console.log('this.newUserForm.value : ', this.newUserForm.value);
     this.userService.newUser(this.newUserForm.value).subscribe(
       (result) => {
         console.log('new User OK : ', result);

@@ -23,7 +23,7 @@ export class ProductAddComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public rest: RestService,
+    public restService: RestService,
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
@@ -36,9 +36,9 @@ export class ProductAddComponent implements OnInit {
     this.formationForm = this.formBuilder.group({
       statut: [false, Validators.required],
       title: ['', Validators.required],
-      description: ['', Validators.required],
+      description: null,
       price: ['', Validators.required],
-      promotionPrice: ['', Validators.required],
+      promotionPrice: null,
       categoriesId: ['', Validators.required], 
       image: ['', Validators.required], 
       chapiters: this.formBuilder.array([
@@ -51,7 +51,7 @@ export class ProductAddComponent implements OnInit {
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
          console.log('FileUpload:uploaded:', item, status, response);
-         alert('File uploaded successfully');
+         // alert('File uploaded successfully');
      };
   }
 
@@ -61,7 +61,7 @@ export class ProductAddComponent implements OnInit {
   initChapiter(): FormGroup {
     return this.formBuilder.group({
       title: ['', Validators.compose([Validators.required])],
-      description: ['', Validators.compose([Validators.required])],
+      description: null,
       lessons: this.formBuilder.array([
         this.initLesson()
       ])  
@@ -108,7 +108,7 @@ export class ProductAddComponent implements OnInit {
    */
   addFormation() {
     console.log('this.formationForm.value : ', this.formationForm.value);
-    this.rest.addFormation(this.formationForm.value).subscribe(
+    this.restService.addFormation(this.formationForm.value).subscribe(
       (result) => {
         console.log('AddPrd OK : ', result);
         // Add File

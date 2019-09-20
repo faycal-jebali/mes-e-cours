@@ -12,6 +12,10 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { FormationsComponent } from './pages/formations/formations.component';
 import { MonCompteComponent } from './pages/utilisateur/mon-compte/mon-compte.component';
+import { NewUserComponent } from './pages/utilisateur/user-management/new-user/new-user.component';
+import { EditUserComponent } from './pages/utilisateur/user-management/edit-user/edit-user.component';
+import { UsersComponent } from './pages/utilisateur/user-management/users/users.component';
+
 
 const routes: Routes = [
   { path: '', component: AccueilComponent},
@@ -40,10 +44,41 @@ const routes: Routes = [
     data: { title: 'Product Add' }
   },
   {
+    path: 'product-add',
+    component: ProductAddComponent,
+    data: { title: 'Product Add' }
+  },
+  {
     path: 'product-edit/:id',
     component: ProductEditComponent,
     data: { title: 'Product Edit' }
   },
+  {
+    path: 'administrator',
+    children: [
+      {
+        path: 'user',
+        children : [
+          {
+            path: 'all',
+            component: UsersComponent,
+          },
+          {
+            path: 'new',
+            component: NewUserComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditUserComponent,
+          }
+        ]
+      }
+    ]
+  },
+  // {
+  //   path: 'administrator/user/all',
+  //   component: UsersComponent,
+  // },
   // otherwise redirect to home
   { path: '**', redirectTo: 'todos' }
 ];
