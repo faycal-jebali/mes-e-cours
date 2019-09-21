@@ -36,11 +36,12 @@ export class EditUserComponent implements OnInit {
   getUser(id) {
     this.userService.getUser(id).subscribe(
       (result) => {
+        console.log('get user : ', result);
         this.userData = result;
         this.updateUserForm['controls'].identity['controls'].lastname.setValue('ddd');
-        this.updateUserForm['controls'].identity.setValue(this.userData[0].identity);
-        this.updateUserForm['controls'].address.setValue(this.userData[0].address);
-        this.updateUserForm['controls'].contact.setValue(this.userData[0].contact);
+        this.updateUserForm['controls'].identity.setValue(this.userData.identity);
+        this.updateUserForm['controls'].address.setValue(this.userData.address);
+        this.updateUserForm['controls'].contact.setValue(this.userData.contact);
     }, (err) => {
       console.log('get User Error :', err);
     });

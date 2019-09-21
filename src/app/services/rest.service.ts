@@ -54,17 +54,6 @@ export class RestService {
     return body || { };
   }
 
-  addFormation(request): Observable<any> {
-    return this.http.post<any>(pathBack + 'formation', JSON.stringify(request), {
-      headers: new HttpHeaders()
-          .set('Content-Type', 'application/json'),
-      observe: 'response'
-  }).pipe(
-      tap(resp => setTimeout(() => {  console.log('header :::: ', resp.headers) }, 3000))
-      // map(this.extractData)
-    );
-  }
-
   updateProduct (id, product): Observable<any> {
     return this.http.put(pathBack + 'products/' + id, JSON.stringify(product), httpOptions).pipe(
       tap(_ => console.log(`updated product id=${id}`)),

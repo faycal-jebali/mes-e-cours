@@ -26,6 +26,7 @@ import {
   MatTabsModule,
   MatFormFieldModule,
   MatRadioModule,
+  MatTableModule,
 
 } from '@angular/material';
 
@@ -56,6 +57,8 @@ import {
     MatNativeDateModule,
     MatTabsModule,
     MatFormFieldModule,
+    MatTableModule,
+    RouterModule,
   ],
   providers: [
     UserService,

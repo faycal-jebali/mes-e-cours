@@ -27,14 +27,14 @@ export class UserService {
     return this.http.get<User[]>('http://localhost:4000/api/mock/users');
   }
   getUser(id) {
-    return this.http.get<User[]>(`http://localhost:4000/api/user/${id}`);
+    return this.http.get<User[]>(`http://localhost:4000/api/users/${id}`);
   }
   getAllUsers() {
     return this.http.get<User[]>('http://localhost:4000/api/users');
   }
 
   newUser(request): Observable<any> {
-    return this.http.post<any>(pathBack + 'user', JSON.stringify(request), {
+    return this.http.post<any>(pathBack + 'users', JSON.stringify(request), {
       headers: new HttpHeaders()
           .set('Content-Type', 'application/json'),
       observe: 'response'
@@ -45,7 +45,18 @@ export class UserService {
   }
 
   updateUser(id, request): Observable<any> {
-    return this.http.put<any>(`${pathBack}user/${id}`, JSON.stringify(request), {
+    return this.http.put<any>(`${pathBack}users/${id}`, JSON.stringify(request), {
+      headers: new HttpHeaders()
+          .set('Content-Type', 'application/json'),
+      observe: 'response'
+  }).pipe(
+      tap(resp => setTimeout(() => {  console.log('header :::: ', resp.headers) }, 3000))
+      // map(this.extractData)
+    );
+  }
+
+  deleteUser(id): Observable<any> {
+    return this.http.delete<any>(`${pathBack}users/${id}`, {
       headers: new HttpHeaders()
           .set('Content-Type', 'application/json'),
       observe: 'response'

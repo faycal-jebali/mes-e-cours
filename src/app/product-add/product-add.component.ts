@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RestService } from '../services/rest.service';
+import { FormationsService } from '../services/formations.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
@@ -27,6 +28,7 @@ export class ProductAddComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
+    private formationsService: FormationsService
   ) { }
 
   /**
@@ -108,7 +110,7 @@ export class ProductAddComponent implements OnInit {
    */
   addFormation() {
     console.log('this.formationForm.value : ', this.formationForm.value);
-    this.restService.addFormation(this.formationForm.value).subscribe(
+    this.formationsService.addFormation(this.formationForm.value).subscribe(
       (result) => {
         console.log('AddPrd OK : ', result);
         // Add File

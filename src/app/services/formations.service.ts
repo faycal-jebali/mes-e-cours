@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Formation } from './../business-objects/formation';
+import { Observable } from 'rxjs';
+import { map, catchError, tap } from 'rxjs/operators';
+
+
+const pathBack = 'http://localhost:4000/api/';
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class FormationsService {
   constructor(private http: HttpClient) { }
 
@@ -18,6 +25,20 @@ export class FormationsService {
 
   getFormationByCategorie(id: number) {
     return this.http.get<Formation>(`http://localhost:4000/api/formations/categorie/${id}`);
+  }
+  /**
+   * Create Formation
+   * @param request 
+   */
+  addFormation(request): Observable<any> {
+    return this.http.post<any>(pathBack + 'formations', JSON.stringify(request), {
+      headers: new HttpHeaders()
+          .set('Content-Type', 'application/json'),
+      observe: 'response'
+  }).pipe(
+      tap(resp => setTimeout(() => {  console.log('header :::: ', resp.headers) }, 3000))
+      // map(this.extractData)
+    );
   }
 
     // setFormation2() {
