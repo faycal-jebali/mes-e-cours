@@ -1,0 +1,26 @@
+<div class="mat-typography">
+    <h1>Administrateur</h1>
+
+    <div class="newUserForm">
+        <form novalidate [formGroup]="newUserForm" (ngSubmit)="newUser();">
+            <mat-tab-group>
+                <mat-tab label="Identité">
+                    <identite-form (formReady)="formInitialized('identity', $event)"></identite-form>
+                </mat-tab>
+                <mat-tab label="Adresse">
+                    <adresse-form (formReady)="formInitialized('address', $event)"></adresse-form>
+                </mat-tab>
+                <mat-tab label="Contact">
+                    <contact-form (formReady)="formInitialized('contact', $event)"></contact-form>
+                </mat-tab>
+            </mat-tab-group>
+            <button type="submit" class="btn btn-sm waves-effect btn-info float-right" [disabled]="!newUserForm.valid">Ajouter</button>
+        </form>
+    </div>
+
+    <!--router-outlet></router-outlet-->
+    <!--h2 class='mat-h2'>Form Value</h2>
+    <pre>
+      {#{newUserForm.value | json}#}
+    </pre-->
+</div>

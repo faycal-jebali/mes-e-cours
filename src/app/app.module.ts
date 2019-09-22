@@ -5,10 +5,8 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AdminModule } from './admin/admin.module';
 import { AppComponent } from './app.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { TodoService } from './services/todo.service';
 import { UserService } from './services/user.service';
 import { FormationsService } from './services/formations.service';
 import { LoginComponent } from './login/login.component';
@@ -35,14 +33,10 @@ import { NavigationComponent } from './main-layout/navigation/navigation.compone
 import { BanniereComponent } from './main-layout/banniere/banniere.component';
 import { SharedModule } from './shared/shared.module';
 import { ProductAddComponent } from './product-add/product-add.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { ProductEditComponent } from './product-edit/product-edit.component';
-import { ProductComponent } from './product/product.component';
 import { RestService } from './services/rest.service';
 import { DetailsComponent } from './pages/details/details.component';
 import { FormationsComponent } from './pages/formations/formations.component';
 import { MonCompteComponent } from './pages/utilisateur/mon-compte/mon-compte.component';
-import { UserManagementModule } from './pages/utilisateur/user-management/user-management.module';
 
 import { MesFormationsComponent } from './pages/utilisateur/mes-formations/mes-formations.component';
 import { AdresseFormComponent } from './pages/utilisateur/mon-compte/adresse-form/adresse-form.component';
@@ -62,13 +56,8 @@ export function tokenGetter() {
     FooterComponent,
     NavigationComponent,
     BanniereComponent,
-    TodoListComponent,
-    UserListComponent,
     LoginComponent,
     ProductAddComponent,
-    ProductDetailComponent,
-    ProductComponent,
-    ProductEditComponent,
     DetailsComponent,
     FormationsComponent,
     MonCompteComponent,
@@ -81,8 +70,9 @@ export function tokenGetter() {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AdminModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule, 
     ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
@@ -97,10 +87,8 @@ export function tokenGetter() {
 
     SharedModule,
     MatRadioModule,
-    UserManagementModule,
   ],
   providers: [
-    TodoService,
     UserService,
     AuthService,
     AuthGuard,

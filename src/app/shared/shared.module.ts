@@ -9,7 +9,9 @@ import { PanelComponent } from './components/panel/panel.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import { RouterModule } from '@angular/router';
 import { ItemCarrouselComponent } from './components/carrousel/item-carrousel/item-carrousel.component';
-
+import { AdresseFormComponent } from './components/users/adresse-form/adresse-form.component';
+import { ContactFormComponent } from './components/users/contact-form/contact-form.component';
+import { IdentiteFormComponent } from './components/users/identite-form/identite-form.component';
 
 @NgModule({
   imports: [
@@ -25,6 +27,9 @@ import { ItemCarrouselComponent } from './components/carrousel/item-carrousel/it
     ModalComponent,
     CarrouselComponent,
     ItemCarrouselComponent,
+    AdresseFormComponent,
+    ContactFormComponent,
+    IdentiteFormComponent,
   ],
   exports: [
     MDBBootstrapModule,
@@ -35,6 +40,9 @@ import { ItemCarrouselComponent } from './components/carrousel/item-carrousel/it
     ModalComponent,
     CarrouselComponent,
     ItemCarrouselComponent,
+    AdresseFormComponent,
+    ContactFormComponent,
+    IdentiteFormComponent,
   ],
   providers: [
   ],

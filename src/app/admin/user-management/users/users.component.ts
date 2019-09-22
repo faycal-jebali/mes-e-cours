@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../../../../business-objects/user';
-import { UserService } from '../../../../services/user.service';
+import { User } from '../../../business-objects/user';
+import { UserService } from '../../../services/user.service';
 
 export interface PeriodicElement {
   name: string;

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms';
-import { UserService } from '../../../services/user.service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
-  selector: 'app-user-management',
-  templateUrl: './user-management.component.html',
-  styleUrls: ['./user-management.component.scss']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
-export class UserManagementComponent implements OnInit {
+export class AdminComponent implements OnInit {
   newUserForm: FormGroup;
 
   constructor(
