@@ -29,11 +29,9 @@ const routes: Routes = [
   },
   {
     path: 'administrator',
-    component: AdminComponent,
     children: [
       {
         path: 'user',
-        component: UsersComponent,
         children : [
           {
             path: 'all',

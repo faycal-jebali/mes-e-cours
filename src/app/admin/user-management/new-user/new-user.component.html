@@ -3,6 +3,9 @@
 </nav>
 <div class="mat-typography">
     <h1>Nouveau Utilisateur</h1>
+    <pre>
+        {{newUserForm.value | json }}
+    </pre>
 
     <div class="newUserForm">
         <form novalidate [formGroup]="newUserForm" (ngSubmit)="newUser();">

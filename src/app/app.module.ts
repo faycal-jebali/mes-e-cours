@@ -39,10 +39,6 @@ import { FormationsComponent } from './pages/formations/formations.component';
 import { MonCompteComponent } from './pages/utilisateur/mon-compte/mon-compte.component';
 
 import { MesFormationsComponent } from './pages/utilisateur/mes-formations/mes-formations.component';
-import { AdresseFormComponent } from './pages/utilisateur/mon-compte/adresse-form/adresse-form.component';
-import { ContactFormComponent } from './pages/utilisateur/mon-compte/contact-form/contact-form.component';
-import { IdentiteFormComponent } from './pages/utilisateur/mon-compte/identite-form/identite-form.component';
-
 import { FileSelectDirective } from 'ng2-file-upload';
 
 export function tokenGetter() {
@@ -62,9 +58,6 @@ export function tokenGetter() {
     FormationsComponent,
     MonCompteComponent,
     MesFormationsComponent,
-    AdresseFormComponent,
-    ContactFormComponent,
-    IdentiteFormComponent,
     FileSelectDirective,   
   ],
   imports: [
