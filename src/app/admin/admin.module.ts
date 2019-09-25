@@ -28,6 +28,9 @@ import {
   MatTableModule,
 
 } from '@angular/material';
+import { FormationsComponent } from './formation-management/formations/formations.component';
+import { EditFormationComponent } from './formation-management/edit-formation/edit-formation.component';
+import { NewFormationComponent } from './formation-management/new-formation/new-formation.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import {
     UsersComponent,
     NewUserComponent,
     EditUserComponent,
+    FormationsComponent,
+    NewFormationComponent,
+    EditFormationComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +89,9 @@ import {
     UsersComponent,
     NewUserComponent,
     EditUserComponent,
+    FormationsComponent,
+    NewFormationComponent,
+    EditFormationComponent,
   ]
 })
 export class AdminModule { }

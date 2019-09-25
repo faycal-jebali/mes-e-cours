@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder} from '@angular/forms';
-import { UserService } from '../services/user.service';
-import { AuthService } from '../services/auth.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { UserService } from '../../../services/user.service';
 
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  selector: 'app-new-formation',
+  templateUrl: './new-formation.component.html',
+  styleUrls: ['./new-formation.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class NewFormationComponent implements OnInit {
   newUserForm: FormGroup;
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
-    private userService: UserService,
-    private auth: AuthService,
+  private userService: UserService,
 ) {}
 
   ngOnInit() {

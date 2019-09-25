@@ -35,7 +35,7 @@ import { SharedModule } from './shared/shared.module';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { RestService } from './services/rest.service';
 import { DetailsComponent } from './pages/details/details.component';
-import { FormationsComponent } from './pages/formations/formations.component';
+import { FormationsPageComponent } from './pages/formations-page/formations-page.component';
 import { MonCompteComponent } from './pages/utilisateur/mon-compte/mon-compte.component';
 
 import { MesFormationsComponent } from './pages/utilisateur/mes-formations/mes-formations.component';
@@ -55,7 +55,7 @@ export function tokenGetter() {
     LoginComponent,
     ProductAddComponent,
     DetailsComponent,
-    FormationsComponent,
+    FormationsPageComponent,
     MonCompteComponent,
     MesFormationsComponent,
     FileSelectDirective,   

@@ -3,11 +3,11 @@ import { Observable } from 'rxjs';
 import { Formation } from '../../business-objects/formation';
 import { FormationsService } from '../../services/formations.service';
 @Component({
-  selector: 'app-formations',
-  templateUrl: './formations.component.html',
-  styleUrls: ['./formations.component.scss']
+  selector: 'app-formations-page',
+  templateUrl: './formations-page.component.html',
+  styleUrls: ['./formations-page.component.scss']
 })
-export class FormationsComponent implements OnInit {
+export class FormationsPageComponent implements OnInit {
   formations: Formation[];
   constructor(private formationsService: FormationsService) { }
 
@@ -15,10 +15,10 @@ export class FormationsComponent implements OnInit {
     this.formationsService.getFormations().subscribe(
       (formations) => {
         this.formations = formations;
-        console.log('FormationsComponent formations : ', this.formations);
+        console.log('FormationsPageComponent formations : ', this.formations);
       },
       (error) => {
-        console.log('FormationsComponent getFormations() Erreur: ', this.formations);
+        console.log('FormationsPageComponent getFormations() Erreur: ', this.formations);
       });
   }
 
