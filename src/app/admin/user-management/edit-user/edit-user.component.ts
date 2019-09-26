@@ -27,10 +27,6 @@ export class EditUserComponent implements OnInit {
     this.updateUserForm = this.fb.group({
       fullName: null
     });
-
-    if (this.userData) {
-
-    }
   }
 
   getUser(id) {
@@ -38,7 +34,6 @@ export class EditUserComponent implements OnInit {
       (result) => {
         console.log('get user : ', result);
         this.userData = result;
-        this.updateUserForm['controls'].identity['controls'].lastname.setValue('ddd');
         this.updateUserForm['controls'].identity.setValue(this.userData.identity);
         this.updateUserForm['controls'].address.setValue(this.userData.address);
         this.updateUserForm['controls'].contact.setValue(this.userData.contact);

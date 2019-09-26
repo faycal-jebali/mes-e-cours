@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../../../business-objects/user';
 import { UserService } from '../../../services/user.service';
+import { FormationsService } from '../../../services/formations.service';
 
 @Component({
   selector: 'admin-formations',
@@ -9,16 +10,19 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./formations.component.scss']
 })
 export class FormationsComponent implements OnInit {
-  allUser = [];
+  allFormation = [];
   displayedColumns: string[] = ['position', 'name', 'role', 'actions'];
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private formationsService: FormationsService,
+  ) { }
 
   ngOnInit() {
     // this.allUser$ = this.userService.getAllUsers();
-    this.userService.getAllUsers().subscribe((data) => {
+    this.formationsService.getFormations().subscribe((data) => {
       if (data) {
-        this.allUser = data;
+        this.allFormation = data;
       }
       console.log('DATA :: ', data);
     })

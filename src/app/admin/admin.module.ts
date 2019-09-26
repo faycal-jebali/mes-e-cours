@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AdminComponent } from './admin.component';
@@ -31,6 +31,7 @@ import {
 import { FormationsComponent } from './formation-management/formations/formations.component';
 import { EditFormationComponent } from './formation-management/edit-formation/edit-formation.component';
 import { NewFormationComponent } from './formation-management/new-formation/new-formation.component';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { NewFormationComponent } from './formation-management/new-formation/new-
     FormationsComponent,
     NewFormationComponent,
     EditFormationComponent,
+    FileSelectDirective,
   ],
   imports: [
     BrowserModule,
@@ -92,6 +94,8 @@ import { NewFormationComponent } from './formation-management/new-formation/new-
     FormationsComponent,
     NewFormationComponent,
     EditFormationComponent,
-  ]
+    FileSelectDirective,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AdminModule { }

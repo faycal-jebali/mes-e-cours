@@ -57,8 +57,7 @@ export function tokenGetter() {
     DetailsComponent,
     FormationsPageComponent,
     MonCompteComponent,
-    MesFormationsComponent,
-    FileSelectDirective,   
+    MesFormationsComponent,  
   ],
   imports: [
     BrowserModule,
