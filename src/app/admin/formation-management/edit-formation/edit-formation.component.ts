@@ -40,7 +40,6 @@ export class EditFormationComponent implements OnInit {
     this.idFormation = this.route.snapshot.paramMap.get('id');
     this.getFormation(this.idFormation);
     console.log('idFomation : ', this.idFormation)
-    
     this.formationForm = this.formBuilder.group({
       statut: [false, Validators.required],
       title: ['', Validators.required],
@@ -49,11 +48,11 @@ export class EditFormationComponent implements OnInit {
       promotionPrice: null,
       categoriesId: ['', Validators.required], 
       image: ['', Validators.required], 
-      chapiters: this.formBuilder.array([
-        this.initChapiter()
-      ])     
+      chapiters: this.formBuilder.array([])
     });
 
+    
+  
 
     // Upload Files
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
@@ -68,14 +67,18 @@ export class EditFormationComponent implements OnInit {
       (result) => {
         console.log('get Formation : ', result);
         this.formationData = result;
-        this.formationForm['controls'].title.setValue(this.formationData.title);
-        this.formationForm['controls'].statut.setValue(this.formationData.statut);
-        this.formationForm['controls'].description.setValue(this.formationData.description);
-        this.formationForm['controls'].price.setValue(this.formationData.price);
-        this.formationForm['controls'].promotionPrice.setValue(this.formationData.promotionPrice);
-        this.formationForm['controls'].categoriesId.setValue(this.formationData.categoriesId);
-        this.formationForm['controls'].chapiters.setValue(this.formationData.chapiters);
-    }, (err) => {
+        if( this.formationData && this.formationData.chapiters.length > 0) {
+          this.formationData.chapiters.forEach((botox) => {
+            console.log('botox :: ', botox);
+            let btys = botox.lessons.length;
+            this.addChapiter2(btys);
+          });
+        } else {
+          console.log('1111')
+          this.addChapiter2(1);
+        }
+        (<FormGroup>this.formationForm).patchValue(this.formationData, { onlySelf: true });
+      }, (err) => {
       console.log('get Formation Error :', err);
     });
   }
@@ -93,7 +96,43 @@ export class EditFormationComponent implements OnInit {
     });
   }
 
+
   /**
+   * Créer FormGroup chapitres
+   */
+  initChapiter2(numberLesson): FormGroup {
+    return this.formBuilder.group({
+      title: ['', Validators.compose([Validators.required])],
+      description: null,
+      lessons: this.addLesson2(numberLesson)
+    });
+  }
+
+  addLesson2(number) {
+    let bts = new FormArray([]);
+    for(let i = 0; i < number; i++) {
+      bts.push(this.initLesson())
+    }
+    return bts;
+  }
+    /**
+   * Créer FormGroup Cours
+   */
+  initLesson2(): FormGroup {
+    return this.formBuilder.group({
+      title: ['', Validators.compose([Validators.required])],
+      description: ['', Validators.compose([Validators.required])],
+      video: ['', [Validators.required]],
+    });
+  }
+
+  addChapiter2(number) {
+    const control = <FormArray>this.formationForm.controls['chapiters'];
+    const botoxCtrl = this.initChapiter2(number);
+    control.push(botoxCtrl);
+  }
+
+    /**
    * Créer FormGroup Cours
    */
   initLesson(): FormGroup {
@@ -103,6 +142,25 @@ export class EditFormationComponent implements OnInit {
       video: ['', [Validators.required]],
     });
   }
+
+  initChapiterData(data): FormGroup {
+    return this.formBuilder.group({
+      title: ['', Validators.compose([Validators.required])],
+      description: '',
+      lessons: this.formBuilder.array([
+        this.initLesson()
+      ])  
+    });
+  }
+
+
+  buildServiceList(chapiters) {
+    const arr = chapiters.map(service => {
+      return this.formBuilder.control(this.initChapiter());
+    });
+    return this.formBuilder.array(arr);
+  }
+  
 
   /**
    * Get Chapitres
@@ -131,18 +189,18 @@ export class EditFormationComponent implements OnInit {
   /**
    * Ajouter une formation
    */
-  addFormation() {
-    console.log('this.formationForm.value : ', this.formationForm.value);
-    this.formationsService.addFormation(this.formationForm.value).subscribe(
-      (result) => {
-        console.log('AddPrd OK : ', result);
-        // Add File
-        this.uploader.uploadAll();
-      // this.router.navigate(['/product-details/'+result._id]);
-    }, (err) => {
-      console.log('AddPrd Error :', err);
-    });
-  }
+  // addFormation() {
+  //   console.log('this.formationForm.value : ', this.formationForm.value);
+  //   this.formationsService.addFormation(this.formationForm.value).subscribe(
+  //     (result) => {
+  //       console.log('AddPrd OK : ', result);
+  //       // Add File
+  //       this.uploader.uploadAll();
+  //     // this.router.navigate(['/product-details/'+result._id]);
+  //   }, (err) => {
+  //     console.log('AddPrd Error :', err);
+  //   });
+  // }
 
 
   /**

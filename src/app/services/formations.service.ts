@@ -54,14 +54,14 @@ export class FormationsService {
     );
   }
 
-    // setFormation2() {
-  //   return this.http.post<Formation[]>('http://localhost:4000/api/formation');
-  // }
-
-  // setFormation(data) {
-  //   const _url = 'http://localhost:4000/api/formation';
-  //   return this.http.post(_url, data, this.options)
-  //     .map(this.extractData)
-  //     .catch(this.handleError);
-  // }
+  deleteFormation(id): Observable<any> {
+    return this.http.delete<any>(`${pathBack}formations/${id}`, {
+      headers: new HttpHeaders()
+          .set('Content-Type', 'application/json'),
+      observe: 'response'
+  }).pipe(
+      tap(resp => setTimeout(() => {  console.log('header :::: ', resp.headers) }, 3000))
+      // map(this.extractData)
+    );
+  }
 }

@@ -28,10 +28,10 @@ export class FormationsComponent implements OnInit {
     })
   }
 
-  deleteUser(id) {
-    this.userService.deleteUser(id).subscribe((data) => {
+  deleteFormation(id) {
+    this.formationsService.deleteFormation(id).subscribe((data) => {
       if (data) {
-        console.log('Delete user :: ', data);
+        console.log('Delete Formation :: ', data);
       }
       console.log('DATA :: ', data);
     })

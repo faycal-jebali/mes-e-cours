@@ -74,6 +74,7 @@
                                 <div class="container">
                                     <div formArrayName="chapiters">
                                         <h2>Chapitres</h2>
+                                        <pre>{{ chapiters.controls }}</pre>
                                         <!--List Chapiters-->
                                         <div *ngFor="let chapiter of chapiters.controls; let iChapiter = index">
                                             <div class="row" [formGroupName]="iChapiter" class="itemChapiter">
