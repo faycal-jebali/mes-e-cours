@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 const UploadURL = 'http://localhost:4000/api/upload';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'admin-edit-formation',
@@ -14,6 +15,8 @@ const UploadURL = 'http://localhost:4000/api/upload';
   styleUrls: ['./edit-formation.component.scss']
 })
 export class EditFormationComponent implements OnInit {
+  configEditor = { toolbar: [ 'heading', '|', 'bold', 'italic' ] };
+  public Editor = ClassicEditor;
   title = 'Upload a File';
   idFormation: String;
   formationData = null;

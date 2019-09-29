@@ -11,9 +11,16 @@ import { AdminComponent } from './admin/admin.component';
 import { NewUserComponent } from './admin/user-management/new-user/new-user.component';
 import { EditUserComponent } from './admin/user-management/edit-user/edit-user.component';
 import { UsersComponent } from './admin/user-management/users/users.component';
+
+// Training
 import { FormationsComponent } from './admin/formation-management/formations/formations.component';
 import { NewFormationComponent } from './admin/formation-management/new-formation/new-formation.component';
 import { EditFormationComponent } from './admin/formation-management/edit-formation/edit-formation.component';
+
+//Category
+import { CategoriesComponent } from './admin/category-management/categories/categories.component';
+import { NewCategoryComponent } from './admin/category-management/new-category/new-category.component';
+import { EditCategoryComponent } from './admin/category-management/edit-category/edit-category.component';
 
 
 const routes: Routes = [
@@ -65,6 +72,23 @@ const routes: Routes = [
           {
             path: 'edit/:id',
             component: EditFormationComponent,
+          }
+        ]
+      },
+      {
+        path: 'category',
+        children : [
+          {
+            path: 'all',
+            component: CategoriesComponent,
+          },
+          {
+            path: 'new',
+            component: NewCategoryComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: EditCategoryComponent,
           }
         ]
       }

@@ -6,7 +6,6 @@ import { AdminComponent } from './admin.component';
 import { UserService } from '../services/user.service';
 import { HttpModule } from '@angular/http';
 import { User } from '../business-objects/user';
-import { UserManagementComponent } from './user-management/user-management.component';
 import { UsersComponent } from './user-management/users/users.component';
 import { NewUserComponent } from './user-management/new-user/new-user.component';
 import { EditUserComponent
@@ -28,21 +27,32 @@ import {
   MatTableModule,
 
 } from '@angular/material';
+// Training
 import { FormationsComponent } from './formation-management/formations/formations.component';
 import { EditFormationComponent } from './formation-management/edit-formation/edit-formation.component';
 import { NewFormationComponent } from './formation-management/new-formation/new-formation.component';
+
+// Category
+import { CategoriesComponent } from './category-management/categories/categories.component';
+import { NewCategoryComponent } from './category-management/new-category/new-category.component';
+import { EditCategoryComponent } from './category-management/edit-category/edit-category.component';
+
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
 import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
     AdminComponent,
-    UserManagementComponent,
     UsersComponent,
     NewUserComponent,
     EditUserComponent,
     FormationsComponent,
     NewFormationComponent,
     EditFormationComponent,
+    CategoriesComponent,
+    NewCategoryComponent,
+    EditCategoryComponent,
     FileSelectDirective,
   ],
   imports: [
@@ -65,6 +75,7 @@ import { FileSelectDirective } from 'ng2-file-upload';
     MatTableModule,
     RouterModule,
     SharedModule,
+    CKEditorModule,
   ],
   providers: [
     UserService,
@@ -87,14 +98,17 @@ import { FileSelectDirective } from 'ng2-file-upload';
     MatNativeDateModule,
     MatTabsModule,
     MatFormFieldModule,
-    UserManagementComponent,
     UsersComponent,
     NewUserComponent,
     EditUserComponent,
     FormationsComponent,
     NewFormationComponent,
     EditFormationComponent,
+    CategoriesComponent,
+    NewCategoryComponent,
+    EditCategoryComponent,
     FileSelectDirective,
+    CKEditorModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

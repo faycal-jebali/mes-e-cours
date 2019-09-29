@@ -58,9 +58,11 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <mat-form-field>
+                                        <ckeditor [editor]="Editor" [config]="configEditor" placeholder="Description *" formControlName='description'></ckeditor>
+
+                                        <!-- <mat-form-field>
                                             <textarea matInput matTextareaAutosize matAutosizeMinRows=3 matAutosizeMaxRows=5 placeholder="Description" formControlName='description'></textarea>
-                                        </mat-form-field>
+                                        </mat-form-field>-->
                                     </div>
                                 </div>
                             </div>

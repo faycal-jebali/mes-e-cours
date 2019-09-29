@@ -21,6 +21,8 @@
         "@angular/platform-browser-dynamic": "^6.0.2",
         "@angular/router": "^6.0.2",
         "@auth0/angular-jwt": "^2.0.0",
+        "@ckeditor/ckeditor5-angular": "^1.1.0",
+        "@ckeditor/ckeditor5-build-classic": "^12.4.0",
         "@ng-bootstrap/ng-bootstrap": "^4.0.3",
         "angular-bootstrap-md": "file:angular-bootstrap-md-7.4.1.tgz",
         "bootstrap": "4.3.1",
