@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { User } from '../../../business-objects/user';
 import { UserService } from '../../../services/user.service';
 import { CategoryService } from '../../../services/category.service';
+import { NotificationService } from '../../../shared/components/notification/notification.service';
 
 export interface PeriodicElement {
   name: string;
@@ -23,6 +24,7 @@ export class CategoriesComponent implements OnInit {
   constructor(
     private userService: UserService,
     private categoryService: CategoryService,
+    private notificationService: NotificationService,
   ) { }
 
   ngOnInit() {
@@ -35,11 +37,17 @@ export class CategoriesComponent implements OnInit {
   }
 
   deleteCategory(id) {
-    this.categoryService.deleteCategory(id).subscribe((data) => {
+    this.categoryService.deleteCategory(id).subscribe(
+      (data) => {
       if (data) {
-        console.log('Delete category :: ', data);
+        if (data.body.success) {
+          this.allCategories = this.allCategories.filter((item) => item._id !== id);
+          this.notificationService.success('Félicitaions!', data.body.message);
+        }
       }
-      console.log('DATA :: ', data);
-    })
+    }),
+    (error) => {
+      this.notificationService.error('Problème!', `Au niveau de la suppression de la catégorie (${id})`, error, true);
+    }
   }
 }

@@ -23,6 +23,7 @@ import {
   MatRadioModule
 } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NotificationModule } from './components/notification/notification.module';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MDBBootstrapModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
+    NotificationModule,
   ],
   declarations: [
     CascadingPanelComponent,
@@ -54,6 +56,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   ],
   exports: [
     MDBBootstrapModule,
+    NotificationModule,
     CascadingPanelComponent,
     CascadingCardComponent,
     OverlayCardComponent,

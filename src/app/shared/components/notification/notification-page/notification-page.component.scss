@@ -1,0 +1,108 @@
+#errorPanel {
+  position: relative;
+  height: 40vh;
+  .errorPanel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 767px;
+    width: 100%;
+    line-height: 1.4;
+    text-align: center;
+    padding: 15px;
+    h1 {
+      font-family: 'Kanit', sans-serif;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      font-size: 75px;
+      font-weight: 200;
+      margin: 0px;
+      background: linear-gradient(130deg, #ffa34f, #ff6f68);
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-transform: uppercase;
+    }
+    h2 {
+      font-family: 'Kanit', sans-serif;
+      font-size: 33px;
+      font-weight: 200;
+      text-transform: uppercase;
+      margin-top: 0px;
+      margin-bottom: 25px;
+      letter-spacing: 3px;
+    }
+    p {
+      font-family: 'Kanit', sans-serif;
+      font-size: 16px;
+      font-weight: 200;
+      margin-top: 0px;
+      margin-bottom: 25px;
+    }
+    .errorPanel-404 {
+      position: relative;
+      height: 220px;
+      h1 {
+        font-size: 186px;
+      }
+    }
+    .errorPanel-error {
+      position: relative;
+      height: 150px;
+    }
+    .errorPanel-social {
+     a {
+      display: inline-block;
+      height: 40px;
+      line-height: 30px;
+      font-size: 14px;
+      color: #ff4f17;
+      border: 1px solid #ff4f17;
+      border-radius: 25px;
+      padding: 5px 25px;
+      margin: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.5s all;
+       &:hover {
+         color: #fff;
+         background-color: #ff4f17;
+         border-color: #ff4f17;
+       }
+     }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  #errorPanel {
+    height: 60vh;
+    .errorPanel {
+      max-width: 500px;
+      h1 {
+        font-size: 40px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+      p {
+        font-size: 16px;
+      }
+      .errorPanel-404 {
+        height: 220px;
+        h1 {
+          font-size: 100px;
+        }
+      }
+      .errorPanel-error {
+        height: 90px;
+      }
+    }
+  }
+
+}
