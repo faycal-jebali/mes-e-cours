@@ -1,19 +1,23 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RestService } from '../services/rest.service';
-import { FormationsService } from '../services/formations.service';
+import { RestService } from '../../../services/rest.service';
+import { FormationsService } from '../../../services/formations.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 const UploadURL = 'http://localhost:4000/api/upload';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
-  selector: 'app-product-add',
-  templateUrl: './product-add.component.html',
-  styleUrls: ['./product-add.component.scss']
+  selector: 'app-new-formation',
+  templateUrl: './new-formation.component.html',
+  styleUrls: ['./new-formation.component.scss']
 })
-export class ProductAddComponent implements OnInit {
+export class NewFormationComponent implements OnInit {
+  configEditor = { toolbar: [ 'heading', '|', 'bold', 'italic' ] };
+  public Editor = ClassicEditor;
+  
   title = 'Upload a File';
 
   public uploader: FileUploader = new FileUploader({url: UploadURL, itemAlias: 'photo'});

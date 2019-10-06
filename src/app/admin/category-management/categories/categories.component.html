@@ -1,0 +1,41 @@
+<nav>
+    <a [routerLink]="['/administrator/category/new']" class="btn btn-sm waves-effect btn-info float-right">Nouveau</a>
+</nav>
+<div class="mat-typography">
+    <h1>Catégories</h1>
+    <table mat-table [dataSource]="allCategories" class="mat-table-list">
+
+        <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Titre </th>
+            <td mat-cell *matCellDef="let element"> {{element.title}}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="role">
+            <th mat-header-cell *matHeaderCellDef> Parent </th>
+            <td mat-cell *matCellDef="let element"> <span *ngFor="let item of element.parent">{{ item }} -</span> </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let element">
+                <a [routerLink]="['/administrator/category/edit/', element._id]">Edit</a> |
+                <a (click)="deleteCategory(element._id)">Supprimer</a>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

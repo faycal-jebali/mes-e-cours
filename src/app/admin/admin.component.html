@@ -1,0 +1,22 @@
+<header>
+    <mat-toolbar class="menu">
+        <ul class="menu-left">
+            <li>
+                <a class="nav-link" routerLink="/administrator/user/all" routerLinkActive="active" *ngIf="auth.loggedIn">Utilisateurs</a>
+            </li>
+            <li>
+                <a class="nav-link" routerLink="/administrator/formation/all" routerLinkActive="active" *ngIf="auth.loggedIn">Formations</a>
+            </li>
+            <li>
+                <a class="nav-link" routerLink="/administrator/category/all" routerLinkActive="active" *ngIf="auth.loggedIn">Catégories</a>
+            </li>
+            <li>
+                <a class="nav-link" routerLink="/administrator/formation/all" routerLinkActive="active" *ngIf="auth.loggedIn">Commandes</a>
+            </li>
+        </ul>
+    </mat-toolbar>
+</header>
+
+<div>
+    <router-outlet></router-outlet>
+</div>

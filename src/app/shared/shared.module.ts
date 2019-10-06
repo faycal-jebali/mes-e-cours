@@ -9,13 +9,36 @@ import { PanelComponent } from './components/panel/panel.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import { RouterModule } from '@angular/router';
 import { ItemCarrouselComponent } from './components/carrousel/item-carrousel/item-carrousel.component';
-
+import { AdresseFormComponent } from './components/users/adresse-form/adresse-form.component';
+import { ContactFormComponent } from './components/users/contact-form/contact-form.component';
+import { IdentiteFormComponent } from './components/users/identite-form/identite-form.component';
+import {
+  MatInputModule, MatButtonModule,
+  MatSelectModule, MatIconModule,
+  MatToolbarModule, MatMenuModule,
+  MatCheckboxModule, MatDatepickerModule,
+  MatNativeDateModule,
+  MatTabsModule,
+  MatFormFieldModule,
+  MatRadioModule
+} from '@angular/material';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     RouterModule,
     CommonModule,
+    MatInputModule, MatButtonModule,
+  MatSelectModule, MatIconModule,
+  MatToolbarModule, MatMenuModule,
+  MatCheckboxModule, MatDatepickerModule,
+  MatNativeDateModule,
+  MatTabsModule,
+  MatFormFieldModule,
+  MatRadioModule,
     MDBBootstrapModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     CascadingPanelComponent,
@@ -25,6 +48,9 @@ import { ItemCarrouselComponent } from './components/carrousel/item-carrousel/it
     ModalComponent,
     CarrouselComponent,
     ItemCarrouselComponent,
+    AdresseFormComponent,
+    ContactFormComponent,
+    IdentiteFormComponent,
   ],
   exports: [
     MDBBootstrapModule,
@@ -35,9 +61,11 @@ import { ItemCarrouselComponent } from './components/carrousel/item-carrousel/it
     ModalComponent,
     CarrouselComponent,
     ItemCarrouselComponent,
+    AdresseFormComponent,
+    ContactFormComponent,
+    IdentiteFormComponent,
   ],
-  providers: [
-  ],
+  providers: [],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule { }

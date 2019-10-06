@@ -3,6 +3,7 @@
 @import '~@angular/material/theming';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import "src/assets/variables.scss";
+@import "src/assets/overrides/materials.scss";
 @include mat-core();
 $primary-theme: mat-palette($mat-lime,
 500);
@@ -94,4 +95,11 @@ mdb-card {
 
 .mat-menu-panel {
     border-radius: 0 !important;
+}
+
+
+/**Table**/
+
+.mat-table-list {
+    width: 100%;
 }

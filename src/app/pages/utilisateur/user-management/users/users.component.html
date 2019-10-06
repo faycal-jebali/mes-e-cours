@@ -1,8 +1,0 @@
-<nav>
-    <a routerLink="/administrator/user/new">Nouveau Utilisateur</a>
-</nav>
-<ul>
-    <li *ngFor="let userItem of allUser$ | async">
-        {{userItem._id}}
-    </li>
-</ul>
