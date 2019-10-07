@@ -39,11 +39,9 @@ export class CategoriesComponent implements OnInit {
   deleteCategory(id) {
     this.categoryService.deleteCategory(id).subscribe(
       (data) => {
-      if (data) {
-        if (data.body.success) {
+      if (data && data.body.success) {
           this.allCategories = this.allCategories.filter((item) => item._id !== id);
           this.notificationService.success('Félicitaions!', data.body.message);
-        }
       }
     }),
     (error) => {

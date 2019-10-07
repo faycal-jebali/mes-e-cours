@@ -1,3 +1,14 @@
 .newUserForm {
     overflow: hidden;
 }
+
+.list-lessons {
+    overflow: hidden;
+    .item-lesson {
+        background: ghostwhite;
+        padding: 10px;
+        margin: 5px 0 20px 0;
+        overflow: hidden;
+        border: 1px solid #000;
+    }
+}

@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 const UploadURL = 'http://localhost:4000/api/upload';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { NotificationService } from '../../../shared/components/notification/notification.service';
 
 @Component({
   selector: 'app-new-formation',
@@ -32,7 +33,9 @@ export class NewFormationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    private formationsService: FormationsService
+    private formationsService: FormationsService,
+    private notificationService: NotificationService,
+    
   ) { }
 
   /**
@@ -46,7 +49,7 @@ export class NewFormationComponent implements OnInit {
       price: ['', Validators.required],
       promotionPrice: null,
       categoriesId: ['', Validators.required], 
-      image: ['', Validators.required], 
+      image: [''], 
       chapiters: this.formBuilder.array([
         this.initChapiter()
       ])     
@@ -80,8 +83,8 @@ export class NewFormationComponent implements OnInit {
   initLesson(): FormGroup {
     return this.formBuilder.group({
       title: ['', Validators.compose([Validators.required])],
-      description: ['', Validators.compose([Validators.required])],
-      video: ['', [Validators.required]],
+      description: [''],
+      video: [''],
     });
   }
 
@@ -108,6 +111,20 @@ export class NewFormationComponent implements OnInit {
     control.push(this.initLesson());
   }
 
+  deleteRowFormChapiter(iChapiter) {
+    const control = (<FormArray>this.formationForm.controls['chapiters']) as FormArray;
+    if (iChapiter > 0 || control.length > 1) {
+      control.removeAt(iChapiter);
+    }
+  }
+
+
+  deleteRowFormLesson(iChapiter, iLesson) {
+    const control = (<FormArray>this.formationForm.controls['chapiters']).at(iChapiter).get('lessons') as FormArray;
+    if (iLesson > 0 || control.length > 1) {
+      control.removeAt(iLesson);
+    }
+  }
 
   /**
    * Ajouter une formation
@@ -115,14 +132,17 @@ export class NewFormationComponent implements OnInit {
   addFormation() {
     console.log('this.formationForm.value : ', this.formationForm.value);
     this.formationsService.addFormation(this.formationForm.value).subscribe(
-      (result) => {
-        console.log('AddPrd OK : ', result);
-        // Add File
-        this.uploader.uploadAll();
-      // this.router.navigate(['/product-details/'+result._id]);
-    }, (err) => {
-      console.log('AddPrd Error :', err);
-    });
+      (data) => {
+        if (data && data.body.success) {
+          // Add File
+          this.uploader.uploadAll();
+          this.notificationService.success('Félicitaions!', data.body.message);
+        }
+        console.log('AddPrd OK : ', data);
+      },
+      (error) => {
+         this.notificationService.error('Problème!', `Au niveau de l'ajout d'une formation`, error, true);        
+      });
   }
 
 }
