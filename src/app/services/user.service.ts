@@ -29,6 +29,10 @@ export class UserService {
   getUser(id) {
     return this.http.get<User[]>(`http://localhost:4000/api/users/${id}`);
   }
+
+  getCurrentUser(id) {
+    return this.http.get<User>(`http://localhost:4000/api/currentUser/${id}`);
+  }
   getAllUsers() {
     return this.http.get<User[]>('http://localhost:4000/api/users');
   }

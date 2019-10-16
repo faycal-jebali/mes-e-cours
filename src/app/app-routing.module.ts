@@ -21,6 +21,7 @@ import { EditFormationComponent } from './admin/formation-management/edit-format
 import { CategoriesComponent } from './admin/category-management/categories/categories.component';
 import { NewCategoryComponent } from './admin/category-management/new-category/new-category.component';
 import { EditCategoryComponent } from './admin/category-management/edit-category/edit-category.component';
+import { MyAccountComponent } from './admin/user-management/my-account/my-account.component';
 
 
 const routes: Routes = [
@@ -44,6 +45,10 @@ const routes: Routes = [
       {
         path: 'user',
         children : [
+          {
+            path: 'current',
+            component: MyAccountComponent,
+          },
           {
             path: 'all',
             component: UsersComponent,

@@ -44,7 +44,7 @@
                 <a class="nav-link" [routerLink]="['mon-compte']" routerLinkActive="active" *ngIf="auth.loggedIn">Profil</a>
             </li>
             <li>
-                <a class="nav-link" (click)="logout()" href="#" *ngIf="auth.loggedIn">Logout</a>
+                <a class="nav-link" (click)="logout()" *ngIf="auth.loggedIn">Logout</a>
             </li>
             <li>
                 <app-login></app-login>

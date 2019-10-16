@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 
 import { Router } from '@angular/router';
@@ -11,16 +11,21 @@ import { Router } from '@angular/router';
 })
 export class NewUserComponent implements OnInit {
   newUserForm: FormGroup;
+  roles = new Map();
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
-  private userService: UserService,
-) {}
+    private userService: UserService,
+  ) {
+    this.roles.set('trainee', 'Souscripteur');
+    this.roles.set('trainer', 'Formateur');
+    this.roles.set('admin', 'Administrateur');
+  }
 
   ngOnInit() {
     this.newUserForm = this.fb.group({
-      fullName: null
+      role: ['', Validators.required]
     })
   }
 

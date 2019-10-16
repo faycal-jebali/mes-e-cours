@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -12,12 +12,17 @@ export class EditUserComponent implements OnInit {
   userData = null;
   updateUserForm: FormGroup;
   idUser: String;
+  roles = new Map();
 
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
-  private userService: UserService,
-) {}
+    private userService: UserService,
+  ) {
+    this.roles.set('trainee', 'Souscripteur');
+    this.roles.set('trainer', 'Formateur');
+    this.roles.set('admin', 'Administrateur');
+  }
 
   ngOnInit() {
     this.idUser = this.route.snapshot.paramMap.get('id');
@@ -25,7 +30,7 @@ export class EditUserComponent implements OnInit {
     console.log('idUser : ', this.idUser)
 
     this.updateUserForm = this.fb.group({
-      fullName: null
+      role: ['', Validators.required]
     });
   }
 
@@ -34,6 +39,7 @@ export class EditUserComponent implements OnInit {
       (result) => {
         console.log('get user : ', result);
         this.userData = result;
+        this.updateUserForm['controls'].role.setValue(this.userData.role);
         this.updateUserForm['controls'].identity.setValue(this.userData.identity);
         this.updateUserForm['controls'].address.setValue(this.userData.address);
         this.updateUserForm['controls'].contact.setValue(this.userData.contact);

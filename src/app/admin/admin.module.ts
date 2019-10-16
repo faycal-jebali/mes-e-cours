@@ -40,6 +40,7 @@ import { EditCategoryComponent } from './category-management/edit-category/edit-
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { FileSelectDirective } from 'ng2-file-upload';
+import { MyAccountComponent } from './user-management/my-account/my-account.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { FileSelectDirective } from 'ng2-file-upload';
     NewCategoryComponent,
     EditCategoryComponent,
     FileSelectDirective,
+    MyAccountComponent,
   ],
   imports: [
     BrowserModule,
