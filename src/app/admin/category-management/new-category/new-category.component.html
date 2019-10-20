@@ -22,8 +22,8 @@
                 <mat-form-field>
                     <mat-label>Parent :</mat-label>
                     <select matNativeControl formControlName='parent'>
-                            <option *ngFor="let category of allCategories;" [value]="category._id">{{ category.title }}</option>
-                        </select>
+                        <option *ngFor="let category of allCategories;" [value]="category._id">{{ category.title }}</option>
+                    </select>
                 </mat-form-field>
             </div>
             <button type="submit" class="btn btn-sm waves-effect btn-info float-right" [disabled]="!newForm.valid">Ajouter</button>

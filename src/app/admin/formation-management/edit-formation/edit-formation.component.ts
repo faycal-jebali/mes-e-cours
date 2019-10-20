@@ -9,6 +9,8 @@ import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upl
 const UploadURL = 'http://localhost:4000/api/upload';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NotificationService } from '../../../shared/components/notification/notification.service';
+import { UserService } from '../../../services/user.service';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'admin-edit-formation',
@@ -25,7 +27,9 @@ export class EditFormationComponent implements OnInit {
 
   @Input() productData = { prod_name:'Test Title', prod_desc: 'Test Descrip', prod_price: 160 };
   formationForm: FormGroup;
-  selectedFile: File
+  selectedFile: File;
+  allTrainers = [];
+  allCategories = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,6 +39,8 @@ export class EditFormationComponent implements OnInit {
     private http: HttpClient,
     private formationsService: FormationsService,
     private notificationService: NotificationService,
+    private userService: UserService,
+    private categoryService: CategoryService,
   ) { }
 
   /**
@@ -46,6 +52,7 @@ export class EditFormationComponent implements OnInit {
     this.getFormation(this.idFormation);
     console.log('idFomation : ', this.idFormation)
     this.formationForm = this.formBuilder.group({
+      trainer: [null, Validators.required],
       statut: [false, Validators.required],
       title: ['', Validators.required],
       description: null,
@@ -56,15 +63,50 @@ export class EditFormationComponent implements OnInit {
       chapiters: this.formBuilder.array([])
     });
 
-    
-  
-
     // Upload Files
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
          console.log('FileUpload:uploaded:', item, status, response);
          // alert('File uploaded successfully');
      };
+
+     this.userService.getAllUsers().subscribe(
+      (data) => {
+        if (data) {
+          this.allTrainers = data;
+        }
+      },
+      (error) => {
+        console.log('Get Trainers Error :: ', error);
+      });
+
+
+      this.categoryService.getCategories().subscribe(
+        (data) => {
+          if (data) {
+            this.allCategories = data;
+          }
+        },
+        (error) => {
+          console.log('Get Catégories Error :: ', error);
+        });
+  }
+
+  getNameUser(user) {
+    const last = user.identity.lastname;
+    const first = user.identity.firstname;
+    const civility = user.identity.civility;
+    let name = '';
+    if (civility) {
+      name += `${civility}`;
+    }
+    if (last) {
+      name += `${last} `;
+    }
+    if (first) {
+      name += `${first}`;
+    }
+    return name;
   }
 
   getFormation(id) {

@@ -13,6 +13,15 @@
                             <div class="container">
                                 <div class="row">
 
+                                    <div class="col-12">
+                                        <mat-form-field>
+                                            <mat-label>Formateur :</mat-label>
+                                            <select matNativeControl formControlName='trainer'>
+                                                <option *ngFor="let itemTrainer of allTrainers;" [value]="itemTrainer._id">{{ getNameUser(itemTrainer) }}</option>
+                                            </select>
+                                        </mat-form-field>
+                                    </div>
+
                                     <div class="col-4">
                                         <mat-form-field>
                                             <input matInput type="text" placeholder="Titre" formControlName='title'>
@@ -26,10 +35,8 @@
                                         <mat-form-field>
                                             <mat-label>Catégories :</mat-label>
                                             <select matNativeControl formControlName='categoriesId'>
-                                                    <option value="Catégorie 1">Catégorie 1</option>
-                                                    <option value="Catégorie 2">Catégorie 2</option>
-                                                    <option value="Catégorie 3">Catégorie 3</option>
-                                                </select>
+                                                <option *ngFor="let category of allCategories;" [value]="category._id">{{ category.title }}</option>
+                                            </select>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-4">
