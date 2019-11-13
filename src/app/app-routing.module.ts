@@ -27,7 +27,14 @@ import { MyAccountComponent } from './admin/user-management/my-account/my-accoun
 const routes: Routes = [
   { path: '', component: AccueilComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'formations', component: FormationsPageComponent},
+  { 
+    path: 'formations',
+    component: FormationsPageComponent
+  },
+  { 
+    path: 'formations/:id',
+    component: DetailsComponent,
+  },
   {
     path: 'mon-compte',
     component: MonCompteComponent,

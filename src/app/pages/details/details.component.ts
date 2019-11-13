@@ -10,6 +10,7 @@ import { FormationsService } from '../../services/formations.service';
 export class DetailsComponent implements OnInit {
 
   product:any;
+panelOpenState = false;
 
   constructor(
     private route: ActivatedRoute,

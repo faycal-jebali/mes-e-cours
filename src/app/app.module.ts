@@ -24,7 +24,8 @@ import {
   MatNativeDateModule,
   MatTabsModule,
   MatFormFieldModule,
-  MatRadioModule
+  MatRadioModule,
+  MatExpansionModule,
 
 } from '@angular/material';
 import { AccueilComponent } from './pages/accueil/accueil.component';
@@ -76,9 +77,9 @@ export function tokenGetter() {
     NgbModule.forRoot(),
     BrowserAnimationsModule,
     HttpModule,
-
     SharedModule,
     MatRadioModule,
+    MatExpansionModule,
   ],
   providers: [
     UserService,

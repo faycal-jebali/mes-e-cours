@@ -103,3 +103,17 @@ mdb-card {
 .mat-table-list {
     width: 100%;
 }
+
+/**
+* Override Carrousel
+*/
+
+// mdb-carousel-item {
+//     width: 90%;
+//     margin: 10px 5%;
+// }
+.card-text {
+    h2 {
+    font-size: 18px;
+    }
+}
