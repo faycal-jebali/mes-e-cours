@@ -2,7 +2,7 @@
 
     <section class="text-left">
         <div class="container">
-            <h1 class="jumbotron-heading">{{ product.title }}</h1>
+            <h1 class="jumbotron-heading">{{ product?.title }}</h1>
             <h3>Qu'est-ce que le Lorem Ipsum?</h3>
             <p class="lead text-muted">
                 Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
@@ -19,27 +19,24 @@
             <div class="row">
                 <!--content-->
                 <div class="col-9 product-content">
-                    <div [innerHTML]="product.description"></div>
+                    <div [innerHTML]="product?.description"></div>
                     <div>
-                    
-<mat-accordion>
-  <mat-expansion-panel  *ngFor="let chapiter of product.chapiters">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{ chapiter.title }}
-      </mat-panel-title>
-      <mat-panel-description>
-        Type your name and age
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <div>
-    <pre>
-    {{ chapiter.lessons | json }}
-    </pre>
-    </div>
-  </mat-expansion-panel>
-</mat-accordion>
 
+                        <mat-accordion>
+                            <mat-expansion-panel *ngFor="let chapiter of product?.chapiters">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        {{ chapiter.title }}
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        30 min
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <div>
+                                    <pre>{{ chapiter.lessons | json }}</pre>
+                                </div>
+                            </mat-expansion-panel>
+                        </mat-accordion>
                     </div>
                 </div>
                 <!--/content-->
@@ -50,12 +47,12 @@
                     <div class="card mb-4 box-shadow">
                         <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide">
                         <div class="card-body">
-                            <div><span>Prix : </span>{{product.price}} €</div>
-                            <div><span>Promo : </span>{{product.promotionPrice}} €</div>
+                            <div *ngIf="!product?.promotionPrice"><span>Prix : </span>{{product?.price}} €</div>
+                            <div *ngIf="product?.promotionPrice"><span>Promo : </span>{{product?.promotionPrice}} €</div>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Acheter</button>
+                                    <button type="button" (click)="attachTraining(product._id)" class="btn btn-sm btn-outline-secondary">Acheter</button>
                                 </div>
                                 <small class="text-muted">9 mins</small>
                             </div>

@@ -13,7 +13,8 @@ export class AuthService {
   ) { 
     const current_user = localStorage.getItem('current_user');
     if (current_user) {
-    console.log('current_user :: ', JSON.parse(current_user)._id);
+      this.currentUser.next(JSON.parse(current_user));
+      console.log('current_user :: ', JSON.parse(current_user)._id);
     }
   }
 
@@ -36,17 +37,6 @@ export class AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('current_user');
     return false;
-  }
-
-  getCurrentUser(id) {
-    this.userService.getCurrentUser(id).subscribe(
-      (data) => {
-        console.log('get current user : ', data);
-        this.currentUser.next(data);
-    },
-    (err) => {
-      console.log('get User Error :', err);
-    });
   }
 
   public get loggedIn(): boolean {

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormationsService } from '../../services/formations.service';
+import { UserService } from '../../services/user.service';
+import { NotificationService } from '../../shared/components/notification/notification.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-details',
@@ -10,19 +13,48 @@ import { FormationsService } from '../../services/formations.service';
 export class DetailsComponent implements OnInit {
 
   product:any;
-panelOpenState = false;
+  panelOpenState = false;
+  currentUser: any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private formationsService: FormationsService,
+    private userService: UserService,
+    private readonly notificationService: NotificationService,
+    private readonly authService: AuthService,
   ) { }
 
   ngOnInit() {
-    this.formationsService.getFormation(this.route.snapshot.params['id']).subscribe((data: {}) => {
+    this.formationsService.getFormation(this.route.snapshot.params['id'])
+    .subscribe(
+      (data: {}) => {
       console.log(data);
       this.product = data;
     });
+
+    this.authService.currentUser.subscribe(
+      (data) => {
+        console.log('Current User :: ', data);
+        this.currentUser = data;
+      }
+    )
+  }
+
+  attachTraining(id) {
+    
+    this.userService.attachTraining({user: this.currentUser._id, training: id}).subscribe(
+      (data) => {
+        if (data && data.body.success) {
+          // Add File
+          this.notificationService.success('Félicitaions!', data.body.message);
+        }
+        console.log('Attach Formation OK : ', data);
+      },
+      (error) => {
+        this.notificationService.error('Problème!', `Au niveau de l'attachement de la formation`, error, true);              
+      });
+    console.log(`Attacher Formation id  : `, id);
   }
 
 }
