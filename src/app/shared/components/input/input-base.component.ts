@@ -1,6 +1,7 @@
-import { EventEmitter, Input, Output } from '@angular/core';
+import { EventEmitter, Input, Output, Directive } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
+@Directive()
 export abstract class InputBaseComponent {
     @Input() control: FormControl;
     @Input() name?: string;

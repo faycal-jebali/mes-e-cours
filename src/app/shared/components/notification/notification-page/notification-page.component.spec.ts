@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NotificationPageComponent } from './notification-page.component';
 
@@ -6,7 +6,7 @@ describe('NotificationPageComponent', () => {
   let component: NotificationPageComponent;
   let fixture: ComponentFixture<NotificationPageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NotificationPageComponent ]
     })
