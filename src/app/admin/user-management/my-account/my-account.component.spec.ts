@@ -8,7 +8,8 @@ describe('MyAccountComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MyAccountComponent ]
+      declarations: [ MyAccountComponent ],
+      // imports: [ HttpClientTestingModule ],
     })
     .compileComponents();
   }));

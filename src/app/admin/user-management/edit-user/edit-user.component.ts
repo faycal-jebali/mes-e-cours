@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+
 import { UserService } from '../../../services/user.service';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'admin-edit-user',
@@ -32,6 +33,11 @@ export class EditUserComponent implements OnInit {
     this.updateUserForm = this.fb.group({
       role: ['', Validators.required]
     });
+    if (this.updateUserForm['controls'].contact.get('password') ) {
+    this.updateUserForm['controls'].contact.get('password').setValidators(null);
+    console.log('updateFOrm :: ', this.updateUserForm);
+    }
+    // this.updateUserForm['controls'].identity['controls'].password.setCo
   }
 
   getUser(id) {
@@ -42,7 +48,7 @@ export class EditUserComponent implements OnInit {
         this.updateUserForm['controls'].role.setValue(this.userData.role);
         this.updateUserForm['controls'].identity.setValue(this.userData.identity);
         this.updateUserForm['controls'].address.setValue(this.userData.address);
-        this.updateUserForm['controls'].contact.setValue(this.userData.contact);
+        this.updateUserForm['controls'].contact.setValue(this.userData.contact);    
     }, (err) => {
       console.log('get User Error :', err);
     });

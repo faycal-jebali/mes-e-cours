@@ -3,6 +3,7 @@
 @import '~@angular/material/theming';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import "src/assets/variables.scss";
+@import "src/assets/form.scss";
 @import "src/assets/overrides/materials.scss";
 @include mat-core();
 $primary-theme: mat-palette($mat-lime,
@@ -104,16 +105,17 @@ mdb-card {
     width: 100%;
 }
 
-/**
-* Override Carrousel
-*/
-
-// mdb-carousel-item {
-//     width: 90%;
-//     margin: 10px 5%;
-// }
 .card-text {
     h2 {
-    font-size: 18px;
+        font-size: 18px;
     }
+}
+
+.col-container {
+    display: table;
+    width: 100%;
+}
+
+.col {
+    display: table-cell;
 }

@@ -6,7 +6,7 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
-const UploadURL = 'http://localhost:4000/api/upload';
+const UploadURL = 'http://localhost:4000/api/formations/upload';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NotificationService } from '../../../shared/components/notification/notification.service';
 import { UserService } from '../../../services/user.service';
@@ -23,7 +23,7 @@ export class NewFormationComponent implements OnInit {
   
   title = 'Upload a File';
 
-  public uploader: FileUploader = new FileUploader({url: UploadURL, itemAlias: 'photo'});
+  public uploader: FileUploader = new FileUploader({url: UploadURL, itemAlias: 'uploaded'});
 
   @Input() productData = { prod_name:'Test Title', prod_desc: 'Test Descrip', prod_price: 160 };
   formationForm: FormGroup;

@@ -1,0 +1,24 @@
+<div class="filter-box-container">
+    <div class="checkbox-label">
+        <app-label [id]="labelId"></app-label>
+    </div>
+    <div>
+        <!--search-->
+        <div class="checkbox-search" *ngIf="activeSearch">
+            <input type="text" placeholder="{{ 'search' | translate }}" [formControl]="searchBox" [readonly]="disabled">
+            <a (click)="clearSearch()" class="clear-search" *ngIf="searchBox?.value?.length > 0"></a>
+        </div>
+        <!--result-->
+        <div class="checkbox-result-text">{{ selectedIds.length }} {{ 'globalResultsText' | translate}}</div>
+        <!--list options-->
+        <ul class="checkbox-list" [class.checkbox-list-dropdown]='!principalBox' [class.checkbox-list-dropdown-empty]='control?.value?.length === 0'>
+            <li *ngFor="let option of filteredOptions | async">
+                <label>
+                    <input [attr.type]="uniqueOption && !dropdown ? 'radio' : 'checkbox'" name="principalList"
+                        [value]="option.id" [checked]="isChecked(option.id)"
+                        (change)="updateCheckedOptions(option, $event)" />
+                    <span>{{ option.name }}</span>
+                </label>
+            </li>
+        </ul>
+    </div>

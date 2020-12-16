@@ -6,7 +6,7 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
-const UploadURL = 'http://localhost:4000/api/upload';
+const UploadURL = 'http://localhost:4000/api/formations/upload';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NotificationService } from '../../../shared/components/notification/notification.service';
 import { UserService } from '../../../services/user.service';
@@ -23,7 +23,7 @@ export class EditFormationComponent implements OnInit {
   title = 'Upload a File';
   idFormation: String;
   formationData = null;
-  public uploader: FileUploader = new FileUploader({url: UploadURL, itemAlias: 'photo'});
+  public uploader: FileUploader = new FileUploader({url: UploadURL, itemAlias: 'uploaded'});
 
   @Input() productData = { prod_name:'Test Title', prod_desc: 'Test Descrip', prod_price: 160 };
   formationForm: FormGroup;
@@ -66,7 +66,9 @@ export class EditFormationComponent implements OnInit {
     // Upload Files
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-         console.log('FileUpload:uploaded:', item, status, response);
+         console.log('FileUpload:uploaded item:', item);
+         console.log('FileUpload:uploaded status:', status);
+         console.log('FileUpload:uploaded response:', response);
          // alert('File uploaded successfully');
      };
 
@@ -255,6 +257,7 @@ export class EditFormationComponent implements OnInit {
       (data) => {
         if (data && data.body.success) {
           // Add File
+          console.log('this.uploader :: ', this.uploader);
           this.uploader.uploadAll();
           this.notificationService.success('Félicitaions!', data.body.message);
         }

@@ -14,6 +14,7 @@ export interface DialogData {
 })
 export class NavigationComponent implements OnInit {
   @ViewChild('sidenav') sidenav: ElementRef;
+  // @ViewChild('sidenav', {static: true}) public sidenav: any;
 
   clicked: boolean;
 

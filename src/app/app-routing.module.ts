@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { DetailsComponent } from './pages/details/details.component';
+import { DetailsCourseComponent } from './pages/details-course/details-course.component';
 import { FormationsPageComponent } from './pages/formations-page/formations-page.component';
 import { MonCompteComponent } from './pages/utilisateur/mon-compte/mon-compte.component';
 import { AdminComponent } from './admin/admin.component';
@@ -34,6 +35,10 @@ const routes: Routes = [
   { 
     path: 'formations/:id',
     component: DetailsComponent,
+  },
+  { 
+    path: 'course/:id',
+    component: DetailsCourseComponent,
   },
   {
     path: 'mon-compte',
