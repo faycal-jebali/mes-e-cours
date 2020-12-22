@@ -15,7 +15,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/http';
 import {
   MatInputModule, MatButtonModule,
   MatSelectModule, MatIconModule,
@@ -78,7 +78,7 @@ export function tokenGetter() {
     }),
     NgbModule.forRoot(),
     BrowserAnimationsModule,
-    HttpModule,
+    HttpClientModule,
     SharedModule,
     MatRadioModule,
     MatExpansionModule,

@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AdminComponent } from './admin.component';
 import { UserService } from '../services/user.service';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/http';
 import { User } from '../business-objects/user';
 import { UsersComponent } from './user-management/users/users.component';
 import { NewUserComponent } from './user-management/new-user/new-user.component';
@@ -62,7 +62,7 @@ import { MyAccountComponent } from './user-management/my-account/my-account.comp
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -88,7 +88,7 @@ import { MyAccountComponent } from './user-management/my-account/my-account.comp
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
