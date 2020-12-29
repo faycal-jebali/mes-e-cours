@@ -2,9 +2,9 @@
 
 @import '~@angular/material/theming';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import "src/assets/variables.scss";
-@import "src/assets/form.scss";
-@import "src/assets/overrides/materials.scss";
+@import "./assets/variables.scss";
+@import "./assets/form.scss";
+@import "./assets/overrides/materials.scss";
 @include mat-core();
 $primary-theme: mat-palette($mat-lime,
 500);

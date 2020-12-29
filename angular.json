@@ -48,9 +48,8 @@
                         ],
                         "styles": [
                             "src/styles.scss",
-                            "node_modules/font-awesome/css/font-awesome.min.css",
-                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
-                            "node_modules/angular-bootstrap-md/assets/scss/mdb.scss"
+                            "../node_modules/font-awesome/css/font-awesome.min.css",
+                            "../node_modules/bootstrap/dist/css/bootstrap.min.css"
                         ],
                         "scripts": []
                     },

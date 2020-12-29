@@ -1,10 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AdminComponent } from './admin.component';
 import { UserService } from '../services/user.service';
-import { HttpClientModule } from '@angular/http';
 import { User } from '../business-objects/user';
 import { UsersComponent } from './user-management/users/users.component';
 import { NewUserComponent } from './user-management/new-user/new-user.component';
@@ -41,6 +39,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { FileSelectDirective } from 'ng2-file-upload';
 import { MyAccountComponent } from './user-management/my-account/my-account.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -62,7 +61,6 @@ import { MyAccountComponent } from './user-management/my-account/my-account.comp
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -85,7 +83,6 @@ import { MyAccountComponent } from './user-management/my-account/my-account.comp
   exports: [
     AdminComponent,
     BrowserModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
