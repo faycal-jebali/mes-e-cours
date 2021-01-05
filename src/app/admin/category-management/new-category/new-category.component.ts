@@ -4,7 +4,7 @@ import { CategoryService } from '../../../services/category.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Router } from '@angular/router';
 
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import {  FileUploader } from 'ng2-file-upload';
 import { NotificationService } from '../../../shared/components/notification/notification.service';
 
 

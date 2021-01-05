@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
@@ -19,8 +19,8 @@ export class NavigationComponent implements OnInit {
   clicked: boolean;
 
   constructor(
-    private auth: AuthService,
-    private router: Router,
+    public auth: AuthService,
+    public router: Router,
     public dialog: MatDialog,
   ) {
     this.clicked = this.clicked === undefined ? false : true;

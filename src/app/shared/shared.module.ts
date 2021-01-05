@@ -1,23 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  MatButtonModule,
-  MatCheckboxModule,
-  MatDatepickerModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatRadioModule,
-  MatSelectModule,
-  MatTabsModule,
-  MatToolbarModule,
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService, TranslateStore, TranslateLoader } from '@ngx-translate/core';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, InputsModule, ModalModule, MDBRootModule, ButtonsModule } from 'angular-bootstrap-md';
 
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import { ItemCarrouselComponent } from './components/carrousel/item-carrousel/item-carrousel.component';
@@ -53,6 +51,10 @@ export function createTranslateLoader(http: HttpClient) {
     MatFormFieldModule,
     MatRadioModule,
     MDBBootstrapModule.forRoot(),
+    InputsModule,
+    ButtonsModule,
+    ModalModule,
+    MDBRootModule,
     FormsModule,
     ReactiveFormsModule,
     NotificationModule,
@@ -81,6 +83,10 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   exports: [
     MDBBootstrapModule,
+    InputsModule,
+    ButtonsModule,
+    ModalModule,
+    MDBRootModule,
     NotificationModule,
     CascadingPanelComponent,
     CascadingCardComponent,

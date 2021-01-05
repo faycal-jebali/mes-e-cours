@@ -6,7 +6,7 @@
             </li>
             <li>
                 <!--catégories-->
-                <button mat-button [matMenuTriggerFor]="categoriesMenu">Catégories</button>
+                <!-- <button mat-button [matMenuTriggerFor]="categoriesMenu">Catégories</button>
 
                 <mat-menu #categoriesMenu="matMenu">
                     <button mat-menu-item [matMenuTriggerFor]="G1">Groupe Catégorie 1</button>
@@ -29,22 +29,22 @@
                 <mat-menu #c1="matMenu">
                     <button mat-menu-item>Catégorie 1-1</button>
                     <button mat-menu-item>Catégorie 1-2</button>
-                </mat-menu>
+                </mat-menu> -->
                 <!--Fin catégories-->
             </li>
         </ul>
         <ul class="menu-right">
             <li>
-                <a class="nav-link" routerLink="administrator" routerLinkActive="active" *ngIf="auth.loggedIn">Admin</a>
+                <a class="nav-link" routerLink="administrator" routerLinkActive="active" *ngIf="auth?.loggedIn">Admin</a>
             </li>
             <li>
-                <a class="nav-link" [routerLink]="['formations']" routerLinkActive="active" *ngIf="auth.loggedIn">Formations</a>
+                <a class="nav-link" [routerLink]="['formations']" routerLinkActive="active" *ngIf="auth?.loggedIn">Formations</a>
             </li>
             <li>
-                <a class="nav-link" [routerLink]="['mon-compte']" routerLinkActive="active" *ngIf="auth.loggedIn">Profil</a>
+                <a class="nav-link" [routerLink]="['mon-compte']" routerLinkActive="active" *ngIf="auth?.loggedIn">Profil</a>
             </li>
             <li>
-                <a class="nav-link" (click)="logout()" *ngIf="auth.loggedIn">Logout</a>
+                <a class="nav-link" (click)="logout()" *ngIf="auth?.loggedIn">Logout</a>
             </li>
             <li>
                 <app-login></app-login>

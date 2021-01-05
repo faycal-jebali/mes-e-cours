@@ -4,7 +4,7 @@ import { CategoryService } from '../../../services/category.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NotificationService } from '../../../shared/components/notification/notification.service';
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import {  FileUploader } from 'ng2-file-upload';
 
 const UploadURL = 'http://localhost:4000/api/categories/upload';
 
