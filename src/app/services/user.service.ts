@@ -29,6 +29,28 @@ export class UserService {
   getUser(id) {
     return this.http.get<User[]>(`http://localhost:4000/api/users/${id}`);
   }
+  // attachTraining(id) {
+  //   return this.http.put<User[]>(`http://localhost:4000/api/attach/${id}`);
+  // }
+
+   /**
+   * Attach Formation To Me
+   * @param request 
+   */
+  attachTraining(request): Observable<any> {
+    return this.http.put<any>(`${pathBack}attach`, JSON.stringify(request), {
+      headers: new HttpHeaders()
+          .set('Content-Type', 'application/json'),
+      observe: 'response'
+  }).pipe(
+      tap(resp => setTimeout(() => {  console.log('header :::: ', resp.headers) }, 3000))
+      // map(this.extractData)
+    );
+  }
+
+  getCurrentUser(id) {
+    return this.http.get<User>(`http://localhost:4000/api/currentUser/${id}`);
+  }
   getAllUsers() {
     return this.http.get<User[]>('http://localhost:4000/api/users');
   }

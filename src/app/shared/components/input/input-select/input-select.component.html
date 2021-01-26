@@ -1,0 +1,16 @@
+<div fxLayout="column" class="input-container">
+    <app-label [name]="name" [id]="labelId"></app-label>
+
+    <mat-form-field>
+        <mat-select [formControl]="control" [id]="name" (selectionChange)="selectionChange($event)" [disabled]="disabled">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let value of values" [value]="value.id">
+                {{ value.name }}
+            </mat-option>
+        </mat-select>
+
+        <mat-hint>{{ hint | translate }}</mat-hint>
+
+        <app-input-error-field [control]="control"></app-input-error-field>
+    </mat-form-field>
+</div>

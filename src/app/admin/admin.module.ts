@@ -1,10 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AdminComponent } from './admin.component';
 import { UserService } from '../services/user.service';
-import { HttpModule } from '@angular/http';
 import { User } from '../business-objects/user';
 import { UsersComponent } from './user-management/users/users.component';
 import { NewUserComponent } from './user-management/new-user/new-user.component';
@@ -15,18 +13,19 @@ import { SharedModule } from '../shared/shared.module';
 import { Routes, RouterModule } from '@angular/router';
 
 
-import {
-  MatInputModule, MatButtonModule,
-  MatSelectModule, MatIconModule,
-  MatToolbarModule, MatMenuModule,
-  MatCheckboxModule, MatDatepickerModule,
-  MatNativeDateModule,
-  MatTabsModule,
-  MatFormFieldModule,
-  MatRadioModule,
-  MatTableModule,
-
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 // Training
 import { FormationsComponent } from './formation-management/formations/formations.component';
 import { EditFormationComponent } from './formation-management/edit-formation/edit-formation.component';
@@ -39,7 +38,9 @@ import { EditCategoryComponent } from './category-management/edit-category/edit-
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
-import { FileSelectDirective } from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
+import { MyAccountComponent } from './user-management/my-account/my-account.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -53,14 +54,14 @@ import { FileSelectDirective } from 'ng2-file-upload';
     CategoriesComponent,
     NewCategoryComponent,
     EditCategoryComponent,
-    FileSelectDirective,
+    MyAccountComponent,
   ],
   imports: [
+    FileUploadModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -83,10 +84,9 @@ import { FileSelectDirective } from 'ng2-file-upload';
   exports: [
     AdminComponent,
     BrowserModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -107,7 +107,6 @@ import { FileSelectDirective } from 'ng2-file-upload';
     CategoriesComponent,
     NewCategoryComponent,
     EditCategoryComponent,
-    FileSelectDirective,
     CKEditorModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

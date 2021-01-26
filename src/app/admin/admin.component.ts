@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private auth: AuthService,
+    public auth: AuthService,
 ) {}
 
   ngOnInit() {

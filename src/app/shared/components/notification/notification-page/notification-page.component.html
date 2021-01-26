@@ -1,0 +1,13 @@
+<div id="errorPanel">
+
+  <div class="errorPanel">
+    <div [ngClass]="'errorPanel-error'">
+      <h1>{{ data.type }}</h1>
+    </div>
+    <h2 *ngIf="data.title">{{ data.title }}</h2>
+    <p>{{ data.message }}</p>
+    <div class="errorPanel-social">
+      <a *ngFor="let link of links" (click)="goToUrl(link)">{{ link.text }}</a>
+    </div>
+  </div>
+</div>

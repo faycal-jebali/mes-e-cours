@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from './../business-objects/category';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { ConfigurationApp } from './../config/config'
+import { ConfigurationApp } from './../config/config';
 
 
 // const pathBack = ConfigurationApp.pathBack;

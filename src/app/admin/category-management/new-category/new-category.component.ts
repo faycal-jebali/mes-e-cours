@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { UserService } from '../../../services/user.service';
 import { CategoryService } from '../../../services/category.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Router } from '@angular/router';
 
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import {  FileUploader } from 'ng2-file-upload';
+import { NotificationService } from '../../../shared/components/notification/notification.service';
+
+
+
 const UploadURL = 'http://localhost:4000/api/categories/upload';
 @Component({
   selector: 'app-new-category',
@@ -23,9 +26,9 @@ export class NewCategoryComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-  private userService: UserService,
-  private categoryService: CategoryService,
-) {}
+    private categoryService: CategoryService,
+    private notificationService: NotificationService,
+  ) {}
 
   ngOnInit() {
     this.newForm = this.fb.group({
@@ -45,11 +48,10 @@ export class NewCategoryComponent implements OnInit {
         console.log('Get Catégories Error :: ', error);
       });
 
-          // Upload Files
+    // Upload Files
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
          console.log('FileUpload:uploaded:', item, status, response);
-         // alert('File uploaded successfully');
     };
   }
 
@@ -60,11 +62,16 @@ export class NewCategoryComponent implements OnInit {
     if (this.newForm.valid) {
       console.log('this.newForm.value : ', this.newForm.value);
     this.categoryService.newCategory(this.newForm.value).subscribe(
-      (result) => {
+      (data) => {
+        if (data.body.success) {
         this.uploader.uploadAll();
-        console.log('new User OK : ', result);
-    }, (err) => {
-      console.log('new User Error :', err);
+        this.notificationService.success('Félicitaions!', data.body.message );        
+      } else {
+        this.notificationService.error('Problème!', `Au niveau de l'ajout d'une catégorie`, {}, true);
+      }
+      console.log('new cat OK : ', data);
+    }, (error) => {
+      this.notificationService.error('Problème!', `Au niveau de l'ajout d'une catégorie`, error, true);
     });
     }
   }

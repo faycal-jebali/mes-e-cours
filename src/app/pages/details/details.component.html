@@ -1,19 +1,90 @@
-<div class="container">
-    <div class="row">
-        <app-item-carrousel [card]="product"></app-item-carrousel>
+<main role="main">
 
-        <div *ngIf="product" class="products">
-            <h2>{{product.prod_name | uppercase}} Details</h2>
+    <section class="text-left">
+        <div class="container">
+            <h1 class="jumbotron-heading">{{ product?.title }}</h1>
+            <h3>Qu'est-ce que le Lorem Ipsum?</h3>
+            <p class="lead text-muted">
+                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+            </p>
+            <p>
+                <a href="#" class="btn btn-primary my-2">Main call to action</a>
+                <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+            </p>
+        </div>
+    </section>
 
-            <pre>{{product | json }}</pre>
-            <div><span>Description: </span>{{product.prod_desc}}</div>
-            <div><span>Price: </span>{{product.prod_price}}</div>
-            <div><span>Update Date: </span>{{product.updated_at | date}}</div>
-            <div>
-                <button routerLink="/product-edit/{{product._id}}">
-      Edit
-    </button>
+    <div class="product-center py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <!--content-->
+                <div class="col-9 product-content">
+                    <div [innerHTML]="product?.description"></div>
+                    <div>
+
+                        <mat-accordion>
+                            <mat-expansion-panel *ngFor="let chapiter of product?.chapiters">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        {{ chapiter.title }}
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        1h 30 min
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <!--list-->
+                                <mat-accordion>
+                                    <mat-expansion-panel *ngFor="let lession of chapiter.lessons">
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                {{ lession.title }}
+                                            </mat-panel-title>
+                                            <mat-panel-description>
+                                                30 min
+                                            </mat-panel-description>
+                                        </mat-expansion-panel-header>
+
+                                        <pre>{{ lession.video }}</pre>
+
+                                        <div>{{ lession.description }}</div>
+                                        <video src="./assets/uploads/formations/v.mp4" height="240" controls>
+                                        <!-- <video src="./../../e-learning-server/uploads/formations/1.mp4" height="240" controls> -->
+                                            Sorry, your browser doesn't support embedded videos.
+                                        </video>
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+                                <!--end list-->
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </div>
+                </div>
+                <!--/content-->
+
+                <!--sideBar-->
+                <div class="col-3 product-sidebar">
+                    <!--card-->
+                    <div class="card mb-4 box-shadow">
+                        <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide">
+                        <div class="card-body">
+                            <div *ngIf="!product?.promotionPrice"><span>Prix : </span>{{product?.price}} €</div>
+                            <div *ngIf="product?.promotionPrice"><span>Promo : </span>{{product?.promotionPrice}} €</div>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" (click)="attachTraining(product._id)" class="btn btn-sm btn-outline-secondary">Acheter</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/card-->
+                </div>
+                <!--/sideBar-->
             </div>
+
         </div>
     </div>
-</div>
+
+</main>
+
+<!-- <pre>{#{product | json }#}</pre> -->

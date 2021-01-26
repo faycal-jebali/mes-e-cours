@@ -8,9 +8,16 @@
             font-weight: bold;
         }
     }
+
     .card {
         border: 1px solid rgba(0, 0, 0, .125);
         border-radius: 0 !important;
+        &-body {
+            .card-text {
+                height: 100px;
+             
+            }
+        }
     }
     .vignette-prix {
         text-align: right;

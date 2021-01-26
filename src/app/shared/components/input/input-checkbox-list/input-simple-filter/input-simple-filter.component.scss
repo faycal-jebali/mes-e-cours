@@ -1,0 +1,157 @@
+@import "../../../../../../assets/variables.scss";
+.filter-box-container {
+    padding: 0 20px;
+    max-width: 250px;
+    .checkbox-label {
+        height: 30px;
+    }
+    .checkbox-search {
+        width: 100%;
+        position: relative;
+        margin-top: 10px;
+        input {
+            outline: none;
+            width: -webkit-fill-available;
+            height: 36px;
+            line-height: 36px;
+            padding: 0 35px 0 10px;
+            border-radius: 4px;
+            border: solid 1px #9da6cc;
+            background-color: #ffffff;
+            font-size: 13px;
+            &:focus {
+                border-color: $primary2;
+                color: $primary2;
+            }
+            &::placeholder {
+                color: #9da6cc;
+                font-size: 13px;
+            }
+        }
+        .clear-search {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            margin-top: -10px;
+            display: block;
+            cursor: pointer;
+            &:before {
+                font-family: "Material Icons";
+                content: "highlight_off";
+                font-size: 21px;
+                color: $primary2;
+            }
+        }
+    }
+    .checkbox-result-text {
+        padding: 15px 0 0 0;
+        font-size: 12px;
+        text-align: right;
+        color: #9da6cc;
+    }
+    .checkbox-list {
+        margin: 15px 0;
+        height: 252px;
+        overflow-y: auto;
+        padding: 10px;
+        border-top: solid 1px #9da6cc;
+        &.checkbox-list-dropdown {
+            border-radius: 4px;
+            border: solid 1px #9da6cc;
+            position: relative;
+            &.checkbox-list-dropdown-empty {
+                &:before {
+                    font-family: "Material Icons";
+                    content: "file_download";
+                    position: absolute;
+                    width: 48px;
+                    height: 48px;
+                    top: 50%;
+                    left: 50%;
+                    margin: -24px 0 0 -24px;
+                    font-size: 50px;
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    padding: 0;
+                    color: $primary2;
+                    opacity: 0.2;
+                }
+            }
+        }
+        li {
+            display: flex;
+            flex-direction: column;
+            label {
+                padding: 5px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                font-size: 13px;
+                color: $primary2;
+                cursor: pointer;
+                input {
+                    position: relative;
+                    width: 18px !important;
+                    height: 18px !important;
+                    visibility: hidden;
+                    margin: 0 10px 0 0;
+                    +span {
+                        position: relative;
+                        &:before {
+                            font-family: "Material Icons";
+                            font-size: 22px;
+                            position: absolute;
+                            width: 18px;
+                            height: 18px;
+                            display: block;
+                            z-index: 2;
+                            visibility: visible;
+                            color: $primary2;
+                            top: -3px;
+                            left: -28px;
+                        }
+                    }
+                    &:checked {
+                        +span {
+                            color: $primary2 !important;
+                            &:before {
+                                color: $primary2;
+                            }
+                        }
+                    }
+                    &[type="checkbox"] {
+                        +span {
+                            &:before {
+                                content: "check_box_outline_blank";
+                            }
+                        }
+                        &:checked {
+                            +span {
+                                &:before {
+                                    content: "check_box";
+                                }
+                            }
+                        }
+                    }
+                    &[type="radio"] {
+                        +span {
+                            &:before {
+                                content: "radio_button_unchecked";
+                            }
+                        }
+                        &:checked {
+                            +span {
+                                &:before {
+                                    content: "radio_button_checked";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

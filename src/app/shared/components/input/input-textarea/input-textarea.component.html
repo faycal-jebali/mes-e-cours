@@ -1,0 +1,20 @@
+<div fxLayout="column" class="input-container">
+    <app-label [name]="name" [id]="labelId" *ngIf="labelId"></app-label>
+
+    <mat-form-field>
+        <textarea [name]="name" 
+            matInput 
+            cdkTextareaAutosize 
+            #autosize="cdkTextareaAutosize"
+            [cdkAutosizeMinRows]="minRows" 
+            [cdkAutosizeMaxRows]="maxRows" 
+            [formControl]="control" 
+            [readonly]="disabled"
+            (change)="textChanged($event)">
+        </textarea>
+
+        <mat-hint>{{ hint | translate }}</mat-hint>
+
+        <app-input-error-field [control]="control"></app-input-error-field>
+    </mat-form-field>
+</div>

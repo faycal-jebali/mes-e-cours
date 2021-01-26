@@ -30,8 +30,8 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let element">
-                <a [routerLink]="['/administrator/formation/edit/', element._id]">Edit</a> |
-                <a (click)="deleteFormation(element._id)">Supprimer</a>
+                <a [routerLink]="['/administrator/formation/edit/', element._id]"><em class="fa fa-edit"></em></a> |
+                <a (click)="deleteFormation(element._id)"><em class="fa fa-trash"></em></a>
             </td>
         </ng-container>
 

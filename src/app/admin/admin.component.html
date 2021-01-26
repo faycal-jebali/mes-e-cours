@@ -2,6 +2,9 @@
     <mat-toolbar class="menu">
         <ul class="menu-left">
             <li>
+                <a class="nav-link" routerLink="/administrator/user/current" routerLinkActive="active" *ngIf="auth.loggedIn">Mon compte</a>
+            </li>
+            <li>
                 <a class="nav-link" routerLink="/administrator/user/all" routerLinkActive="active" *ngIf="auth.loggedIn">Utilisateurs</a>
             </li>
             <li>

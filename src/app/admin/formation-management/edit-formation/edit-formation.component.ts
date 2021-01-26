@@ -5,9 +5,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
-const UploadURL = 'http://localhost:4000/api/upload';
+import {  FileUploader } from 'ng2-file-upload';
+const UploadURL = 'http://localhost:4000/api/formations/upload';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { NotificationService } from '../../../shared/components/notification/notification.service';
+import { UserService } from '../../../services/user.service';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'admin-edit-formation',
@@ -20,11 +23,13 @@ export class EditFormationComponent implements OnInit {
   title = 'Upload a File';
   idFormation: String;
   formationData = null;
-  public uploader: FileUploader = new FileUploader({url: UploadURL, itemAlias: 'photo'});
+  public uploader: FileUploader = new FileUploader({url: UploadURL, itemAlias: 'uploaded'});
 
   @Input() productData = { prod_name:'Test Title', prod_desc: 'Test Descrip', prod_price: 160 };
   formationForm: FormGroup;
-  selectedFile: File
+  selectedFile: File;
+  allTrainers = [];
+  allCategories = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,7 +37,10 @@ export class EditFormationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    private formationsService: FormationsService
+    private formationsService: FormationsService,
+    private notificationService: NotificationService,
+    private userService: UserService,
+    private categoryService: CategoryService,
   ) { }
 
   /**
@@ -44,25 +52,63 @@ export class EditFormationComponent implements OnInit {
     this.getFormation(this.idFormation);
     console.log('idFomation : ', this.idFormation)
     this.formationForm = this.formBuilder.group({
+      trainer: [null, Validators.required],
       statut: [false, Validators.required],
       title: ['', Validators.required],
       description: null,
       price: ['', Validators.required],
       promotionPrice: null,
       categoriesId: ['', Validators.required], 
-      image: ['', Validators.required], 
+      image: [''], 
       chapiters: this.formBuilder.array([])
     });
-
-    
-  
 
     // Upload Files
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-         console.log('FileUpload:uploaded:', item, status, response);
+         console.log('FileUpload:uploaded item:', item);
+         console.log('FileUpload:uploaded status:', status);
+         console.log('FileUpload:uploaded response:', response);
          // alert('File uploaded successfully');
      };
+
+     this.userService.getAllUsers().subscribe(
+      (data) => {
+        if (data) {
+          this.allTrainers = data;
+        }
+      },
+      (error) => {
+        console.log('Get Trainers Error :: ', error);
+      });
+
+
+      this.categoryService.getCategories().subscribe(
+        (data) => {
+          if (data) {
+            this.allCategories = data;
+          }
+        },
+        (error) => {
+          console.log('Get Catégories Error :: ', error);
+        });
+  }
+
+  getNameUser(user) {
+    const last = user.identity.lastname;
+    const first = user.identity.firstname;
+    const civility = user.identity.civility;
+    let name = '';
+    if (civility) {
+      name += `${civility}`;
+    }
+    if (last) {
+      name += `${last} `;
+    }
+    if (first) {
+      name += `${first}`;
+    }
+    return name;
   }
 
   getFormation(id) {
@@ -124,8 +170,8 @@ export class EditFormationComponent implements OnInit {
   initLesson2(): FormGroup {
     return this.formBuilder.group({
       title: ['', Validators.compose([Validators.required])],
-      description: ['', Validators.compose([Validators.required])],
-      video: ['', [Validators.required]],
+      description: [''],
+      video: [''],
     });
   }
 
@@ -135,14 +181,28 @@ export class EditFormationComponent implements OnInit {
     control.push(botoxCtrl);
   }
 
+  deleteRowFormChapiter(iChapiter) {
+    const control = (<FormArray>this.formationForm.controls['chapiters']) as FormArray;
+    if (iChapiter > 0 || control.length > 1) {
+      control.removeAt(iChapiter);
+    }
+  }
+
+
+  deleteRowFormLesson(iChapiter, iLesson) {
+    const control = (<FormArray>this.formationForm.controls['chapiters']).at(iChapiter).get('lessons') as FormArray;
+    if (iLesson > 0 || control.length > 1) {
+      control.removeAt(iLesson);
+    }
+  }
     /**
    * Créer FormGroup Cours
    */
   initLesson(): FormGroup {
     return this.formBuilder.group({
       title: ['', Validators.compose([Validators.required])],
-      description: ['', Validators.compose([Validators.required])],
-      video: ['', [Validators.required]],
+      description: [''],
+      video: [''],
     });
   }
 
@@ -188,38 +248,24 @@ export class EditFormationComponent implements OnInit {
     control.push(this.initLesson());
   }
 
-
-  /**
-   * Ajouter une formation
-   */
-  // addFormation() {
-  //   console.log('this.formationForm.value : ', this.formationForm.value);
-  //   this.formationsService.addFormation(this.formationForm.value).subscribe(
-  //     (result) => {
-  //       console.log('AddPrd OK : ', result);
-  //       // Add File
-  //       this.uploader.uploadAll();
-  //     // this.router.navigate(['/product-details/'+result._id]);
-  //   }, (err) => {
-  //     console.log('AddPrd Error :', err);
-  //   });
-  // }
-
-
   /**
    * Modifier une formation
    */
   updateFormation() {
     console.log('this.formationForm.value : ', this.formationForm.value);
     this.formationsService.updateFormation(this.idFormation, this.formationForm.value).subscribe(
-      (result) => {
-        console.log('updateFormation OK : ', result);
-        // Add File
-        this.uploader.uploadAll();
-      // this.router.navigate(['/product-details/'+result._id]);
-    }, (err) => {
-      console.log('UpdateFormation Error :', err);
-    });
+      (data) => {
+        if (data && data.body.success) {
+          // Add File
+          console.log('this.uploader :: ', this.uploader);
+          this.uploader.uploadAll();
+          this.notificationService.success('Félicitaions!', data.body.message);
+        }
+        console.log('updateFormation OK : ', data);
+      },
+      (error) => {
+        this.notificationService.error('Problème!', `Au niveau de la modification de la formation`, error, true);              
+      });
   }
 
 }

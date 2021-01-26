@@ -3,12 +3,15 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
+import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  formLogin: FormGroup;
   public username: string;
   public password: string;
   public error: string;
@@ -16,7 +19,11 @@ export class LoginComponent {
   @ViewChild('containerUserForm') containerUserForm: ElementRef;
   @ViewChild('signInUpModal') signInUpModal;
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private fb: FormBuilder,
+    ) {
 
 //     const signUpButton = document.getElementById('signUp');
 // const signInButton = document.getElementById('signIn');
@@ -31,6 +38,12 @@ export class LoginComponent {
 // });
    }
 
+   ngOnInit() {
+     this.formLogin = this.fb.group({
+       username: [''],
+       password: [''],
+     })
+   }
    signUpOpen() {
      this.containerUserForm.nativeElement.classList.add('right-panel-active');
     }
@@ -40,7 +53,10 @@ export class LoginComponent {
    }
 
   public submit() {
-    this.auth.login(this.username, this.password)
+    this.auth.login(
+      this.formLogin.get('username').value,
+      this.formLogin.get('password').value,
+      )
       .pipe(first())
       .subscribe(
         (result) => {

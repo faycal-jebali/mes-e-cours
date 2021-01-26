@@ -1,0 +1,40 @@
+
+.btn-tooltip {
+  z-index: 1;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  text-align: center;
+  font-size: inherit;
+  color: #fd0;
+  background-color: #fff;
+  border: 1px solid #fd0;
+  height: 1.4em !important;
+  line-height: 1.5em !important;
+  width: 1.4em !important;
+  min-width: 1.4em !important;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transition: transform .1s ease-out, box-shadow .1s ease-out;
+  -o-transition: transform .1s ease-out, box-shadow .1s ease-out;
+  transition: transform .1s ease-out, box-shadow .1s ease-out;
+  margin-left: 8px;
+  margin-top: -0.7em;
+  cursor: pointer;
+}
+.btn-tooltip::after {
+  content: 'i';
+  font-weight: bold;
+  font-size: 15px;
+}
+.btn-tooltip:hover {
+  color: #fff;
+  background: #fd0;
+}
+
+@media (max-width: 480px) {
+  .btn-tooltip {
+    margin-left: 4px;
+  }
+}
