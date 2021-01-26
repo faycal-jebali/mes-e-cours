@@ -53,20 +53,23 @@ export class LoginComponent implements OnInit {
    }
 
   public submit() {
-    // this.auth.login(this.username, this.password)
-    //   .pipe(first())
-    //   .subscribe(
-    //     (result) => {
-    //       console.log('Connected');
-    //       this.router.navigate(['/'], {
-    //         queryParams: {refresh: new Date().getTime()}
-    //      });
-    //      this.signInUpModal.hide();
-    //       // this.router.navigate(['/', {skipLocationChange: true}]);
-    //       // this.router.navigated = false;
-    //       // this.router.navigateByUrl('/', {skipLocationChange: true});
-    //     },
-    //     err => this.error = 'Could not authenticate'
-    //   );
+    this.auth.login(
+      this.formLogin.get('username').value,
+      this.formLogin.get('password').value,
+      )
+      .pipe(first())
+      .subscribe(
+        (result) => {
+          console.log('Connected');
+          this.router.navigate(['/'], {
+            queryParams: {refresh: new Date().getTime()}
+         });
+         this.signInUpModal.hide();
+          // this.router.navigate(['/', {skipLocationChange: true}]);
+          // this.router.navigated = false;
+          // this.router.navigateByUrl('/', {skipLocationChange: true});
+        },
+        err => this.error = 'Could not authenticate'
+      );
   }
 }

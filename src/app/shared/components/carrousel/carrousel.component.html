@@ -4,7 +4,7 @@
     <mdb-carousel [isControls]="false" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'">
         <mdb-carousel-item *ngFor="let item of slides; let i = index">
             <div class="row">
-                <div class="col-md-3" *ngFor="let card of item; let cardIndex = index" [ngClass]="{'d-none d-md-block': cardIndex !== 0}">
+                <div class="col-md-3" *ngFor="let card of item; let cardIndex = index" [ngClass]="{ 'd-none d-md-block': cardIndex !== 0 }">
                     <app-item-carrousel [card]="card"></app-item-carrousel>
                 </div>
             </div>
