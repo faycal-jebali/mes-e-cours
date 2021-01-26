@@ -1,3 +1,8 @@
+@import "src/assets/variables.scss";
+.btn-login {
+    margin: 8px 5px;
+}
+
 h1 {
     font-weight: bold;
     margin: 0;
@@ -22,34 +27,30 @@ a {
     margin: 15px 0;
 }
 
-button {
-    border-radius: 20px;
-    border: 1px solid #ff4b2b;
-    background-color: #ff4b2b;
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-}
-
-button:active {
-    transform: scale(0.95);
-}
-
-button:focus {
-    outline: none;
-}
-
-button.ghost {
-    background-color: transparent;
-    border-color: #ffffff;
-}
-
+// button {
+//     border-radius: 20px;
+//     border: 1px solid $primary;
+//     background-color: $primary;
+//     color: $white;
+//     font-size: 12px;
+//     font-weight: bold;
+//     padding: 12px 45px;
+//     letter-spacing: 1px;
+//     text-transform: uppercase;
+//     transition: transform 80ms ease-in;
+// }
+// button:active {
+//     transform: scale(0.95);
+// }
+// button:focus {
+//     outline: none;
+// }
+// button.ghost {
+//     background-color: transparent;
+//     border-color: $white;
+// }
 form {
-    background-color: #ffffff;
+    background-color: $white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,7 +87,7 @@ input {
 /*****/
 
 .container-user-form {
-    background-color: #ffffff;
+    background-color: $white;
     border-radius: 0;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
@@ -104,6 +105,10 @@ input {
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
+    h1 {
+        text-transform: uppercase;
+        margin-bottom: 25px;
+    }
 }
 
 .sign-in-container {
@@ -162,13 +167,13 @@ input {
 }
 
 .overlay {
-    background: #ff416c;
-    background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    background: $primary;
+    background: -webkit-linear-gradient(to right, $primary2, $primary);
+    background: linear-gradient(to right, $primary2, $primary);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
-    color: #ffffff;
+    color: $white;
     position: relative;
     left: -100%;
     height: 100%;
@@ -213,5 +218,16 @@ input {
     transform: translateX(20%);
 }
 
+.overlay-panel {
+    p {
+        width: 100%;
+        white-space: normal;
+    }
+}
 
-/****/
+
+/*MAterial***/
+
+.md-form {
+    width: 100%;
+}

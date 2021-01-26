@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { ItemCarrouselComponent } from './item-carrousel/item-carrousel.component';
 
 @Component({
   selector: 'shared-carrousel',
   templateUrl: './carrousel.component.html',
-  styleUrls: ['./carrousel.component.scss']
+  styleUrls: ['./carrousel.component.scss'],
 })
 export class CarrouselComponent implements OnInit {
   itemsParPage = 4;
@@ -11,6 +13,12 @@ export class CarrouselComponent implements OnInit {
   @Input() formations: any;
 
   slides: any = [[]];
+
+  constructor(
+    private router: Router,
+  ) {
+
+  }
 
   chunk(arr, chunkSize) {
     const R = [];
@@ -23,5 +31,12 @@ export class CarrouselComponent implements OnInit {
     if (this.formations) {
       this.slides = this.chunk(this.formations, this.itemsParPage);
     }
+  }
+
+  /**
+   * Get Détails Formation
+   */
+  getFormation(id: number) {
+    console.log('Formation : ', id);
   }
 }

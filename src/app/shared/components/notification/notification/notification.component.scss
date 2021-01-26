@@ -1,0 +1,115 @@
+$danger : #FF4136;
+$success : #B6025A;//#2BDE3F;
+$info : #B6025A; //#1D72F3;
+$warning : #FFC007;
+
+.panel-notification {
+  width:350px;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 100px;
+  z-index: 999;
+
+  .alert-dismissable {
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+    background-color: #fff;
+    border-radius: 0;
+    max-width: 350px;
+    top: 0px;
+    position: relative;
+    box-shadow: 1px 7px 14px -5px rgba(0,0,0,0.2);
+    border: 0;
+    border-top: 1px solid #f9f9f9;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &.alert-danger {
+      &:before {
+        background-color: $danger;
+      }
+      .icon {
+        background-color: $danger;
+      }
+    }
+    &.alert-success{
+      &:before {
+        background-color: $success;
+      }
+      .icon {
+        background-color: $success;
+      }
+    }
+    &.alert-info{
+      &:before {
+        background-color: $info;
+      }
+      .icon {
+        background-color: $info;
+      }
+    }
+    &.alert-warning{
+      &:before {
+        background-color: $warning;
+      }
+      .icon {
+        background-color: $warning;
+      }
+    }
+    .close {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      width: 14px;
+      cursor: pointer;
+      height: 14px;
+      transform: translateY(-50%);
+      color: #bcbcbc;
+      font-size: 18px;
+    }
+    /*icon*/
+    .icon {
+      position: absolute;
+      top: 50%;
+      left: 22px;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-radius: 50%;
+      display: inline-block;
+      em {
+        color: #fff;
+      }
+    }
+    /*end icon*/
+    /* content */
+    .content {
+      padding-left: 70px;
+      padding-right: 60px;
+      .message {
+        font-size: 14px;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #878787;
+      }
+      .type {
+        color: #3e3e3e;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+    /* end content */
+  }
+}

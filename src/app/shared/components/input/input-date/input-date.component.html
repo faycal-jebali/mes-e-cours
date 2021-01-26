@@ -1,0 +1,15 @@
+<div fxLayout="column" class="input-container">
+    <app-label [name]="name" [id]="labelId"></app-label>
+
+    <mat-form-field>
+        <input [name]="name" [disabled]="disabled" matInput [matDatepicker]="datePicker" [formControl]="control"
+        (dateChange)="dateChange($event)">
+
+        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+
+        <mat-hint>{{ hint | translate }}</mat-hint>
+
+        <app-input-error-field [control]="control"></app-input-error-field>
+    </mat-form-field>
+</div>

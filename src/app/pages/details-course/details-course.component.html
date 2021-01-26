@@ -1,0 +1,40 @@
+<!--sideBar-->
+<div class="course-menu col">
+    <h1>{{ 'welcome' | translate }}</h1>
+    <ul class="chapiters-checkbox-list">
+        <li *ngFor="let chapiter of product?.chapiters">
+            <h3>{{ chapiter.title }}</h3>
+            <ul class="checkbox-list">
+                <li *ngFor="let lession of chapiter.lessons">
+                    <label>
+                        <input [attr.type]="'radio'" name="principalList"
+                            [value]="lession._id"
+                            [checked]="isChecked(lession)"
+                            (change)="updateCheckedOptions(lession, $event)" />
+                        <span>{{ lession.title }}</span>
+                    </label>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!--Main-->
+<main role="main" class="course-details col">
+    <section class="text-left">
+        <div class="container">
+            <h1 class="jumbotron-heading">{{ product?.title }}</h1>
+            <h2>{{ currentLesson.title }}</h2>
+
+            <p>{{ currentLesson.description }}</p>
+            <p>
+                <video src="./assets/uploads/formations/v.mp4" height="240" controls>
+                <!-- <video src="./../../e-learning-server/uploads/formations/1.mp4" height="240" controls> -->
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+            </p>
+        </div>
+    </section>
+</main>
+
+<!-- <pre>{#{product | json }#}</pre> -->

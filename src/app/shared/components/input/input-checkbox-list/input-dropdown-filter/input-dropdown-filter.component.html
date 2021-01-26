@@ -1,0 +1,53 @@
+<div fxLayout="column" class="input-container">
+    <app-label [name]="name" [id]="labelId"></app-label>
+    <div class="dropdown-wrap">
+        <!--First Box-->
+        <div class="dropdown-box dropdown-box1">
+            <app-input-simple-filter
+                fxFlex="50"
+                [dropdown]="true"
+                [doAction]="moveTheList"
+                [typeData]="typeData"
+                [control]="formGroup.get('firstBox')"
+                [labelId]="'globalFilterByNumDmos'"
+                [values]="values">
+            </app-input-simple-filter>
+
+            <div class="doropdown-btns">
+                <ul class="dropdown-btns">
+                    <li>
+                        <a (click)="sendActionToChild('addAll')">{{ 'globalAddAll' | translate }}</a>
+                    </li>
+                    <li>
+                        <a (click)="sendActionToChild('addSelectList')">{{ 'globalAddTheSelection' | translate }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--Second Box-->
+        <div class="dropdown-box dropdown-box2">
+            <app-input-simple-filter
+                fxFlex="50"
+                [dropdown]="true"
+                [principalBox]="false"
+                [typeData]="typeData"
+                [doAction]="moveTheList"
+                [control]="formGroup.get('secondBox')"
+                [labelId]="'globalFilterByNumDmosForLineCLass'"
+                [values]="values">
+            </app-input-simple-filter>
+
+            <div class="doropdown-btns">
+                <ul class="dropdown-btns">
+                    <li>
+                        <a (click)="sendActionToChild('removeAll')">{{ 'globalRemoveAll' | translate }}</a>
+                    </li>
+                    <li>
+                        <a (click)="sendActionToChild('removeSelectList')">{{ 'globalRemoveTheSelection' | translate }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

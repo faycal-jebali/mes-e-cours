@@ -1,41 +1,32 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatRadioModule } from '@angular/material/radio';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { TodoService } from './services/todo.service';
-import { UserService } from './services/user.service';
-import { FormationsService } from './services/formations.service';
-import { LoginComponent } from './login/login.component';
-import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { HttpModule } from '@angular/http';
-import {
-  MatInputModule, MatButtonModule,
-  MatSelectModule, MatIconModule,
-  MatToolbarModule, MatMenuModule,
-  MatCheckboxModule, MatDatepickerModule,
-  MatNativeDateModule,
-} from '@angular/material';
-import { AccueilComponent } from './accueil/accueil.component';
+import { LoginComponent } from './login/login.component';
+import { BanniereComponent } from './main-layout/banniere/banniere.component';
 import { FooterComponent } from './main-layout/footer/footer.component';
 import { NavigationComponent } from './main-layout/navigation/navigation.component';
-import { BanniereComponent } from './main-layout/banniere/banniere.component';
-import { SharedModule } from './shared/shared.module';
-import { ProductAddComponent } from './product-add/product-add.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { ProductEditComponent } from './product-edit/product-edit.component';
-import { ProductComponent } from './product/product.component';
+import { AccueilComponent } from './pages/accueil/accueil.component';
+import { DetailsCourseComponent } from './pages/details-course/details-course.component';
+import { DetailsComponent } from './pages/details/details.component';
+import { FormationsPageComponent } from './pages/formations-page/formations-page.component';
+import { MesFormationsComponent } from './pages/utilisateur/mes-formations/mes-formations.component';
+import { MonCompteComponent } from './pages/utilisateur/mon-compte/mon-compte.component';
+import { AuthService } from './services/auth.service';
+import { FormationsService } from './services/formations.service';
 import { RestService } from './services/rest.service';
-
+import { UserService } from './services/user.service';
+import { SharedModule } from './shared/shared.module';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -48,19 +39,20 @@ export function tokenGetter() {
     FooterComponent,
     NavigationComponent,
     BanniereComponent,
-    TodoListComponent,
-    UserListComponent,
     LoginComponent,
-    ProductAddComponent,
-    ProductDetailComponent,
-    ProductComponent,
-    ProductEditComponent,
+    DetailsComponent,
+    DetailsCourseComponent,
+    FormationsPageComponent,
+    MonCompteComponent,
+    MesFormationsComponent,  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AdminModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule, 
+    ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -70,26 +62,18 @@ export function tokenGetter() {
     }),
     NgbModule.forRoot(),
     BrowserAnimationsModule,
-    HttpModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     SharedModule,
+    MatRadioModule,
+    MatExpansionModule,
   ],
   providers: [
-    TodoService,
     UserService,
     AuthService,
     AuthGuard,
     FormationsService,
     RestService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

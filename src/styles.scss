@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/material/theming';
-@import url('//fonts.googleapis.com/icon?family=Material+Icons');
+@import "~@angular/material/theming";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "./assets/variables.scss";
+@import "./assets/form.scss";
+@import "./assets/overrides/materials.scss";
 @include mat-core();
-$primary: mat-palette($mat-lime,
+$primary-theme: mat-palette($mat-lime,
 500);
 $accent: mat-palette($mat-lime,
 500,
@@ -12,7 +15,7 @@ A400);
 $warn: mat-palette($mat-red,
 500);
 $config: mat-typography-config();
-$theme: mat-light-theme($primary,
+$theme: mat-light-theme($primary-theme,
 $accent,
 $warn);
 @include angular-material-theme($theme);
@@ -27,6 +30,28 @@ h3,
 h4,
 h5 {
     font-weight: normal;
+}
+
+.container-main {
+    padding: 20px 0;
+}
+
+.mat-tab-body {
+    padding: 20px;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+mat-radio-group {
+    mat-radio-button {
+        padding-right: 10px;
+    }
+}
+
+.btn-file {
+    width: 100%;
 }
 
 
@@ -44,18 +69,53 @@ mdb-card {
 
 .modal-content .close {
     position: absolute;
-    top: -30px;
-    right: -30px !important;
+    top: -20px;
+    right: -20px !important;
     z-index: 9999;
     width: 30px;
     height: 30px;
     padding: 0;
     border-radius: 50%;
     /* font-size: 20px; */
-    background: #000;
-    opacity: 1;
+    background: $primary;
+    opacity: 1 !important;
+    box-shadow: 0 1px 0 $black;
+    span {
+        color: $white;
+        text-shadow: 0 1px 0 $black;
+        font-size: 23px !important;
+    }
 }
 
 .modal-body {
     padding: 0 !important;
+}
+
+
+/**Material**/
+
+.mat-menu-panel {
+    border-radius: 0 !important;
+}
+
+
+/**Table**/
+
+.mat-table-list {
+    width: 100%;
+}
+
+.card-text {
+    h2 {
+        font-size: 18px;
+    }
+}
+
+.col-container {
+    display: table;
+    width: 100%;
+}
+
+.col {
+    display: table-cell;
 }
