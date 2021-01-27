@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Todo } from './../business-objects/todo';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Todo } from "./../business-objects/todo";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class TodoService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getTodos() {
-    return this.http.get<Todo[]>('http://localhost:4000/api/todos');
+    return this.http.get<Todo[]>("http://localhost:3000/api/todos");
   }
 
   getTodo(id: number) {
-    return this.http.get<Todo>(`http://localhost:4000/api/todos/${id}`);
+    return this.http.get<Todo>(`http://localhost:3000/api/todos/${id}`);
   }
 }

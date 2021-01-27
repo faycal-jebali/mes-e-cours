@@ -47,7 +47,7 @@ export function tokenGetter() {
     MesFormationsComponent,  
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     AdminModule,
     HttpClientModule,
