@@ -1,15 +1,17 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ToolTipComponent } from './tooltip.component';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { ToolTipComponent } from "./tooltip.component";
 
-describe('ToolTipComponent', () => {
+xdescribe("ToolTipComponent", () => {
   let component: ToolTipComponent;
   let fixture: ComponentFixture<ToolTipComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ToolTipComponent ]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ToolTipComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ToolTipComponent);
@@ -17,7 +19,7 @@ describe('ToolTipComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

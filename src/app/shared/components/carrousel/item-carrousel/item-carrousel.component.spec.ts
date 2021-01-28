@@ -1,17 +1,18 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { ItemCarrouselComponent } from './item-carrousel.component';
+import { ItemCarrouselComponent } from "./item-carrousel.component";
 
-describe('ItemCarrouselComponent', () => {
+xdescribe("ItemCarrouselComponent", () => {
   let component: ItemCarrouselComponent;
   let fixture: ComponentFixture<ItemCarrouselComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ItemCarrouselComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ItemCarrouselComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ItemCarrouselComponent);
@@ -19,7 +20,7 @@ describe('ItemCarrouselComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
