@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { User } from '../../../business-objects/user';
-import { UserService } from '../../../services/user.service';
+import { Component, OnInit } from "@angular/core";
+
+import { UserService } from "../../../shared/services/user.service";
 
 export interface PeriodicElement {
   name: string;
@@ -11,15 +10,15 @@ export interface PeriodicElement {
 }
 
 @Component({
-  selector: 'admin-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: "admin-users",
+  templateUrl: "./users.component.html",
+  styleUrls: ["./users.component.scss"],
 })
 export class UsersComponent implements OnInit {
   allUser = [];
-  displayedColumns: string[] = ['position', 'name', 'role', 'actions'];
+  displayedColumns: string[] = ["position", "name", "role", "actions"];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
     // this.allUser$ = this.userService.getAllUsers();
@@ -27,16 +26,16 @@ export class UsersComponent implements OnInit {
       if (data) {
         this.allUser = data;
       }
-      console.log('DATA :: ', data);
-    })
+      console.log("DATA :: ", data);
+    });
   }
 
   deleteUser(id) {
     this.userService.deleteUser(id).subscribe((data) => {
       if (data) {
-        console.log('Delete user :: ', data);
+        console.log("Delete user :: ", data);
       }
-      console.log('DATA :: ', data);
-    })
+      console.log("DATA :: ", data);
+    });
   }
 }
