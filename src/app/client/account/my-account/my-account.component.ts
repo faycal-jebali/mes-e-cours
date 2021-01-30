@@ -23,7 +23,7 @@ export class MonCompteComponent implements OnInit {
    */
   newUser() {
     if (this.newUserForm.valid) {
-      console.log("this.formationForm.value : ", this.newUserForm.value);
+      console.log("this.courseForm.value : ", this.newUserForm.value);
       this.userService.newUser(this.newUserForm.value).subscribe(
         (result) => {
           console.log("new User OK : ", result);

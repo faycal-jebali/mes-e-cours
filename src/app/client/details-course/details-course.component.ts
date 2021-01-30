@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { FormationsService } from "../../shared/services/formations.service";
+import { CoursesService } from "../../shared/services/courses.service";
 import { UserService } from "../../shared/services/user.service";
 import { NotificationService } from "../../shared/components/notification/notification.service";
 import { AuthService } from "../../shared/services/auth.service";
@@ -24,7 +24,7 @@ export class DetailsCourseComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private formationsService: FormationsService,
+    private CoursesService: CoursesService,
     private userService: UserService,
     private readonly notificationService: NotificationService,
     private readonly authService: AuthService,
@@ -51,15 +51,15 @@ export class DetailsCourseComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formationsService
-      .getFormation(this.route.snapshot.params["id"])
-      .subscribe((data: {}) => {
+    this.CoursesService.getCourse(this.route.snapshot.params["id"]).subscribe(
+      (data: {}) => {
         if (data) {
           console.log(data);
           this.product = data;
           this.currentLesson = this.product.chapiters[0].lessons[0];
         }
-      });
+      }
+    );
 
     this.authService.currentUser.subscribe((data) => {
       console.log("Current User :: ", data);

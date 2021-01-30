@@ -3,38 +3,36 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { tap } from "rxjs/operators";
 
-import { Formation } from "./../business-objects/formation";
+import { Course } from "../business-objects/course";
 
-const pathBack = "http://localhost:4000/api/";
+const pathBack = "http://localhost:5100/api/";
 
 @Injectable({
   providedIn: "root",
 })
-export class FormationsService {
+export class CoursesService {
   constructor(private http: HttpClient) {}
 
-  getFormations() {
-    return this.http.get<Formation[]>("http://localhost:4000/api/formations");
+  getCourses() {
+    return this.http.get<Course[]>("http://localhost:5100/api/courses");
   }
 
-  getFormation(id: string) {
-    return this.http.get<Formation>(
-      `http://localhost:4000/api/formations/${id}`
-    );
+  getCourse(id: string) {
+    return this.http.get<Course>(`http://localhost:5100/api/courses/${id}`);
   }
 
-  getFormationByCategorie(id: number) {
-    return this.http.get<Formation>(
-      `http://localhost:4000/api/formations/categorie/${id}`
+  getCourseByCategorie(id: number) {
+    return this.http.get<Course>(
+      `http://localhost:5100/api/courses/categorie/${id}`
     );
   }
   /**
-   * Create Formation
+   * Create Course
    * @param request
    */
-  addFormation(request): Observable<any> {
+  addCourse(request): Observable<any> {
     return this.http
-      .post<any>(pathBack + "formations", JSON.stringify(request), {
+      .post<any>(pathBack + "courses", JSON.stringify(request), {
         headers: new HttpHeaders().set("Content-Type", "application/json"),
         observe: "response",
       })
@@ -48,12 +46,12 @@ export class FormationsService {
       );
   }
   /**
-   * Update Formation
+   * Update Course
    * @param request
    */
-  updateFormation(id, request): Observable<any> {
+  updateCourse(id, request): Observable<any> {
     return this.http
-      .put<any>(`${pathBack}formations/${id}`, JSON.stringify(request), {
+      .put<any>(`${pathBack}courses/${id}`, JSON.stringify(request), {
         headers: new HttpHeaders().set("Content-Type", "application/json"),
         observe: "response",
       })
@@ -67,9 +65,9 @@ export class FormationsService {
       );
   }
 
-  deleteFormation(id): Observable<any> {
+  deleteCourse(id): Observable<any> {
     return this.http
-      .delete<any>(`${pathBack}formations/${id}`, {
+      .delete<any>(`${pathBack}courses/${id}`, {
         headers: new HttpHeaders().set("Content-Type", "application/json"),
         observe: "response",
       })

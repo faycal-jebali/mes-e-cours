@@ -1,153 +1,283 @@
 <nav>
-    <a [routerLink]="['/administrator/formation/all']" class="btn btn-sm waves-effect btn-info float-right">Formations</a>
+  <a
+    [routerLink]="['/administrator/course/all']"
+    class="btn btn-sm waves-effect btn-info float-right"
+    >Formations</a
+  >
 </nav>
 <div class="mat-typography">
-    <h1>Modifier</h1>
+  <h1>Modifier</h1>
 
-    <div class="updateUserForm">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <form novalidate [formGroup]="formationForm" (ngSubmit)="updateFormation()">
-                        <h2>Edit Formation</h2>
-                        <mat-tab-group>
-                            <!--Tab Données-->
-                            <mat-tab label="Données">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <mat-form-field>
-                                                <mat-label>Formateur :</mat-label>
-                                                <select matNativeControl formControlName='trainer'>
-                                                    <option *ngFor="let itemTrainer of allTrainers;" [value]="itemTrainer._id">{{ getNameUser(itemTrainer) }}</option>
-                                                </select>
-                                            </mat-form-field>
-                                        </div>
-                                        <div class="col-4">
-                                            <mat-form-field>
-                                                <input matInput type="text" placeholder="Titre" formControlName='title'>
-                                                <!--mat-hint>Errors appear instantly!</mat-hint-->
-                                                <mat-error *ngIf="formationForm.controls.title.touched && formationForm.controls.title.hasError('required')">
-                                                    Champs <strong>obligatoire</strong>!
-                                                </mat-error>
-                                            </mat-form-field>
-                                        </div>
-                                        <div class="col-4">
-                                            <mat-form-field>
-                                                <mat-label>Catégories :</mat-label>
-                                                <select matNativeControl formControlName='categoriesId'>
-                                                    <option *ngFor="let category of allCategories;" [value]="category._id">{{ category.title }}</option>
-                                                </select>
-                                            </mat-form-field>
-                                        </div>
-                                        <div class="col-4">
-                                            <mat-radio-group aria-label="Select an option">
-                                                <br>
-                                                <mat-radio-button value="true">Active</mat-radio-button>
-                                                <mat-radio-button value="false">Inactive</mat-radio-button>
-                                            </mat-radio-group>
-                                        </div>
+  <div class="updateUserForm">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <form novalidate [formGroup]="courseForm" (ngSubmit)="updateCourse()">
+            <h2>Edit Course</h2>
+            <mat-tab-group>
+              <!--Tab Données-->
+              <mat-tab label="Données">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-12">
+                      <mat-form-field>
+                        <mat-label>Formateur :</mat-label>
+                        <select matNativeControl formControlName="trainer">
+                          <option
+                            *ngFor="let itemTrainer of allTrainers"
+                            [value]="itemTrainer._id"
+                          >
+                            {{ getNameUser(itemTrainer) }}
+                          </option>
+                        </select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field>
+                        <input
+                          matInput
+                          type="text"
+                          placeholder="Titre"
+                          formControlName="title"
+                        />
+                        <!--mat-hint>Errors appear instantly!</mat-hint-->
+                        <mat-error
+                          *ngIf="
+                            courseForm.controls.title.touched &&
+                            courseForm.controls.title.hasError('required')
+                          "
+                        >
+                          Champs <strong>obligatoire</strong>!
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field>
+                        <mat-label>Catégories :</mat-label>
+                        <select matNativeControl formControlName="categoriesId">
+                          <option
+                            *ngFor="let category of allCategories"
+                            [value]="category._id"
+                          >
+                            {{ category.title }}
+                          </option>
+                        </select>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-radio-group aria-label="Select an option">
+                        <br />
+                        <mat-radio-button value="true">Active</mat-radio-button>
+                        <mat-radio-button value="false"
+                          >Inactive</mat-radio-button
+                        >
+                      </mat-radio-group>
+                    </div>
 
-                                        <div class="col-3">
-                                            <mat-form-field>
-                                                <input matInput type="text" placeholder="Prix" formControlName='price'>
-                                            </mat-form-field>
-                                        </div>
+                    <div class="col-3">
+                      <mat-form-field>
+                        <input
+                          matInput
+                          type="text"
+                          placeholder="Prix"
+                          formControlName="price"
+                        />
+                      </mat-form-field>
+                    </div>
 
-                                        <div class="col-3">
-                                            <mat-form-field>
-                                                <input matInput type="text" placeholder="Prix Promotionel" formControlName='promotionPrice'>
-                                            </mat-form-field>
-                                        </div>
+                    <div class="col-3">
+                      <mat-form-field>
+                        <input
+                          matInput
+                          type="text"
+                          placeholder="Prix Promotionel"
+                          formControlName="promotionPrice"
+                        />
+                      </mat-form-field>
+                    </div>
 
-                                        <div class="col-6">
-                                            <div class="btn btn-primary btn-sm btn-file float-left">
-                                                <input type="file" multiple #fileInput name="uploaded" ng2FileSelect [uploader]="uploader" formControlName="image">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <ckeditor [editor]="Editor" [config]="configEditor" placeholder="Description *" formControlName='description'></ckeditor>
+                    <div class="col-6">
+                      <div class="btn btn-primary btn-sm btn-file float-left">
+                        <input
+                          type="file"
+                          multiple
+                          #fileInput
+                          name="uploaded"
+                          ng2FileSelect
+                          [uploader]="uploader"
+                          formControlName="image"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <ckeditor
+                        [editor]="Editor"
+                        [config]="configEditor"
+                        placeholder="Description *"
+                        formControlName="description"
+                      ></ckeditor>
 
-                                            <!-- <mat-form-field>
+                      <!-- <mat-form-field>
                                                 <textarea matInput matTextareaAutosize matAutosizeMinRows=3 matAutosizeMaxRows=5 placeholder="Description" formControlName='description'></textarea>
                                             </mat-form-field> -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </mat-tab>
-                            <!--/Tab Données-->
-                            <!--Tab Chapiters-->
-                            <mat-tab label="Chapitres & Cours">
-                                <div class="container">
-                                    <div formArrayName="chapiters">
-                                        <h2>Chapitres</h2>
-                                        <pre>{{ chapiters.controls }}</pre>
-                                        <!--List Chapiters-->
-                                        <div *ngFor="let chapiter of chapiters.controls; let iChapiter = index">
-                                            <div class="row" [formGroupName]="iChapiter" class="itemChapiter">
-                                                <a (click)='deleteRowFormChapiter(iChapiter)' *ngIf="iChapiter > 0 || chapiters.controls.length > 1"><em class="fa fa-trash"></em></a>
-                                                <div class="col-12">
-                                                    <mat-form-field>
-                                                        <input matInput type="text" placeholder="Titre" formControlName="title">
-                                                    </mat-form-field>
-                                                </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+              <!--/Tab Données-->
+              <!--Tab Chapiters-->
+              <mat-tab label="Chapitres & Cours">
+                <div class="container">
+                  <div formArrayName="chapiters">
+                    <h2>Chapitres</h2>
+                    <pre>{{ chapiters.controls }}</pre>
+                    <!--List Chapiters-->
+                    <div
+                      *ngFor="
+                        let chapiter of chapiters.controls;
+                        let iChapiter = index
+                      "
+                    >
+                      <div
+                        class="row"
+                        [formGroupName]="iChapiter"
+                        class="itemChapiter"
+                      >
+                        <a
+                          (click)="deleteRowFormChapiter(iChapiter)"
+                          *ngIf="iChapiter > 0 || chapiters.controls.length > 1"
+                          ><em class="fa fa-trash"></em
+                        ></a>
+                        <div class="col-12">
+                          <mat-form-field>
+                            <input
+                              matInput
+                              type="text"
+                              placeholder="Titre"
+                              formControlName="title"
+                            />
+                          </mat-form-field>
+                        </div>
 
-                                                <div class="col-12">
-                                                    <ckeditor [editor]="Editor" [config]="configEditor" placeholder="Description *" formControlName='description'></ckeditor>
+                        <div class="col-12">
+                          <ckeditor
+                            [editor]="Editor"
+                            [config]="configEditor"
+                            placeholder="Description *"
+                            formControlName="description"
+                          ></ckeditor>
 
-                                                    <!-- <mat-form-field>
+                          <!-- <mat-form-field>
                                                         <textarea matInput placeholder="Description" formControlName="description">
                                                         </textarea>
                                                     </mat-form-field> -->
-                                                </div>
+                        </div>
 
-                                                <!-- Lessons -->
-                                                <div class="col-12 list-lessons" formArrayName="lessons">
-                                                    <h2>Cours</h2>
-                                                    <!--List Leçons-->
-                                                    <div *ngFor="let lessson of chapiter['controls'].lessons['controls']; let iLesson = index">
-                                                        <div class="container">
-                                                            <div formGroupName="{{iLesson}}" class="item-lesson row">
-                                                                <a (click)='deleteRowFormLesson(iChapiter, iLesson)' *ngIf="iLesson > 0 || chapiter['controls'].lessons['controls'].length > 1"><em class="fa fa-trash"></em></a>
-                                                                <div class="col-6">
-                                                                    <mat-form-field>
-                                                                        <input matInput type="text" placeholder="Titre" formControlName="title">
-                                                                    </mat-form-field>
-                                                                </div>
+                        <!-- Lessons -->
+                        <div
+                          class="col-12 list-lessons"
+                          formArrayName="lessons"
+                        >
+                          <h2>Cours</h2>
+                          <!--List Leçons-->
+                          <div
+                            *ngFor="
+                              let lessson of chapiter['controls'].lessons[
+                                'controls'
+                              ];
+                              let iLesson = index
+                            "
+                          >
+                            <div class="container">
+                              <div
+                                formGroupName="{{ iLesson }}"
+                                class="item-lesson row"
+                              >
+                                <a
+                                  (click)="
+                                    deleteRowFormLesson(iChapiter, iLesson)
+                                  "
+                                  *ngIf="
+                                    iLesson > 0 ||
+                                    chapiter['controls'].lessons['controls']
+                                      .length > 1
+                                  "
+                                  ><em class="fa fa-trash"></em
+                                ></a>
+                                <div class="col-6">
+                                  <mat-form-field>
+                                    <input
+                                      matInput
+                                      type="text"
+                                      placeholder="Titre"
+                                      formControlName="title"
+                                    />
+                                  </mat-form-field>
+                                </div>
 
-                                                                <div class="col-6">
-                                                                    <ckeditor [editor]="Editor" [config]="configEditor" placeholder="Description *" formControlName='description'></ckeditor>
+                                <div class="col-6">
+                                  <ckeditor
+                                    [editor]="Editor"
+                                    [config]="configEditor"
+                                    placeholder="Description *"
+                                    formControlName="description"
+                                  ></ckeditor>
 
-                                                                    <!-- <mat-form-field>
+                                  <!-- <mat-form-field>
                                                                         <textarea matInput type="text" placeholder="Description" formControlName="description"></textarea>
                                                                     </mat-form-field> -->
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <!--a (click)="fileInput.click()">Select File</a-->
-                                                                    <div class="btn btn-primary btn-sm float-left">
-                                                                        <span>Choisir Video</span>
-                                                                        <input type="file" #fileInput name="uploaded" ng2FileSelect [uploader]="uploader" formControlName="video">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--/List Leçons-->
-                                                    <a class="btn btn-sm waves-effect btn-info float-right" (click)="addLesson(iChapiter)">+ Cours</a>
-                                                </div>
-                                                <!--/lessons-->
-                                            </div>
-                                        </div>
-                                        <!--/List Chapiter-->
-                                    </div>
-                                    <a type="button" class="btn btn-sm waves-effect btn-info float-left" (click)="addChapiter()">+ Chapitre</a>
                                 </div>
-                            </mat-tab>
-                            <!--/Tab Chapiters-->
-                        </mat-tab-group>
-                        <button type="submit" class="btn btn-sm waves-effect btn-info float-right" [disabled]="!formationForm.valid">Mettre à jour</button>
-                    </form>
+                                <div class="col-6">
+                                  <!--a (click)="fileInput.click()">Select File</a-->
+                                  <div
+                                    class="btn btn-primary btn-sm float-left"
+                                  >
+                                    <span>Choisir Video</span>
+                                    <input
+                                      type="file"
+                                      #fileInput
+                                      name="uploaded"
+                                      ng2FileSelect
+                                      [uploader]="uploader"
+                                      formControlName="video"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!--/List Leçons-->
+                          <a
+                            class="btn btn-sm waves-effect btn-info float-right"
+                            (click)="addLesson(iChapiter)"
+                            >+ Cours</a
+                          >
+                        </div>
+                        <!--/lessons-->
+                      </div>
+                    </div>
+                    <!--/List Chapiter-->
+                  </div>
+                  <a
+                    type="button"
+                    class="btn btn-sm waves-effect btn-info float-left"
+                    (click)="addChapiter()"
+                    >+ Chapitre</a
+                  >
                 </div>
-            </div>
+              </mat-tab>
+              <!--/Tab Chapiters-->
+            </mat-tab-group>
+            <button
+              type="submit"
+              class="btn btn-sm waves-effect btn-info float-right"
+              [disabled]="!courseForm.valid"
+            >
+              Mettre à jour
+            </button>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
+</div>

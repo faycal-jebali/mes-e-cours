@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { RestService } from "../../../shared/services/rest.service";
-import { FormationsService } from "../../../shared/services/formations.service";
+import { CoursesService } from "../../../shared/services/courses.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import {
@@ -10,7 +10,7 @@ import {
 } from "@angular/common/http";
 
 import { FileUploader } from "ng2-file-upload";
-const UploadURL = "http://localhost:4000/api/formations/upload";
+const UploadURL = "http://localhost:5100/api/courses/upload";
 import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { NotificationService } from "../../../shared/components/notification/notification.service";
 import { UserService } from "../../../shared/services/user.service";
@@ -21,12 +21,12 @@ import { CategoryService } from "../../../shared/services/category.service";
   templateUrl: "./edit-course.component.html",
   styleUrls: ["./edit-course.component.scss"],
 })
-export class EditFormationComponent implements OnInit {
+export class EditCourseComponent implements OnInit {
   configEditor = { toolbar: ["heading", "|", "bold", "italic"] };
   public Editor = ClassicEditor;
   title = "Upload a File";
-  idFormation: String;
-  formationData = null;
+  idCourse: String;
+  courseData = null;
   public uploader: FileUploader = new FileUploader({
     url: UploadURL,
     itemAlias: "uploaded",
@@ -37,7 +37,7 @@ export class EditFormationComponent implements OnInit {
     prod_desc: "Test Descrip",
     prod_price: 160,
   };
-  formationForm: FormGroup;
+  courseForm: FormGroup;
   selectedFile: File;
   allTrainers = [];
   allCategories = [];
@@ -48,7 +48,7 @@ export class EditFormationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    private formationsService: FormationsService,
+    private CoursesService: CoursesService,
     private notificationService: NotificationService,
     private userService: UserService,
     private categoryService: CategoryService
@@ -58,10 +58,10 @@ export class EditFormationComponent implements OnInit {
    * NgOnInit
    */
   ngOnInit() {
-    this.idFormation = this.route.snapshot.paramMap.get("id");
-    this.getFormation(this.idFormation);
-    console.log("idFomation : ", this.idFormation);
-    this.formationForm = this.formBuilder.group({
+    this.idCourse = this.route.snapshot.paramMap.get("id");
+    this.getCourse(this.idCourse);
+    console.log("idFomation : ", this.idCourse);
+    this.courseForm = this.formBuilder.group({
       trainer: [null, Validators.required],
       statut: [false, Validators.required],
       title: ["", Validators.required],
@@ -129,13 +129,13 @@ export class EditFormationComponent implements OnInit {
     return name;
   }
 
-  getFormation(id) {
-    this.formationsService.getFormation(id).subscribe(
+  getCourse(id) {
+    this.CoursesService.getCourse(id).subscribe(
       (result) => {
-        console.log("get Formation : ", result);
-        this.formationData = result;
-        if (this.formationData && this.formationData.chapiters.length > 0) {
-          this.formationData.chapiters.forEach((botox) => {
+        console.log("get Course : ", result);
+        this.courseData = result;
+        if (this.courseData && this.courseData.chapiters.length > 0) {
+          this.courseData.chapiters.forEach((botox) => {
             console.log("botox :: ", botox);
             let btys = botox.lessons.length;
             this.addChapiter2(btys);
@@ -144,12 +144,12 @@ export class EditFormationComponent implements OnInit {
           console.log("1111");
           this.addChapiter2(1);
         }
-        (<FormGroup>this.formationForm).patchValue(this.formationData, {
+        (<FormGroup>this.courseForm).patchValue(this.courseData, {
           onlySelf: true,
         });
       },
       (err) => {
-        console.log("get Formation Error :", err);
+        console.log("get Course Error :", err);
       }
     );
   }
@@ -195,14 +195,14 @@ export class EditFormationComponent implements OnInit {
   }
 
   addChapiter2(number) {
-    const control = <FormArray>this.formationForm.controls["chapiters"];
+    const control = <FormArray>this.courseForm.controls["chapiters"];
     const botoxCtrl = this.initChapiter2(number);
     control.push(botoxCtrl);
   }
 
   deleteRowFormChapiter(iChapiter) {
     const control = (<FormArray>(
-      this.formationForm.controls["chapiters"]
+      this.courseForm.controls["chapiters"]
     )) as FormArray;
     if (iChapiter > 0 || control.length > 1) {
       control.removeAt(iChapiter);
@@ -210,7 +210,7 @@ export class EditFormationComponent implements OnInit {
   }
 
   deleteRowFormLesson(iChapiter, iLesson) {
-    const control = (<FormArray>this.formationForm.controls["chapiters"])
+    const control = (<FormArray>this.courseForm.controls["chapiters"])
       .at(iChapiter)
       .get("lessons") as FormArray;
     if (iLesson > 0 || control.length > 1) {
@@ -247,7 +247,7 @@ export class EditFormationComponent implements OnInit {
    * Get Chapitres
    */
   get chapiters() {
-    return this.formationForm.get("chapiters") as FormArray;
+    return this.courseForm.get("chapiters") as FormArray;
   }
 
   /**
@@ -262,40 +262,38 @@ export class EditFormationComponent implements OnInit {
    * @param i index Chapiter
    */
   addLesson(i) {
-    const control = (<FormArray>this.formationForm.controls["chapiters"])
+    const control = (<FormArray>this.courseForm.controls["chapiters"])
       .at(i)
       .get("lessons") as FormArray;
     control.push(this.initLesson());
   }
 
   /**
-   * Modifier une formation
+   * Edit course
    */
-  updateFormation() {
-    console.log("this.formationForm.value : ", this.formationForm.value);
-    this.formationsService
-      .updateFormation(this.idFormation, this.formationForm.value)
-      .subscribe(
-        (data) => {
-          if (data && data.body.success) {
-            // Add File
-            console.log("this.uploader :: ", this.uploader);
-            this.uploader.uploadAll();
-            this.notificationService.success(
-              "Félicitaions!",
-              data.body.message
-            );
-          }
-          console.log("updateFormation OK : ", data);
-        },
-        (error) => {
-          this.notificationService.error(
-            "Problème!",
-            `Au niveau de la modification de la formation`,
-            error,
-            true
-          );
+  updateCourse() {
+    console.log("this.courseForm.value : ", this.courseForm.value);
+    this.CoursesService.updateCourse(
+      this.idCourse,
+      this.courseForm.value
+    ).subscribe(
+      (data) => {
+        if (data && data.body.success) {
+          // Add File
+          console.log("this.uploader :: ", this.uploader);
+          this.uploader.uploadAll();
+          this.notificationService.success("Félicitaions!", data.body.message);
         }
-      );
+        console.log("updateCourse OK : ", data);
+      },
+      (error) => {
+        this.notificationService.error(
+          "Problème!",
+          `Au niveau de la modification de la formation`,
+          error,
+          true
+        );
+      }
+    );
   }
 }

@@ -10,11 +10,11 @@ export interface PeriodicElement {
 }
 
 @Component({
-  selector: "admin-users",
-  templateUrl: "./users.component.html",
-  styleUrls: ["./users.component.scss"],
+  selector: "admin-users-list",
+  templateUrl: "./users-list.component.html",
+  styleUrls: ["./users-list.component.scss"],
 })
-export class UsersComponent implements OnInit {
+export class UsersListComponent implements OnInit {
   allUser = [];
   displayedColumns: string[] = ["position", "name", "role", "actions"];
 

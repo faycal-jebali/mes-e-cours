@@ -1,4 +1,4 @@
-export class Formation {
+export class Course {
   id: number;
   title: string;
   description: string;

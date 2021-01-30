@@ -7,7 +7,7 @@ import { ConfigurationApp } from "./../config/config";
 
 // const pathBack = ConfigurationApp.pathBack;
 
-const pathBack = "http://localhost:4000/api/";
+const pathBack = "http://localhost:5100/api/";
 const acces_token = localStorage.getItem("access_token");
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,11 +24,11 @@ export class CategoryService {
   constructor(private http: HttpClient) {}
   getCategory(id) {
     return this.http.get<Category[]>(
-      `http://localhost:4000/api/categories/${id}`
+      `http://localhost:5100/api/categories/${id}`
     );
   }
   getCategories() {
-    return this.http.get<Category[]>("http://localhost:4000/api/categories");
+    return this.http.get<Category[]>("http://localhost:5100/api/categories");
   }
 
   newCategory(request): Observable<any> {
