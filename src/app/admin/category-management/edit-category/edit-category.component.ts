@@ -6,7 +6,7 @@ import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { NotificationService } from "../../../shared/components/notification/notification.service";
 import { FileUploader } from "ng2-file-upload";
 
-const UploadURL = "http://localhost:4000/api/categories/upload";
+const UploadURL = "http://localhost:5100/api/categories/upload";
 
 @Component({
   selector: "admin-edit-category",

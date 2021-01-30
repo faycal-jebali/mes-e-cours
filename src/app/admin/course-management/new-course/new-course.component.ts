@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { RestService } from "../../../shared/services/rest.service";
-import { FormationsService } from "../../../shared/services/formations.service";
+import { CoursesService } from "../../../shared/services/courses.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import {
@@ -10,7 +10,7 @@ import {
 } from "@angular/common/http";
 
 import { FileUploader } from "ng2-file-upload";
-const UploadURL = "http://localhost:4000/api/formations/upload";
+const UploadURL = "http://localhost:5100/api/courses/upload";
 import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { NotificationService } from "../../../shared/components/notification/notification.service";
 import { UserService } from "../../../shared/services/user.service";
@@ -21,7 +21,7 @@ import { CategoryService } from "../../../shared/services/category.service";
   templateUrl: "./new-course.component.html",
   styleUrls: ["./new-course.component.scss"],
 })
-export class NewFormationComponent implements OnInit {
+export class NewCourseComponent implements OnInit {
   configEditor = { toolbar: ["heading", "|", "bold", "italic"] };
   public Editor = ClassicEditor;
 
@@ -37,7 +37,7 @@ export class NewFormationComponent implements OnInit {
     prod_desc: "Test Descrip",
     prod_price: 160,
   };
-  formationForm: FormGroup;
+  courseForm: FormGroup;
   selectedFile: File;
   allTrainers = [];
   allCategories = [];
@@ -48,7 +48,7 @@ export class NewFormationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    private formationsService: FormationsService,
+    private CoursesService: CoursesService,
     private notificationService: NotificationService,
     private userService: UserService,
     private categoryService: CategoryService
@@ -58,7 +58,7 @@ export class NewFormationComponent implements OnInit {
    * NgOnInit
    */
   ngOnInit() {
-    this.formationForm = this.formBuilder.group({
+    this.courseForm = this.formBuilder.group({
       trainer: [null, Validators.required],
       statut: [false, Validators.required],
       title: ["", Validators.required],
@@ -149,7 +149,7 @@ export class NewFormationComponent implements OnInit {
    * Get Chapitres
    */
   get chapiters() {
-    return this.formationForm.get("chapiters") as FormArray;
+    return this.courseForm.get("chapiters") as FormArray;
   }
 
   /**
@@ -164,7 +164,7 @@ export class NewFormationComponent implements OnInit {
    * @param i index Chapiter
    */
   addLesson(i) {
-    const control = (<FormArray>this.formationForm.controls["chapiters"])
+    const control = (<FormArray>this.courseForm.controls["chapiters"])
       .at(i)
       .get("lessons") as FormArray;
     control.push(this.initLesson());
@@ -172,7 +172,7 @@ export class NewFormationComponent implements OnInit {
 
   deleteRowFormChapiter(iChapiter) {
     const control = (<FormArray>(
-      this.formationForm.controls["chapiters"]
+      this.courseForm.controls["chapiters"]
     )) as FormArray;
     if (iChapiter > 0 || control.length > 1) {
       control.removeAt(iChapiter);
@@ -180,7 +180,7 @@ export class NewFormationComponent implements OnInit {
   }
 
   deleteRowFormLesson(iChapiter, iLesson) {
-    const control = (<FormArray>this.formationForm.controls["chapiters"])
+    const control = (<FormArray>this.courseForm.controls["chapiters"])
       .at(iChapiter)
       .get("lessons") as FormArray;
     if (iLesson > 0 || control.length > 1) {
@@ -189,11 +189,11 @@ export class NewFormationComponent implements OnInit {
   }
 
   /**
-   * Ajouter une formation
+   * Add course
    */
-  addFormation() {
-    console.log("this.formationForm.value : ", this.formationForm.value);
-    this.formationsService.addFormation(this.formationForm.value).subscribe(
+  addCourse() {
+    console.log("this.courseForm.value : ", this.courseForm.value);
+    this.CoursesService.addCourse(this.courseForm.value).subscribe(
       (data) => {
         if (data && data.body.success) {
           // Add File

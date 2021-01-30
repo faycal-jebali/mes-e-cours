@@ -1,35 +1,54 @@
 <nav>
-    <a [routerLink]="['/administrator/user/all']" class="btn btn-sm waves-effect btn-info float-right">Utilisateurs</a>
+  <a
+    [routerLink]="['/administrator/user/all']"
+    class="btn btn-sm waves-effect btn-info float-right"
+    >Utilisateurs</a
+  >
 </nav>
 <div class="mat-typography">
-    <h1>Nouveau Utilisateur</h1>
-    <div class="newUserForm">
-        <form novalidate [formGroup]="newUserForm" (ngSubmit)="newUser();">
-            <mat-tab-group>
-                <mat-tab label="Identité">
-                    <identite-form (formReady)="formInitialized('identity', $event)"></identite-form>
-                    <!--Role-->
-                    <div class="col-12">
-                        <mat-form-field>
-                            <mat-label>Rôle :</mat-label>
-                            <select matNativeControl formControlName='role'>
-                                        <option *ngFor="let itemRole of roles | keyvalue;" [value]="itemRole.key">{{ itemRole.value }}</option>
-                                    </select>
-                        </mat-form-field>
-                    </div>
-                </mat-tab>
-                <mat-tab label="Adresse">
-                    <adresse-form (formReady)="formInitialized('address', $event)"></adresse-form>
-                </mat-tab>
-                <mat-tab label="Contact">
-                    <contact-form (formReady)="formInitialized('contact', $event)"></contact-form>
-                </mat-tab>
-            </mat-tab-group>
-            <button type="submit" class="btn btn-sm waves-effect btn-info float-right" [disabled]="!newUserForm.valid">Ajouter</button>
-        </form>
-    </div>
+  <h1>Nouveau Utilisateur</h1>
+  <div class="newUserForm">
+    <form novalidate [formGroup]="newUserForm" (ngSubmit)="newUser()">
+      <mat-tab-group>
+        <mat-tab label="Identité">
+          <identite-form
+            (formReady)="formInitialized('identity', $event)"
+          ></identite-form>
+          <!--Role-->
+          <div class="col-12">
+            <mat-form-field>
+              <mat-label>Rôle :</mat-label>
+              <select matNativeControl formControlName="role">
+                <!-- <option *ngFor="let itemRole of roles | keyvalue;" [value]="itemRole.key">{{ itemRole.value }}</option> -->
+                <option *ngFor="let itemRole of roles" [value]="itemRole.key">
+                  {{ itemRole.value }}
+                </option>
+              </select>
+            </mat-form-field>
+          </div>
+        </mat-tab>
+        <mat-tab label="Adresse">
+          <adresse-form
+            (formReady)="formInitialized('address', $event)"
+          ></adresse-form>
+        </mat-tab>
+        <mat-tab label="Contact">
+          <contact-form
+            (formReady)="formInitialized('contact', $event)"
+          ></contact-form>
+        </mat-tab>
+      </mat-tab-group>
+      <button
+        type="submit"
+        class="btn btn-sm waves-effect btn-info float-right"
+        [disabled]="!newUserForm?.valid"
+      >
+        Ajouter
+      </button>
+    </form>
+  </div>
 
-    <!--h2 class='mat-h2'>Form Value</h2>
+  <!--h2 class='mat-h2'>Form Value</h2>
     <pre>
       {#{newUserForm.value | json}#}
     </pre-->

@@ -1,4 +1,4 @@
 export const ConfigurationApp = {
-    portBack: 4000,
-    pathBack: 'ttp://localhost:4000/api/'
-}
+  portBack: 5100,
+  pathBack: "ttp://localhost:5100/api/",
+};

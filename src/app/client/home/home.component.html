@@ -1,0 +1,22 @@
+<!--Bannière-->
+<app-banniere></app-banniere>
+<!--end Banniere-->
+<div class="container">
+  <div class="row">
+    <div *ngIf="courses">
+      <!--Carrousel-->
+      <shared-carrousel
+        titre="Meuilleurs cours en Développement"
+        [data]="courses"
+      ></shared-carrousel>
+      <!--Fin Carrousel-->
+
+      <!--Carrousel-->
+      <shared-carrousel
+        titre="Meuilleurs cours en Design"
+        [data]="courses"
+      ></shared-carrousel>
+      <!--Fin Carrousel-->
+    </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
 import { FileUploader } from "ng2-file-upload";
 import { NotificationService } from "../../../shared/components/notification/notification.service";
 
-const UploadURL = "http://localhost:4000/api/categories/upload";
+const UploadURL = "http://localhost:5100/api/categories/upload";
 @Component({
   selector: "app-new-category",
   templateUrl: "./new-category.component.html",

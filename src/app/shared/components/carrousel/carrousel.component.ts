@@ -1,24 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { ItemCarrouselComponent } from './item-carrousel/item-carrousel.component';
+import { Component, OnInit, Input } from "@angular/core";
+import { Router } from "@angular/router";
+import { ItemCarrouselComponent } from "./item-carrousel/item-carrousel.component";
 
 @Component({
-  selector: 'shared-carrousel',
-  templateUrl: './carrousel.component.html',
-  styleUrls: ['./carrousel.component.scss'],
+  selector: "shared-carrousel",
+  templateUrl: "./carrousel.component.html",
+  styleUrls: ["./carrousel.component.scss"],
 })
 export class CarrouselComponent implements OnInit {
   itemsParPage = 4;
   @Input() titre: string;
-  @Input() formations: any;
+  @Input() data: any;
 
   slides: any = [[]];
 
-  constructor(
-    private router: Router,
-  ) {
-
-  }
+  constructor(private router: Router) {}
 
   chunk(arr, chunkSize) {
     const R = [];
@@ -28,15 +24,17 @@ export class CarrouselComponent implements OnInit {
     return R;
   }
   ngOnInit() {
-    if (this.formations) {
-      this.slides = this.chunk(this.formations, this.itemsParPage);
+    console.log("carrousel :: ", this.data.length);
+    if (this.data) {
+      this.slides = this.chunk(this.data, this.itemsParPage);
+      console.log("slides :: ", this.slides);
     }
   }
 
   /**
-   * Get Détails Formation
+   * Get Détails Course
    */
-  getFormation(id: number) {
-    console.log('Formation : ', id);
+  getCourse(id: number) {
+    console.log("Course : ", id);
   }
 }

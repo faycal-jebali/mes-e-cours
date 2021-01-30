@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { FormationsService } from "../../shared/services/formations.service";
+import { CoursesService } from "../../shared/services/courses.service";
 import { UserService } from "../../shared/services/user.service";
 import { NotificationService } from "../../shared/components/notification/notification.service";
 import { AuthService } from "../../shared/services/auth.service";
@@ -18,19 +18,19 @@ export class DetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private formationsService: FormationsService,
+    private CoursesService: CoursesService,
     private userService: UserService,
     private readonly notificationService: NotificationService,
     private readonly authService: AuthService
   ) {}
 
   ngOnInit() {
-    this.formationsService
-      .getFormation(this.route.snapshot.params["id"])
-      .subscribe((data: {}) => {
+    this.CoursesService.getCourse(this.route.snapshot.params["id"]).subscribe(
+      (data: {}) => {
         console.log(data);
         this.product = data;
-      });
+      }
+    );
 
     this.authService.currentUser.subscribe((data) => {
       console.log("Current User :: ", data);
@@ -50,17 +50,17 @@ export class DetailsComponent implements OnInit {
               data.body.message
             );
           }
-          console.log("Attach Formation OK : ", data);
+          console.log("Attach Course OK : ", data);
         },
         (error) => {
           this.notificationService.error(
             "Problème!",
-            `Au niveau de l'attachement de la formation`,
+            `Au niveau de l'attachement de la course`,
             error,
             true
           );
         }
       );
-    console.log(`Attacher Formation id  : `, id);
+    console.log(`Attacher Course id  : `, id);
   }
 }

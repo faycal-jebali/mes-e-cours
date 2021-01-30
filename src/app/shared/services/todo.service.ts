@@ -9,10 +9,10 @@ export class TodoService {
   constructor(private http: HttpClient) {}
 
   getTodos() {
-    return this.http.get<Todo[]>("http://localhost:4000/api/todos");
+    return this.http.get<Todo[]>("http://localhost:5100/api/todos");
   }
 
   getTodo(id: number) {
-    return this.http.get<Todo>(`http://localhost:4000/api/todos/${id}`);
+    return this.http.get<Todo>(`http://localhost:5100/api/todos/${id}`);
   }
 }

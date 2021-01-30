@@ -1,5 +1,10 @@
+import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  NgModule,
+  NO_ERRORS_SCHEMA,
+} from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
@@ -13,47 +18,48 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatTableModule } from "@angular/material/table";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
 import { FileUploadModule } from "ng2-file-upload";
 
 import { UserService } from "../shared/services/user.service";
 import { SharedModule } from "../shared/shared.module";
+import { AdminRoutingModule } from "./admin-routing.module";
 import { AdminComponent } from "./admin.component";
 import { CategoriesComponent } from "./category-management/categories/categories.component";
 import { EditCategoryComponent } from "./category-management/edit-category/edit-category.component";
 import { NewCategoryComponent } from "./category-management/new-category/new-category.component";
-import { EditFormationComponent } from "./course-management/edit-course/edit-course.component";
-import { FormationsComponent } from "./course-management/courses/courses.component";
-import { NewFormationComponent } from "./course-management/new-course/new-course.component";
+import { CoursesListComponent } from "./course-management/courses-list/courses-list.component";
+import { EditCourseComponent } from "./course-management/edit-course/edit-course.component";
+import { NewCourseComponent } from "./course-management/new-course/new-course.component";
 import { EditUserComponent } from "./user-management/edit-user/edit-user.component";
 import { MyAccountComponent } from "./user-management/my-account/my-account.component";
 import { NewUserComponent } from "./user-management/new-user/new-user.component";
-import { UsersComponent } from "./user-management/users/users.component";
+import { UsersListComponent } from "./user-management/users-list/users-list.component";
 
 // Training
 // Category
 @NgModule({
   declarations: [
     AdminComponent,
-    UsersComponent,
-    NewUserComponent,
-    EditUserComponent,
-    FormationsComponent,
-    NewFormationComponent,
-    EditFormationComponent,
+    CoursesListComponent,
+    NewCourseComponent,
+    EditCourseComponent,
     CategoriesComponent,
     NewCategoryComponent,
     EditCategoryComponent,
+    UsersListComponent,
+    NewUserComponent,
+    EditUserComponent,
     MyAccountComponent,
   ],
   imports: [
-    FileUploadModule,
-    BrowserModule,
-    HttpClientModule,
+    RouterModule,
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
+    FileUploadModule,
+    HttpClientModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -66,17 +72,12 @@ import { UsersComponent } from "./user-management/users/users.component";
     MatTabsModule,
     MatFormFieldModule,
     MatTableModule,
-    RouterModule,
-    SharedModule,
     CKEditorModule,
+    AdminRoutingModule,
+    SharedModule,
   ],
   providers: [UserService],
   exports: [
-    AdminComponent,
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -88,17 +89,18 @@ import { UsersComponent } from "./user-management/users/users.component";
     MatNativeDateModule,
     MatTabsModule,
     MatFormFieldModule,
-    UsersComponent,
-    NewUserComponent,
-    EditUserComponent,
-    FormationsComponent,
-    NewFormationComponent,
-    EditFormationComponent,
+    CoursesListComponent,
+    NewCourseComponent,
+    EditCourseComponent,
     CategoriesComponent,
     NewCategoryComponent,
     EditCategoryComponent,
     CKEditorModule,
+    UsersListComponent,
+    NewUserComponent,
+    EditUserComponent,
+    MyAccountComponent,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class AdminModule {}
