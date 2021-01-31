@@ -37,29 +37,31 @@ import { MyAccountComponent } from "./user-management/my-account/my-account.comp
 import { NewUserComponent } from "./user-management/new-user/new-user.component";
 import { UsersListComponent } from "./user-management/users-list/users-list.component";
 
-// Training
-// Category
 @NgModule({
   declarations: [
     AdminComponent,
-    CoursesListComponent,
-    NewCourseComponent,
-    EditCourseComponent,
+    // categories
     CategoriesComponent,
     NewCategoryComponent,
     EditCategoryComponent,
+    // Courses
+    CoursesListComponent,
+    NewCourseComponent,
+    EditCourseComponent,
+    // Users
     UsersListComponent,
     NewUserComponent,
     EditUserComponent,
     MyAccountComponent,
   ],
   imports: [
+    CommonModule,
+    AdminRoutingModule,
     RouterModule,
     FormsModule,
-    CommonModule,
     ReactiveFormsModule,
-    FileUploadModule,
     HttpClientModule,
+    FileUploadModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -73,11 +75,11 @@ import { UsersListComponent } from "./user-management/users-list/users-list.comp
     MatFormFieldModule,
     MatTableModule,
     CKEditorModule,
-    AdminRoutingModule,
-    SharedModule,
+    // SharedModule,
   ],
   providers: [UserService],
   exports: [
+    AdminComponent,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -88,6 +90,7 @@ import { UsersListComponent } from "./user-management/users-list/users-list.comp
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
+    CKEditorModule,
     MatFormFieldModule,
     CoursesListComponent,
     NewCourseComponent,
@@ -95,7 +98,6 @@ import { UsersListComponent } from "./user-management/users-list/users-list.comp
     CategoriesComponent,
     NewCategoryComponent,
     EditCategoryComponent,
-    CKEditorModule,
     UsersListComponent,
     NewUserComponent,
     EditUserComponent,

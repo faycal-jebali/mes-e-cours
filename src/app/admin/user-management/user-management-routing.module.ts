@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { AdminComponent } from "../admin.component";
+import { RouterModule, Routes } from "@angular/router";
+
 import { EditUserComponent } from "./edit-user/edit-user.component";
 import { MyAccountComponent } from "./my-account/my-account.component";
 import { NewUserComponent } from "./new-user/new-user.component";

@@ -20,8 +20,10 @@
             <mat-form-field>
               <mat-label>Rôle :</mat-label>
               <select matNativeControl formControlName="role" multiple>
-                <!-- <option *ngFor="let itemRole of roles | keyvalue;" [value]="itemRole.key">{{ itemRole.value }}</option> -->
-                <option *ngFor="let itemRole of roles" [value]="itemRole.key">
+                <option
+                  *ngFor="let itemRole of roles | keyvalue"
+                  [value]="itemRole.key"
+                >
                   {{ itemRole.value }}
                 </option>
               </select>

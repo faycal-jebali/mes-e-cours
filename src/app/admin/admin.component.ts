@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder } from "@angular/forms";
-import { UserService } from "../shared/services/user.service";
+import { FormBuilder, FormGroup } from "@angular/forms";
+
 import { AuthService } from "../shared/services/auth.service";
+import { UserService } from "../shared/services/user.service";
 
 @Component({
   selector: "app-admin",

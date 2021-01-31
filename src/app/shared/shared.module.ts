@@ -52,9 +52,32 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
+  declarations: [
+    CascadingPanelComponent,
+    CascadingCardComponent,
+    OverlayCardComponent,
+    PanelComponent,
+    ModalComponent,
+    CarrouselComponent,
+    ItemCarrouselComponent,
+    AdresseFormComponent,
+    ContactFormComponent,
+    IdentiteFormComponent,
+    InputSimpleFilterComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+      defaultLanguage: "fr",
+    }),
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -72,32 +95,15 @@ export function createTranslateLoader(http: HttpClient) {
     ButtonsModule,
     ModalModule,
     MDBRootModule,
+    NotificationModule,
+  ],
+  providers: [TranslateService, TranslateStore],
+  exports: [
+    CommonModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    NotificationModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient],
-      },
-      defaultLanguage: "fr",
-    }),
-  ],
-  declarations: [
-    CascadingPanelComponent,
-    CascadingCardComponent,
-    OverlayCardComponent,
-    PanelComponent,
-    ModalComponent,
-    CarrouselComponent,
-    ItemCarrouselComponent,
-    AdresseFormComponent,
-    ContactFormComponent,
-    IdentiteFormComponent,
-    InputSimpleFilterComponent,
-  ],
-  exports: [
+    TranslateModule,
     MDBBootstrapModule,
     InputsModule,
     ButtonsModule,
@@ -115,9 +121,7 @@ export function createTranslateLoader(http: HttpClient) {
     ContactFormComponent,
     IdentiteFormComponent,
     InputSimpleFilterComponent,
-    TranslateModule,
   ],
-  providers: [TranslateService, TranslateStore],
-  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class SharedModule {}
