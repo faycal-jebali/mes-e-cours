@@ -13,7 +13,7 @@ import { DetailsComponent } from "./details/details.component";
 
 @NgModule({
   declarations: [LoginComponent, DetailsCourseComponent, DetailsComponent],
-  imports: [CommonModule, ClientRoutingModule, SharedModule],
+  imports: [SharedModule, /*CommonModule,*/ ClientRoutingModule],
   exports: [LoginComponent, DetailsCourseComponent, DetailsComponent],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
 })

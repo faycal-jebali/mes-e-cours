@@ -54,10 +54,11 @@ export function tokenGetter() {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
+    SharedModule,
+    // FormsModule,
+    // ReactiveFormsModule,
+    // HttpClientModule,
+    // BrowserAnimationsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -69,8 +70,8 @@ export function tokenGetter() {
     MatRadioModule,
     MatExpansionModule,
     // AdminModule,
-    // ClientModule,
-    SharedModule,
+    ClientModule,
+    // SharedModule,
   ],
   providers: [UserService, AuthService, AuthGuard, CoursesService, RestService],
   bootstrap: [AppComponent],

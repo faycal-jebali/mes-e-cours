@@ -9,7 +9,7 @@ import { CourseManagementRoutingModule } from "./course-management-routing.modul
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, CourseManagementRoutingModule],
+  imports: [CourseManagementRoutingModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class CourseManagementModule {}
