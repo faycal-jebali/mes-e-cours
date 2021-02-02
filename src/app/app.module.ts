@@ -9,13 +9,14 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatRadioModule } from "@angular/material/radio";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { RouterModule } from "@angular/router";
 import { JwtModule } from "@auth0/angular-jwt";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AdminModule } from "./admin/admin.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { MonCompteComponent } from "./client/account/my-account/my-account.component";
+import { MyAccountComponent } from "./client/account/my-account/my-account.component";
 import { MyCoursesComponent } from "./client/account/my-courses/my-courses.component";
 import { ClientModule } from "./client/client.module";
 import { CoursesComponent } from "./client/courses/courses.component";
@@ -44,21 +45,19 @@ export function tokenGetter() {
     FooterComponent,
     NavigationComponent,
     BanniereComponent,
-    // LoginComponent,
-    // DetailsComponent,
-    // DetailsCourseComponent,
     CoursesComponent,
-    MonCompteComponent,
+    MyAccountComponent,
     MyCoursesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     SharedModule,
-    // FormsModule,
-    // ReactiveFormsModule,
-    // HttpClientModule,
-    // BrowserAnimationsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -66,12 +65,10 @@ export function tokenGetter() {
         blacklistedRoutes: ["localhost:5100/api/auth"],
       },
     }),
-    NgbModule.forRoot(),
+    NgbModule,
     MatRadioModule,
     MatExpansionModule,
-    // AdminModule,
     ClientModule,
-    // SharedModule,
   ],
   providers: [UserService, AuthService, AuthGuard, CoursesService, RestService],
   bootstrap: [AppComponent],

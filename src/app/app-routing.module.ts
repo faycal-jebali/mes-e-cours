@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { MonCompteComponent } from "./client/account/my-account/my-account.component";
+import { MyAccountComponent } from "./client/account/my-account/my-account.component";
 import { CoursesComponent } from "./client/courses/courses.component";
 import { DetailsCourseComponent } from "./client/details-course/details-course.component";
 import { DetailsComponent } from "./client/details/details.component";
@@ -29,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: "mon-compte",
-    component: MonCompteComponent,
+    component: MyAccountComponent,
     data: { title: "Mon Compte" },
     canActivate: [AuthGuard],
   },
