@@ -46,6 +46,9 @@ import { ModalComponent } from "./components/modal/modal.component";
 import { NotificationModule } from "./components/notification/notification.module";
 import { OverlayCardComponent } from "./components/overlay-card/overlay-card.component";
 import { PanelComponent } from "./components/panel/panel.component";
+import { AdresseFormComponent } from "./components/users/adresse-form/adresse-form.component";
+import { ContactFormComponent } from "./components/users/contact-form/contact-form.component";
+import { IdentiteFormComponent } from "./components/users/identite-form/identite-form.component";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -61,6 +64,9 @@ export function createTranslateLoader(http: HttpClient) {
     CarrouselComponent,
     ItemCarrouselComponent,
     InputSimpleFilterComponent,
+    IdentiteFormComponent,
+    AdresseFormComponent,
+    ContactFormComponent,
   ],
   imports: [
     CommonModule,
@@ -145,6 +151,9 @@ export function createTranslateLoader(http: HttpClient) {
     CarrouselComponent,
     ItemCarrouselComponent,
     InputSimpleFilterComponent,
+    IdentiteFormComponent,
+    AdresseFormComponent,
+    ContactFormComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
