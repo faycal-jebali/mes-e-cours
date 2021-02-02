@@ -12,7 +12,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
 import { JwtModule } from "@auth0/angular-jwt";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { AdminModule } from "./admin/admin.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -20,10 +19,7 @@ import { MyAccountComponent } from "./client/account/my-account/my-account.compo
 import { MyCoursesComponent } from "./client/account/my-courses/my-courses.component";
 import { ClientModule } from "./client/client.module";
 import { CoursesComponent } from "./client/courses/courses.component";
-import { DetailsCourseComponent } from "./client/details-course/details-course.component";
-import { DetailsComponent } from "./client/details/details.component";
 import { HomeComponent } from "./client/home/home.component";
-import { LoginComponent } from "./client/login/login.component";
 import { BanniereComponent } from "./client/main-layout/banniere/banniere.component";
 import { FooterComponent } from "./client/main-layout/footer/footer.component";
 import { NavigationComponent } from "./client/main-layout/navigation/navigation.component";
@@ -50,6 +46,7 @@ export function tokenGetter() {
     MyCoursesComponent,
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -57,7 +54,6 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    SharedModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

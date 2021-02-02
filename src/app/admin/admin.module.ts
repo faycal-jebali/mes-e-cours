@@ -21,7 +21,6 @@ import { CategoryManagementModule } from "./category-management/category-managem
     SharedModule,
     CommonModule,
     AdminRoutingModule,
-    CategoryManagementModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
@@ -29,7 +28,7 @@ import { CategoryManagementModule } from "./category-management/category-managem
     FileUploadModule,
   ],
   providers: [UserService],
-  exports: [AdminComponent],
+  exports: [AdminComponent, SharedModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class AdminModule {}
