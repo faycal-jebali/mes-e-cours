@@ -7,31 +7,38 @@ import { DetailsCourseComponent } from "./client/details-course/details-course.c
 import { DetailsComponent } from "./client/details/details.component";
 import { HomeComponent } from "./client/home/home.component";
 import { LoginComponent } from "./client/login/login.component";
+import { FrontLayoutComponent } from "./client/main-layout/front-layout/front-layout.component";
 import { AuthGuard } from "./shared/guards/auth.guard";
 
 // Training
 //Category
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
-  { path: "login", component: LoginComponent },
   {
-    path: "courses",
-    component: CoursesComponent,
-  },
-  {
-    path: "courses/:id",
-    component: DetailsComponent,
-  },
-  {
-    path: "course/:id",
-    component: DetailsCourseComponent,
-  },
-  {
-    path: "mon-compte",
-    component: MyAccountComponent,
-    data: { title: "Mon Compte" },
-    canActivate: [AuthGuard],
+    path: "",
+    component: FrontLayoutComponent,
+    children: [
+      { path: "", component: HomeComponent },
+      { path: "login", component: LoginComponent },
+      {
+        path: "courses",
+        component: CoursesComponent,
+      },
+      {
+        path: "courses/:id",
+        component: DetailsComponent,
+      },
+      {
+        path: "course/:id",
+        component: DetailsCourseComponent,
+      },
+      {
+        path: "my-account",
+        component: MyAccountComponent,
+        data: { title: "Mon Compte" },
+        canActivate: [AuthGuard],
+      },
+    ],
   },
   {
     path: "administrator",

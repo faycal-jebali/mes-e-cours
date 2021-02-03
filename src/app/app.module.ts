@@ -22,6 +22,7 @@ import { CoursesComponent } from "./client/courses/courses.component";
 import { HomeComponent } from "./client/home/home.component";
 import { BanniereComponent } from "./client/main-layout/banniere/banniere.component";
 import { FooterComponent } from "./client/main-layout/footer/footer.component";
+import { FrontLayoutComponent } from "./client/main-layout/front-layout/front-layout.component";
 import { NavigationComponent } from "./client/main-layout/navigation/navigation.component";
 import { AuthGuard } from "./shared/guards/auth.guard";
 import { AuthService } from "./shared/services/auth.service";
@@ -37,10 +38,11 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    FooterComponent,
-    NavigationComponent,
-    BanniereComponent,
+    // HomeComponent,
+    // FrontLayoutComponent,
+    // FooterComponent,
+    // NavigationComponent,
+    // BanniereComponent,
     CoursesComponent,
     MyAccountComponent,
     MyCoursesComponent,
