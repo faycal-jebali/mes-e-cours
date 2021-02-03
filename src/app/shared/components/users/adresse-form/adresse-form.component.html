@@ -1,24 +1,37 @@
-<div class="container" [formGroup]='adresseForm'>
-    <div class="row">
-        <div class="col-6">
-            <mat-form-field>
-                <input matInput type="text" placeholder="Pays" formControlName='country'>
-            </mat-form-field>
-        </div>
-        <div class="col-6">
-            <mat-form-field>
-                <input matInput type="text" placeholder="Ville" formControlName='city'>
-            </mat-form-field>
-        </div>
-        <div class="col-6">
-            <mat-form-field>
-                <input matInput type="text" placeholder="Adresse" formControlName='address'>
-            </mat-form-field>
-        </div>
-        <div class="col-6">
-            <mat-form-field>
-                <input matInput type="text" placeholder="Code postal" formControlName='zip'>
-            </mat-form-field>
-        </div>
-    </div>
+<div class="row" [formGroup]="adresseForm">
+  <div class="col-6">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        placeholder="Pays"
+        formControlName="country"
+      />
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Ville" formControlName="city" />
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        placeholder="Adresse"
+        formControlName="address"
+      />
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        placeholder="Code postal"
+        formControlName="zip"
+      />
+    </mat-form-field>
+  </div>
 </div>

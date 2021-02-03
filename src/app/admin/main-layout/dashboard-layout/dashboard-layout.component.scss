@@ -10,11 +10,8 @@ ul {
   padding: 0;
   margin: 0;
 }
-.header-top i {
-  font-size: 18px;
-}
+
 .bg-image {
-  //   background: url("../images/background-login.jpg") no-repeat 0 0 / cover;
   position: relative;
   width: 100%;
   height: 100vh;
@@ -121,21 +118,6 @@ ul {
   width: 100%;
 }
 
-.user input {
-  //   background: rgba(0, 0, 0, 0) url("../images/user.png") no-repeat scroll 7px
-  //     12px;
-}
-
-.pass input {
-  //   background: rgba(0, 0, 0, 0) url("../images/password.png") no-repeat scroll
-  //     7px 12px;
-}
-
-.mail input {
-  //   background: rgba(0, 0, 0, 0) url("../images/mail.png") no-repeat scroll 4px
-  //     12px;
-}
-
 .login-signup .tab-content {
   background: #ffffff none repeat scroll 0 0;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
@@ -176,20 +158,18 @@ ul {
   padding: 70px 0;
 }
 
-/*Login Signup Page*/
-
-/*Home Page*/
-
 .home {
   background: #f6f7fa;
 }
 
 #navigation {
   background: #0e1a35;
-}
-
-#navigation {
+  margin-top: 82px;
   padding: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .display-table {
@@ -219,35 +199,7 @@ ul {
   width: 100%;
 }
 
-.header-top {
-  margin: 0;
-  padding-top: 2px;
-}
-
-.header-top img {
-  border-radius: 50%;
-  max-width: 48px !important;
-  width: 100%;
-}
-
-.add-project {
-  background: #5584ff none repeat scroll 0 0;
-  border-radius: 100px;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 10px 27px 10px 45px;
-  position: relative;
-}
-
-.header-rightside .nav > li > a:focus,
-.header-rightside .nav > li > a:hover {
-  background: none;
-  text-decoration: none;
-}
-
 .add-project::before {
-  //   background: rgba(0, 0, 0, 0) url("../images/plus.png") no-repeat scroll 0 0;
   content: "";
   height: 12px;
   left: 17px;
@@ -258,10 +210,6 @@ ul {
 
 .add-project:hover {
   color: #ffffff;
-}
-
-.header-top i {
-  color: #0e1a35;
 }
 
 .icon-info {
@@ -285,20 +233,6 @@ ul {
   text-align: center;
 }
 
-.header-top li {
-  display: inline-block;
-  text-align: center;
-}
-
-.header-top .dropdown-toggle {
-  color: #0e1a35;
-}
-
-.header-top .dropdown-menu {
-  border: medium none;
-  left: -85px;
-  padding: 17px;
-}
 .view {
   background: #5584ff none repeat scroll 0 0;
   border-radius: 100px;
@@ -318,92 +252,7 @@ ul {
 .img-responsive {
   width: 100%;
 }
-#navigation {
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-.search input {
-  border: none;
-  font-size: 15px;
-  padding: 15px 9px;
-  width: 100%;
-  //   background: rgba(0, 0, 0, 0) url("../images/search.png") no-repeat scroll 99%
-  //     12px;
-  color: #8492af;
-}
 
-header {
-  background: #ffffff none repeat scroll 0 0;
-  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
-  display: inline-block !important;
-  line-height: 23px;
-  padding: 15px;
-  transition: all 0.5s ease 0s;
-  width: 100%;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-.logo {
-  text-align: center;
-}
-
-.navi a {
-  border-bottom: 1px solid #0d172e;
-  border-top: 1px solid #0d172e;
-  color: #ffffff;
-  display: block;
-  font-size: 17px;
-  font-weight: 500;
-  padding: 28px 20px;
-  text-decoration: none;
-}
-
-.navi i {
-  margin-right: 15px;
-  color: #5584ff;
-}
-
-.navi .active a {
-  background: #122143;
-  border-left: 5px solid #5584ff;
-  padding-left: 15px;
-}
-
-.navi a:hover {
-  background: #122143 none repeat scroll 0 0;
-  border-left: 5px solid #5584ff;
-  display: block;
-  padding-left: 15px;
-}
-
-.navbar-default {
-  background-color: #ffffff;
-  border-color: #ffffff;
-}
-
-.navbar-toggle {
-  border: none;
-}
-
-.navbar-default .navbar-toggle:focus,
-.navbar-default .navbar-toggle:hover {
-  background-color: rgba(0, 0, 0, 0);
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #0e1a35;
-}
-
-.circle-logo {
-  margin: 0 auto;
-  max-width: 30px !important;
-  text-align: center;
-}
 .hidden-xs {
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -412,16 +261,16 @@ header {
 }
 
 .user-dashboard {
-  padding: 0 20px;
+  padding: 0;
+  h1 {
+    color: #0e1a35;
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0;
+    padding: 21px 0;
+  }
 }
 
-.user-dashboard h1 {
-  color: #0e1a35;
-  font-size: 30px;
-  font-weight: 500;
-  margin: 0;
-  padding: 21px 0;
-}
 .sales {
   background: #ffffff none repeat scroll 0 0;
   border: 1px solid #d4d9e3;

@@ -1,12 +1,14 @@
-import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, BehaviorSubject } from "rxjs";
-import { map, catchError } from "rxjs/operators";
+import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
+import { map } from "rxjs/operators";
+
 import { UserService } from "./user.service";
 
 @Injectable()
 export class AuthService {
   currentUser = new BehaviorSubject({});
+
   constructor(private http: HttpClient, private userService: UserService) {
     const current_user = localStorage.getItem("current_user");
     if (current_user) {
@@ -40,5 +42,9 @@ export class AuthService {
 
   public get loggedIn(): boolean {
     return localStorage.getItem("access_token") !== null;
+  }
+
+  public getCurrentUser(): Object {
+    return JSON.parse(localStorage.getItem("current_user"));
   }
 }

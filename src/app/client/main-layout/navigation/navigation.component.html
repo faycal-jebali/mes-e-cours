@@ -58,7 +58,16 @@
           [routerLink]="['my-account']"
           routerLinkActive="active"
           *ngIf="auth?.loggedIn"
-          >Profil</a
+          >Mon Compte</a
+        >
+      </li>
+      <li>
+        <a
+          class="nav-link"
+          [routerLink]="['my-account', 'courses']"
+          routerLinkActive="active"
+          *ngIf="auth?.loggedIn"
+          >Mes courses</a
         >
       </li>
       <li>

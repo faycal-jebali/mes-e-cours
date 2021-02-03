@@ -11,7 +11,7 @@ const routes: Routes = [
     path: "",
     children: [
       {
-        path: "current",
+        path: "profil",
         component: MyAccountComponent,
       },
       {
