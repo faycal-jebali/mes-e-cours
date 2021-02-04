@@ -7,6 +7,8 @@ import { User } from "./../business-objects/user";
 const pathBack = "http://localhost:5100/api";
 
 const acces_token = localStorage.getItem("access_token");
+
+// TODO httpInterceptor canon't detect /api/users for adding the token to Bearer
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "application/json",

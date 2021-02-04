@@ -4,7 +4,9 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 const pathBack = "http://localhost:5100/api";
-@Injectable()
+@Injectable({
+  providedIn: "root",
+})
 export class AuthService {
   currentUser = new BehaviorSubject({});
 

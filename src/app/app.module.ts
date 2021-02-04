@@ -59,10 +59,6 @@ export function tokenGetter() {
     ClientModule,
   ],
   providers: [
-    UserService,
-    AuthService,
-    AuthGuard,
-    CoursesService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
