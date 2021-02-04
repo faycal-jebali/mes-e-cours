@@ -1,17 +1,22 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from "@angular/core";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { ReactiveFormsModule } from "@angular/forms";
 
-import { ContactFormComponent } from './contact-form.component';
+import { ContactFormComponent } from "./contact-form.component";
 
-describe('ContactFormComponent', () => {
+describe("ContactFormComponent", () => {
   let component: ContactFormComponent;
   let fixture: ComponentFixture<ContactFormComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ContactFormComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ContactFormComponent],
+        imports: [ReactiveFormsModule],
+        schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ContactFormComponent);
@@ -19,7 +24,7 @@ describe('ContactFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
