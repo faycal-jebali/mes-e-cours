@@ -1,9 +1,9 @@
-import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
-import { AuthService } from "../../shared/services/auth.service";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { first } from "rxjs/operators";
 
-import { FormControl, FormBuilder, FormGroup } from "@angular/forms";
+import { AuthService } from "../../shared/services/auth.service";
 
 @Component({
   selector: "app-login",

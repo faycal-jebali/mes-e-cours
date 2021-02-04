@@ -1,0 +1,50 @@
+<div class="logo"></div>
+<div class="navi">
+  <ul class="menu-left">
+    <li>
+      <a
+        class="nav-link"
+        routerLink="/administrator/user/profil"
+        routerLinkActive="active"
+        *ngIf="auth.loggedIn"
+        ><i class="fa fa-home" aria-hidden="true"></i> Mon compte</a
+      >
+    </li>
+    <li>
+      <a
+        class="nav-link"
+        routerLink="/administrator/user/all"
+        routerLinkActive="active"
+        *ngIf="auth.loggedIn"
+        ><i class="fa fa-home" aria-hidden="true"></i> Utilisateurs</a
+      >
+    </li>
+    <li>
+      <a
+        class="nav-link"
+        routerLink="/administrator/course/all"
+        routerLinkActive="active"
+        *ngIf="auth.loggedIn"
+        ><i class="fa fa-home" aria-hidden="true"></i> Formations</a
+      >
+    </li>
+    <li>
+      <a
+        class="nav-link"
+        routerLink="/administrator/category/all"
+        routerLinkActive="active"
+        *ngIf="auth.loggedIn"
+        ><i class="fa fa-home" aria-hidden="true"></i> Catégories</a
+      >
+    </li>
+    <li>
+      <a
+        class="nav-link"
+        routerLink="/administrator/course/all"
+        routerLinkActive="active"
+        *ngIf="auth.loggedIn"
+        ><i class="fa fa-home" aria-hidden="true"></i> Commandes</a
+      >
+    </li>
+  </ul>
+</div>

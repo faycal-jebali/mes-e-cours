@@ -1,24 +1,42 @@
-<div class="container" [formGroup]='contactForm'>
-    <div class="row">
-        <div class="col-6">
-            <mat-form-field>
-                <input matInput type="text" placeholder="Portable" formControlName='mobile'>
-            </mat-form-field>
-        </div>
-        <div class="col-6">
-            <mat-form-field>
-                <input matInput type="text" placeholder="Téléphone" formControlName='telephone'>
-            </mat-form-field>
-        </div>
-        <div class="col-6">
-            <mat-form-field>
-                <input matInput type="text" placeholder="E-mail *" formControlName='email'>
-            </mat-form-field>
-        </div>
-        <div class="col-6">
-            <mat-form-field>
-                <input matInput type="text" placeholder="Mot de passe *" formControlName='password'>
-            </mat-form-field>
-        </div>
-    </div>
+<div class="row" [formGroup]="contactForm">
+  <div class="col-6">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        placeholder="Portable"
+        formControlName="mobile"
+      />
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        placeholder="Téléphone"
+        formControlName="telephone"
+      />
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        placeholder="E-mail *"
+        formControlName="email"
+      />
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        placeholder="Mot de passe *"
+        formControlName="password"
+      />
+    </mat-form-field>
+  </div>
 </div>

@@ -1,13 +1,11 @@
 <div class="bc-carrousel">
   <!--Catégorie-->
   <h3>{{ titre }}</h3>
-  <pre>{{ slides.length }}</pre>
   <mdb-carousel
     [isControls]="false"
     class="carousel-multi-item multi-animation"
     [type]="'carousel-multi-item'"
   >
-    sdsds
     <mdb-carousel-item *ngFor="let item of slides; let i = index">
       <div class="row">
         <div

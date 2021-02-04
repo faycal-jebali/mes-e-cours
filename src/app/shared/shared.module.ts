@@ -1,4 +1,5 @@
 import { CommonModule } from "@angular/common";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 import {
   CUSTOM_ELEMENTS_SCHEMA,
   NgModule,
@@ -15,21 +16,25 @@ import { MatInputModule } from "@angular/material/input";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSelectModule } from "@angular/material/select";
+import { MatTableModule } from "@angular/material/table";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
+import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
 import {
+  TranslateLoader,
   TranslateModule,
   TranslateService,
   TranslateStore,
-  TranslateLoader,
 } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import {
-  MDBBootstrapModule,
-  InputsModule,
-  ModalModule,
-  MDBRootModule,
   ButtonsModule,
+  InputsModule,
+  MDBBootstrapModule,
+  MDBRootModule,
+  ModalModule,
 } from "angular-bootstrap-md";
 
 import { CarrouselComponent } from "./components/carrousel/carrousel.component";
@@ -44,9 +49,6 @@ import { PanelComponent } from "./components/panel/panel.component";
 import { AdresseFormComponent } from "./components/users/adresse-form/adresse-form.component";
 import { ContactFormComponent } from "./components/users/contact-form/contact-form.component";
 import { IdentiteFormComponent } from "./components/users/identite-form/identite-form.component";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -61,10 +63,10 @@ export function createTranslateLoader(http: HttpClient) {
     ModalComponent,
     CarrouselComponent,
     ItemCarrouselComponent,
+    InputSimpleFilterComponent,
+    IdentiteFormComponent,
     AdresseFormComponent,
     ContactFormComponent,
-    IdentiteFormComponent,
-    InputSimpleFilterComponent,
   ],
   imports: [
     CommonModule,
@@ -72,7 +74,6 @@ export function createTranslateLoader(http: HttpClient) {
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -98,6 +99,20 @@ export function createTranslateLoader(http: HttpClient) {
     ButtonsModule,
     ModalModule,
     MDBRootModule,
+    MatTableModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatTableModule,
+    CKEditorModule,
     NotificationModule,
   ],
   providers: [TranslateService, TranslateStore],
@@ -107,13 +122,26 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     TranslateModule,
     MDBBootstrapModule,
     InputsModule,
     ButtonsModule,
     ModalModule,
     MDBRootModule,
+    MatTableModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatTableModule,
+    CKEditorModule,
     NotificationModule,
     CascadingPanelComponent,
     CascadingCardComponent,
@@ -122,10 +150,10 @@ export function createTranslateLoader(http: HttpClient) {
     ModalComponent,
     CarrouselComponent,
     ItemCarrouselComponent,
+    InputSimpleFilterComponent,
+    IdentiteFormComponent,
     AdresseFormComponent,
     ContactFormComponent,
-    IdentiteFormComponent,
-    InputSimpleFilterComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

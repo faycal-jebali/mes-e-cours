@@ -7,7 +7,7 @@ import { UserService } from "../../../shared/services/user.service";
   templateUrl: "./my-account.component.html",
   styleUrls: ["./my-account.component.scss"],
 })
-export class MonCompteComponent implements OnInit {
+export class MyAccountComponent implements OnInit {
   newUserForm: FormGroup;
 
   constructor(private fb: FormBuilder, private userService: UserService) {}

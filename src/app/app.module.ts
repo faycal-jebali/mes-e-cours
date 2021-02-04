@@ -9,22 +9,20 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatRadioModule } from "@angular/material/radio";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { RouterModule } from "@angular/router";
 import { JwtModule } from "@auth0/angular-jwt";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { AdminModule } from "./admin/admin.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { MonCompteComponent } from "./client/account/my-account/my-account.component";
+import { MyAccountComponent } from "./client/account/my-account/my-account.component";
 import { MyCoursesComponent } from "./client/account/my-courses/my-courses.component";
 import { ClientModule } from "./client/client.module";
 import { CoursesComponent } from "./client/courses/courses.component";
-import { DetailsCourseComponent } from "./client/details-course/details-course.component";
-import { DetailsComponent } from "./client/details/details.component";
 import { HomeComponent } from "./client/home/home.component";
-import { LoginComponent } from "./client/login/login.component";
 import { BanniereComponent } from "./client/main-layout/banniere/banniere.component";
 import { FooterComponent } from "./client/main-layout/footer/footer.component";
+import { FrontLayoutComponent } from "./client/main-layout/front-layout/front-layout.component";
 import { NavigationComponent } from "./client/main-layout/navigation/navigation.component";
 import { AuthGuard } from "./shared/guards/auth.guard";
 import { AuthService } from "./shared/services/auth.service";
@@ -40,25 +38,24 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    FooterComponent,
-    NavigationComponent,
-    BanniereComponent,
-    // LoginComponent,
-    // DetailsComponent,
-    // DetailsCourseComponent,
+    // HomeComponent,
+    // FrontLayoutComponent,
+    // FooterComponent,
+    // NavigationComponent,
+    // BanniereComponent,
     CoursesComponent,
-    MonCompteComponent,
+    MyAccountComponent,
     MyCoursesComponent,
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
-    // FormsModule,
-    // ReactiveFormsModule,
-    // HttpClientModule,
-    // BrowserAnimationsModule,
+    HttpClientModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -66,12 +63,10 @@ export function tokenGetter() {
         blacklistedRoutes: ["localhost:5100/api/auth"],
       },
     }),
-    NgbModule.forRoot(),
+    NgbModule,
     MatRadioModule,
     MatExpansionModule,
-    // AdminModule,
     ClientModule,
-    // SharedModule,
   ],
   providers: [UserService, AuthService, AuthGuard, CoursesService, RestService],
   bootstrap: [AppComponent],
