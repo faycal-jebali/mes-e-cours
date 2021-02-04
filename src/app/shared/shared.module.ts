@@ -19,7 +19,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatTableModule } from "@angular/material/table";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatTooltipModule } from "@angular/material/tooltip";
 import { RouterModule } from "@angular/router";
 import { CKEditorModule } from "@ckeditor/ckeditor5-angular";
 import {
@@ -46,6 +46,7 @@ import { ModalComponent } from "./components/modal/modal.component";
 import { NotificationModule } from "./components/notification/notification.module";
 import { OverlayCardComponent } from "./components/overlay-card/overlay-card.component";
 import { PanelComponent } from "./components/panel/panel.component";
+import { ToolTipComponent } from "./components/tooltip/tooltip.component";
 import { AdresseFormComponent } from "./components/users/adresse-form/adresse-form.component";
 import { ContactFormComponent } from "./components/users/contact-form/contact-form.component";
 import { IdentiteFormComponent } from "./components/users/identite-form/identite-form.component";
@@ -67,6 +68,7 @@ export function createTranslateLoader(http: HttpClient) {
     IdentiteFormComponent,
     AdresseFormComponent,
     ContactFormComponent,
+    ToolTipComponent,
   ],
   imports: [
     CommonModule,
@@ -112,6 +114,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatTabsModule,
     MatFormFieldModule,
     MatTableModule,
+    MatTooltipModule,
     CKEditorModule,
     NotificationModule,
   ],
@@ -141,6 +144,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatTabsModule,
     MatFormFieldModule,
     MatTableModule,
+    MatTooltipModule,
     CKEditorModule,
     NotificationModule,
     CascadingPanelComponent,
@@ -154,6 +158,7 @@ export function createTranslateLoader(http: HttpClient) {
     IdentiteFormComponent,
     AdresseFormComponent,
     ContactFormComponent,
+    ToolTipComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

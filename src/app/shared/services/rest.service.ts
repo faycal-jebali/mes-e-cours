@@ -19,14 +19,6 @@ const httpOptions = {
   }),
 };
 
-const httpOptionsPost = {
-  // headers: new HttpHeaders({
-  //   'Content-Type':  'application/json',
-  //   'Authorization' : `Bearer ${token}`,
-  //   'responseType': 'text'
-  // })
-};
-
 @Injectable({
   providedIn: "root",
 })

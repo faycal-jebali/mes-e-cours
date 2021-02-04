@@ -1,6 +1,7 @@
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from "@angular/core";
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
-import { RouterModule } from "@angular/router";
+import { RouterTestingModule } from "@angular/router/testing";
 
 import { NotificationPageComponent } from "./notification-page.component";
 
@@ -12,7 +13,7 @@ describe("NotificationPageComponent", () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [NotificationPageComponent],
-        imports: [RouterModule.forChild([])],
+        imports: [RouterTestingModule, HttpClientTestingModule],
         schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
       }).compileComponents();
     })

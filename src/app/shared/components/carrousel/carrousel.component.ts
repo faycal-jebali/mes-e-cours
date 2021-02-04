@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { ItemCarrouselComponent } from "./item-carrousel/item-carrousel.component";
 
 @Component({
   selector: "shared-carrousel",
@@ -24,17 +23,8 @@ export class CarrouselComponent implements OnInit {
     return R;
   }
   ngOnInit() {
-    console.log("carrousel :: ", this.data.length);
     if (this.data) {
       this.slides = this.chunk(this.data, this.itemsParPage);
-      console.log("slides :: ", this.slides);
     }
-  }
-
-  /**
-   * Get Détails Course
-   */
-  getCourse(id: number) {
-    console.log("Course : ", id);
   }
 }

@@ -1,13 +1,14 @@
-import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { User } from "./../business-objects/user";
+import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { tap } from "rxjs/operators";
+
+import { User } from "./../business-objects/user";
 
 const pathBack = "http://localhost:5100/api/";
 // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsImlhdCI6MTU1MjI1Nzc4NCwiZXhwIjoxNTUyMjY0OTg0fQ.rGVX1DQYtiQPDVhWW6nJT6JhL9Lk7fYC5OziJLsb35w';
 const acces_token = localStorage.getItem("access_token");
-console.log("acces_tocken : ", acces_token);
+
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "application/json",

@@ -1,15 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import { AuthService } from "../../../shared/services/auth.service";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from "@angular/material/dialog";
 
-export interface DialogData {
-  animal: "panda" | "unicorn" | "lion";
-}
+import { AuthService } from "../../../shared/services/auth.service";
 
 @Component({
   selector: "app-navigation",
@@ -18,27 +10,14 @@ export interface DialogData {
 })
 export class NavigationComponent implements OnInit {
   @ViewChild("sidenav") sidenav: ElementRef;
-  // @ViewChild('sidenav', {static: true}) public sidenav: any;
 
   clicked: boolean;
 
-  constructor(
-    public auth: AuthService,
-    public router: Router,
-    public dialog: MatDialog
-  ) {
+  constructor(public auth: AuthService, public router: Router) {
     this.clicked = this.clicked === undefined ? false : true;
   }
 
   ngOnInit() {}
-
-  openDialog() {
-    // this.dialog.open(DialogDataExampleDialog, {
-    //   data: {
-    //     animal: 'panda'
-    //   }
-    // });
-  }
 
   setClicked(val: boolean): void {
     this.clicked = val;

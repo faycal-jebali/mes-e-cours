@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
 import { LoadingWaterWaveComponent } from "./loading-water-wave.component";
 
-xdescribe("LoadingWaterWaveComponent", () => {
+describe("LoadingWaterWaveComponent", () => {
   let component: LoadingWaterWaveComponent;
   let fixture: ComponentFixture<LoadingWaterWaveComponent>;
 
