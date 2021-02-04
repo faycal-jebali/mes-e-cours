@@ -7,12 +7,10 @@ import { ConfigurationApp } from "./../config/config";
 
 // const pathBack = ConfigurationApp.pathBack;
 
-const pathBack = "http://localhost:5100/api/";
-const acces_token = localStorage.getItem("access_token");
+const pathBack = "http://localhost:5100/api";
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "application/json",
-    Authorization: `Bearer ${acces_token}`,
     observe: "response",
   }),
 };
@@ -24,55 +22,31 @@ export class CategoryService {
   constructor(private http: HttpClient) {}
   getCategory(id) {
     return this.http.get<Category[]>(
-      `http://localhost:5100/api/categories/${id}`
+      `${pathBack}/categories/${id}`,
+      httpOptions
     );
   }
   getCategories() {
-    return this.http.get<Category[]>("http://localhost:5100/api/categories");
+    return this.http.get<Category[]>(`${pathBack}/categories`, httpOptions);
   }
 
   newCategory(request): Observable<any> {
-    return this.http
-      .post<any>(pathBack + "categories", JSON.stringify(request), {
-        headers: new HttpHeaders().set("Content-Type", "application/json"),
-        observe: "response",
-      })
-      .pipe(
-        tap((resp) =>
-          setTimeout(() => {
-            console.log("header :::: ", resp.headers);
-          }, 3000)
-        )
-      );
+    return this.http.post<any>(
+      `${pathBack}/categories`,
+      JSON.stringify(request),
+      httpOptions
+    );
   }
 
   updateCategory(id, request): Observable<any> {
-    return this.http
-      .put<any>(`${pathBack}categories/${id}`, JSON.stringify(request), {
-        headers: new HttpHeaders().set("Content-Type", "application/json"),
-        observe: "response",
-      })
-      .pipe(
-        tap((resp) =>
-          setTimeout(() => {
-            console.log("header :::: ", resp.headers);
-          }, 3000)
-        )
-      );
+    return this.http.put<any>(
+      `${pathBack}/categories/${id}`,
+      JSON.stringify(request),
+      httpOptions
+    );
   }
 
   deleteCategory(id): Observable<any> {
-    return this.http
-      .delete<any>(`${pathBack}categories/${id}`, {
-        headers: new HttpHeaders().set("Content-Type", "application/json"),
-        observe: "response",
-      })
-      .pipe(
-        tap((resp) =>
-          setTimeout(() => {
-            console.log("header :::: ", resp.headers);
-          }, 3000)
-        )
-      );
+    return this.http.delete<any>(`${pathBack}/categories/${id}`, httpOptions);
   }
 }

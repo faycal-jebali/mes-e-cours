@@ -1,21 +1,14 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { RestService } from "../../../shared/services/rest.service";
-import { CoursesService } from "../../../shared/services/courses.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
-} from "@angular/common/http";
-
-import { FileUploader } from "ng2-file-upload";
-const UploadURL = "http://localhost:5100/api/courses/upload";
+import { Component, Input, OnInit } from "@angular/core";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { NotificationService } from "../../../shared/components/notification/notification.service";
-import { UserService } from "../../../shared/services/user.service";
-import { CategoryService } from "../../../shared/services/category.service";
+import { FileUploader } from "ng2-file-upload";
 
+import { NotificationService } from "../../../shared/components/notification/notification.service";
+import { CategoryService } from "../../../shared/services/category.service";
+import { CoursesService } from "../../../shared/services/courses.service";
+import { UserService } from "../../../shared/services/user.service";
+
+const UploadURL = "http://localhost:5100/api/courses/upload";
 @Component({
   selector: "app-new-course",
   templateUrl: "./new-course.component.html",
@@ -44,10 +37,6 @@ export class NewCourseComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public restService: RestService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private http: HttpClient,
     private CoursesService: CoursesService,
     private notificationService: NotificationService,
     private userService: UserService,
