@@ -3,13 +3,14 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-import { UserService } from "./user.service";
-
-@Injectable()
+const pathBack = "http://localhost:5100/api";
+@Injectable({
+  providedIn: "root",
+})
 export class AuthService {
   currentUser = new BehaviorSubject({});
 
-  constructor(private http: HttpClient, private userService: UserService) {
+  constructor(private http: HttpClient) {
     const current_user = localStorage.getItem("current_user");
     if (current_user) {
       this.currentUser.next(JSON.parse(current_user));
@@ -17,12 +18,16 @@ export class AuthService {
     }
   }
 
+  public getToken(): string {
+    return localStorage.getItem("access_token");
+  }
+
   login(username: string, password: string): Observable<boolean> {
     return this.http
-      .post<{ token: string; userData: string }>(
-        "http://localhost:5100/api/auth",
-        { username: username, password: password }
-      )
+      .post<{ token: string; userData: string }>(`${pathBack}/auth`, {
+        username: username,
+        password: password,
+      })
       .pipe(
         map((result) => {
           console.log("result :: ", result);
@@ -41,7 +46,7 @@ export class AuthService {
   }
 
   public get loggedIn(): boolean {
-    return localStorage.getItem("access_token") !== null;
+    return this.getToken() !== null;
   }
 
   public getCurrentUser(): Object {

@@ -6,7 +6,7 @@
         class="nav-link"
         routerLink="/administrator/user/profil"
         routerLinkActive="active"
-        *ngIf="auth.loggedIn"
+        *ngIf="auth?.loggedIn"
         ><i class="fa fa-home" aria-hidden="true"></i> Mon compte</a
       >
     </li>
@@ -15,7 +15,7 @@
         class="nav-link"
         routerLink="/administrator/user/all"
         routerLinkActive="active"
-        *ngIf="auth.loggedIn"
+        *ngIf="auth?.loggedIn"
         ><i class="fa fa-home" aria-hidden="true"></i> Utilisateurs</a
       >
     </li>
@@ -24,7 +24,7 @@
         class="nav-link"
         routerLink="/administrator/course/all"
         routerLinkActive="active"
-        *ngIf="auth.loggedIn"
+        *ngIf="auth?.loggedIn"
         ><i class="fa fa-home" aria-hidden="true"></i> Formations</a
       >
     </li>
@@ -33,7 +33,7 @@
         class="nav-link"
         routerLink="/administrator/category/all"
         routerLinkActive="active"
-        *ngIf="auth.loggedIn"
+        *ngIf="auth?.loggedIn"
         ><i class="fa fa-home" aria-hidden="true"></i> Catégories</a
       >
     </li>
@@ -42,7 +42,7 @@
         class="nav-link"
         routerLink="/administrator/course/all"
         routerLinkActive="active"
-        *ngIf="auth.loggedIn"
+        *ngIf="auth?.loggedIn"
         ><i class="fa fa-home" aria-hidden="true"></i> Commandes</a
       >
     </li>

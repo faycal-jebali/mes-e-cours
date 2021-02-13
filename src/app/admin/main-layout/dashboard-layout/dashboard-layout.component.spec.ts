@@ -1,16 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from "@angular/common/http";
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from "@angular/core";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ReactiveFormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
+import { AuthService } from "src/app/shared/services/auth.service";
 
-import { DashboardLayoutComponent } from './dashboard-layout.component';
+import { DashboardLayoutComponent } from "./dashboard-layout.component";
 
-describe('DashboardLayoutComponent', () => {
+describe("DashboardLayoutComponent", () => {
   let component: DashboardLayoutComponent;
   let fixture: ComponentFixture<DashboardLayoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardLayoutComponent ]
-    })
-    .compileComponents();
+      declarations: [DashboardLayoutComponent],
+      imports: [ReactiveFormsModule, HttpClientModule],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      providers: [AuthService],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +26,7 @@ describe('DashboardLayoutComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

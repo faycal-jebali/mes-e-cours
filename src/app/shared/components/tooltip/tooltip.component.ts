@@ -1,17 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from "@angular/core";
+import { MatTooltip } from "@angular/material/tooltip";
 
 @Component({
-  selector: 'shared-tooltip',
-  templateUrl: './tooltip.component.html',
-  styleUrls: ['./tooltip.component.scss']
+  selector: "shared-tooltip",
+  templateUrl: "./tooltip.component.html",
+  styleUrls: ["./tooltip.component.scss"],
 })
 export class ToolTipComponent implements OnInit {
-  @Input('options') options = {
-    text: 'Info about the action',
+  @ViewChild("tooltip") tooltip: MatTooltip;
+  @Input("options") options = {
+    text: "Info about the action",
   };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
-
+  ngOnInit() {}
 }

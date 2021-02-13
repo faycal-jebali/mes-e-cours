@@ -1,4 +1,4 @@
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import {
   CUSTOM_ELEMENTS_SCHEMA,
   NgModule,
@@ -19,15 +19,10 @@ import { MyAccountComponent } from "./client/account/my-account/my-account.compo
 import { MyCoursesComponent } from "./client/account/my-courses/my-courses.component";
 import { ClientModule } from "./client/client.module";
 import { CoursesComponent } from "./client/courses/courses.component";
-import { HomeComponent } from "./client/home/home.component";
-import { BanniereComponent } from "./client/main-layout/banniere/banniere.component";
-import { FooterComponent } from "./client/main-layout/footer/footer.component";
-import { FrontLayoutComponent } from "./client/main-layout/front-layout/front-layout.component";
-import { NavigationComponent } from "./client/main-layout/navigation/navigation.component";
 import { AuthGuard } from "./shared/guards/auth.guard";
 import { AuthService } from "./shared/services/auth.service";
 import { CoursesService } from "./shared/services/courses.service";
-import { RestService } from "./shared/services/rest.service";
+import { TokenInterceptor } from "./shared/services/token.interceptor";
 import { UserService } from "./shared/services/user.service";
 import { SharedModule } from "./shared/shared.module";
 
@@ -38,11 +33,6 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    // HomeComponent,
-    // FrontLayoutComponent,
-    // FooterComponent,
-    // NavigationComponent,
-    // BanniereComponent,
     CoursesComponent,
     MyAccountComponent,
     MyCoursesComponent,
@@ -68,7 +58,13 @@ export function tokenGetter() {
     MatExpansionModule,
     ClientModule,
   ],
-  providers: [UserService, AuthService, AuthGuard, CoursesService, RestService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

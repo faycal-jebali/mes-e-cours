@@ -1,17 +1,20 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from "@angular/core";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { CascadingCardComponent } from './cascading-card.component';
+import { CascadingCardComponent } from "./cascading-card.component";
 
-describe('CascadingCardComponent', () => {
+describe("CascadingCardComponent", () => {
   let component: CascadingCardComponent;
   let fixture: ComponentFixture<CascadingCardComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CascadingCardComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [CascadingCardComponent],
+        schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CascadingCardComponent);
@@ -19,7 +22,7 @@ describe('CascadingCardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(component).toBeTruthy();
   });
 });

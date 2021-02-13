@@ -1,17 +1,17 @@
 <div class="card bc-carrousel">
-  <a [routerLink]="['courses', card._id]"
+  <a [routerLink]="['courses', card?._id]"
     ><img class="card-img-top" src="http://placehold.it/700x400" alt=""
   /></a>
   <div class="card-body">
     <h4 class="card-title">
-      <a [routerLink]="['courses', card._id]">{{ card.title }}</a>
+      <a [routerLink]="['courses', card?._id]">{{ card?.title }}</a>
     </h4>
     <div class="vignette-prix">
-      <span [class.ancien-prix]="card.promotionPrice">{{ card.price }}€</span>
-      <span *ngIf="card.promotionPrice">{{ card.promotionPrice }}€</span>
+      <span [class.ancien-prix]="card?.promotionPrice">{{ card?.price }}€</span>
+      <span *ngIf="card?.promotionPrice">{{ card?.promotionPrice }}€</span>
     </div>
     <!-- <p class="card-text" [innerHTML]="card.description | slice: 0:80"></p> -->
-    <p class="card-text" [innerHTML]="card.description"></p>
+    <p class="card-text" [innerHTML]="card?.description"></p>
   </div>
   <div class="card-footer">
     <div class="rating">

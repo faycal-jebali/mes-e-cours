@@ -1,13 +1,14 @@
-import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { User } from "./../business-objects/user";
+import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { tap } from "rxjs/operators";
 
-const pathBack = "http://localhost:5100/api/";
-// const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsImlhdCI6MTU1MjI1Nzc4NCwiZXhwIjoxNTUyMjY0OTg0fQ.rGVX1DQYtiQPDVhWW6nJT6JhL9Lk7fYC5OziJLsb35w';
+import { User } from "./../business-objects/user";
+
+const pathBack = "http://localhost:5100/api";
+
 const acces_token = localStorage.getItem("access_token");
-console.log("acces_tocken : ", acces_token);
+
+// TODO httpInterceptor canon't detect /api/users for adding the token to Bearer
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "application/json",
@@ -22,11 +23,8 @@ const httpOptions = {
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  getUsers() {
-    return this.http.get<User[]>("http://localhost:5100/api/mock/users");
-  }
   getUser(id) {
-    return this.http.get<User[]>(`http://localhost:5100/api/users/${id}`);
+    return this.http.get<User[]>(`${pathBack}/users/${id}`, httpOptions);
   }
   // attachTraining(id) {
   //   return this.http.put<User[]>(`http://localhost:5100/api/attach/${id}`);
@@ -37,73 +35,39 @@ export class UserService {
    * @param request
    */
   attachTraining(request): Observable<any> {
-    return this.http
-      .put<any>(`${pathBack}attach`, JSON.stringify(request), {
-        headers: new HttpHeaders().set("Content-Type", "application/json"),
-        observe: "response",
-      })
-      .pipe(
-        tap((resp) =>
-          setTimeout(() => {
-            console.log("header :::: ", resp.headers);
-          }, 3000)
-        )
-        // map(this.extractData)
-      );
+    return this.http.put<any>(
+      `${pathBack}/attach`,
+      JSON.stringify(request),
+      httpOptions
+    );
   }
 
   getCurrentUser(id) {
-    return this.http.get<User>(`http://localhost:5100/api/currentUser/${id}`);
+    return this.http.get<User>(`${pathBack}/currentUser/${id}`, httpOptions);
   }
+
   getAllUsers() {
-    return this.http.get<User[]>("http://localhost:5100/api/users");
+    console.log("get all users");
+    return this.http.get<User[]>(`${pathBack}/users`, httpOptions);
   }
 
   newUser(request): Observable<any> {
-    return this.http
-      .post<any>(pathBack + "users", JSON.stringify(request), {
-        headers: new HttpHeaders().set("Content-Type", "application/json"),
-        observe: "response",
-      })
-      .pipe(
-        tap((resp) =>
-          setTimeout(() => {
-            console.log("header :::: ", resp.headers);
-          }, 3000)
-        )
-        // map(this.extractData)
-      );
+    return this.http.post<any>(
+      `${pathBack}/users`,
+      JSON.stringify(request),
+      httpOptions
+    );
   }
 
   updateUser(id, request): Observable<any> {
-    return this.http
-      .put<any>(`${pathBack}users/${id}`, JSON.stringify(request), {
-        headers: new HttpHeaders().set("Content-Type", "application/json"),
-        observe: "response",
-      })
-      .pipe(
-        tap((resp) =>
-          setTimeout(() => {
-            console.log("header :::: ", resp.headers);
-          }, 3000)
-        )
-        // map(this.extractData)
-      );
+    return this.http.put<any>(
+      `${pathBack}users/${id}`,
+      JSON.stringify(request),
+      httpOptions
+    );
   }
 
   deleteUser(id): Observable<any> {
-    return this.http
-      .delete<any>(`${pathBack}users/${id}`, {
-        headers: new HttpHeaders().set("Content-Type", "application/json"),
-        observe: "response",
-      })
-      .pipe(
-        tap((resp) =>
-          setTimeout(() => {
-            console.log("header :::: ", resp.headers);
-          }, 3000)
-        )
-        // map(this.extractData)
-      );
+    return this.http.delete<any>(`${pathBack}users/${id}`, httpOptions);
   }
 }
