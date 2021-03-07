@@ -18,7 +18,7 @@ export interface PeriodicElement {
 })
 export class CategoriesComponent implements OnInit {
   allCategories = [];
-  displayedColumns: string[] = ["position", "name", "role", "actions"];
+  displayedColumns = ["position", "name", "role", "actions"];
 
   constructor(
     private userService: UserService,
@@ -37,11 +37,11 @@ export class CategoriesComponent implements OnInit {
 
   deleteCategory(id) {
     this.categoryService.deleteCategory(id).subscribe((data) => {
-      if (data && data.body.success) {
+      if (data) {
         this.allCategories = this.allCategories.filter(
           (item) => item._id !== id
         );
-        this.notificationService.success("Félicitaions!", data.body.message);
+        this.notificationService.success("Félicitaions!", data?.body?.message);
       }
     }),
       (error) => {

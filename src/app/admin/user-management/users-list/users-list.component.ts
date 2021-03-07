@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { NotificationService } from "src/app/shared/components/notification/notification.service";
 
 import { UserService } from "../../../shared/services/user.service";
 
@@ -18,10 +19,12 @@ export class UsersListComponent implements OnInit {
   allUser = [];
   displayedColumns: string[] = ["position", "name", "role", "actions"];
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly notificationService: NotificationService
+  ) {}
 
   ngOnInit() {
-    // this.allUser$ = this.userService.getAllUsers();
     this.userService.getAllUsers().subscribe((data) => {
       if (data) {
         this.allUser = data;
@@ -33,9 +36,17 @@ export class UsersListComponent implements OnInit {
   deleteUser(id) {
     this.userService.deleteUser(id).subscribe((data) => {
       if (data) {
-        console.log("Delete user :: ", data);
+        this.allUser = this.allUser.filter((item) => item._id !== id);
+        this.notificationService.success("Félicitaions!", data?.body?.message);
       }
-      console.log("DATA :: ", data);
-    });
+    }),
+      (error) => {
+        this.notificationService.error(
+          "Problème!",
+          `Au niveau de la suppression de l'utilisateur (${id})`,
+          error,
+          true
+        );
+      };
   }
 }

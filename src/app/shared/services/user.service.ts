@@ -61,13 +61,13 @@ export class UserService {
 
   updateUser(id, request): Observable<any> {
     return this.http.put<any>(
-      `${pathBack}users/${id}`,
+      `${pathBack}/users/${id}`,
       JSON.stringify(request),
       httpOptions
     );
   }
 
   deleteUser(id): Observable<any> {
-    return this.http.delete<any>(`${pathBack}users/${id}`, httpOptions);
+    return this.http.delete<any>(`${pathBack}/users/${id}`, httpOptions);
   }
 }
