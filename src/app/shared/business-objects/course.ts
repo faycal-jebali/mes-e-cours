@@ -5,6 +5,5 @@ export class Course {
   price: any;
   promotionPrice: any;
   categoriesId: any;
-  buttonText: string;
   img: string;
 }
