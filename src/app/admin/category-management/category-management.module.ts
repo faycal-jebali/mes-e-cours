@@ -3,6 +3,7 @@ import {
   NgModule,
   NO_ERRORS_SCHEMA,
 } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "src/app/shared/shared.module";
 
 import { CategoriesComponent } from "./categories/categories.component";
@@ -16,7 +17,7 @@ import { NewCategoryComponent } from "./new-category/new-category.component";
     NewCategoryComponent,
     EditCategoryComponent,
   ],
-  imports: [SharedModule, CategoryManagementRoutingModule],
+  imports: [SharedModule, CategoryManagementRoutingModule, ReactiveFormsModule],
   exports: [CategoriesComponent, NewCategoryComponent, EditCategoryComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

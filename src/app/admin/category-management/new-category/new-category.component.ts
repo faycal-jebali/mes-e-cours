@@ -72,12 +72,10 @@ export class NewCategoryComponent implements OnInit {
       console.log("this.newForm.value : ", this.newForm.value);
       this.categoryService.newCategory(this.newForm.value).subscribe(
         (data) => {
-          if (data.body.success) {
+          console.log("data body: ", data);
+          if (data.success) {
             this.uploader.uploadAll();
-            this.notificationService.success(
-              "Félicitaions!",
-              data.body.message
-            );
+            this.notificationService.success("Félicitaions!", data.message);
           } else {
             this.notificationService.error(
               "Problème!",
@@ -97,6 +95,23 @@ export class NewCategoryComponent implements OnInit {
           );
         }
       );
+    }
+  }
+
+  public onFileChange(event) {
+    const reader = new FileReader();
+
+    console.log("event :: ", event.target.files);
+    if (event.target.files && event.target.files.length) {
+      const fileName = event.target.files[0].name;
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.newForm.patchValue({
+          image: { fileName: fileName, content: reader.result },
+        });
+      };
     }
   }
 

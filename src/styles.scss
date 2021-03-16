@@ -6,22 +6,15 @@
 @import "./assets/form.scss";
 @import "./assets/overrides/materials.scss";
 @include mat-core();
-$primary-theme: mat-palette($mat-lime,
-500);
-$accent: mat-palette($mat-lime,
-500,
-A200,
-A400);
-$warn: mat-palette($mat-red,
-500);
+$primary-theme: mat-palette($mat-lime, 500);
+$accent: mat-palette($mat-lime, 500, A200, A400);
+$warn: mat-palette($mat-red, 500);
 $config: mat-typography-config();
-$theme: mat-light-theme($primary-theme,
-$accent,
-$warn);
+$theme: mat-light-theme($primary-theme, $accent, $warn);
 @include angular-material-theme($theme);
 body {
-    font-family: mat-font-family($config);
-    font-weight: normal;
+  font-family: mat-font-family($config);
+  font-weight: normal;
 }
 
 h1,
@@ -29,93 +22,92 @@ h2,
 h3,
 h4,
 h5 {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 .container-main {
-    padding: 20px 0;
+  padding: 20px 0;
 }
 
 .mat-tab-body {
-    padding: 20px;
+  padding: 20px;
 }
 
 .mat-form-field {
-    width: 100%;
+  width: 100%;
 }
 
 mat-radio-group {
-    mat-radio-button {
-        padding-right: 10px;
-    }
+  mat-radio-button {
+    padding-right: 10px;
+  }
 }
 
 .btn-file {
-    width: 100%;
+  width: 100%;
 }
-
 
 /* carrousel*/
 
 mdb-card {
-    .card {
-        border: 0;
-        border-radius: 0 !important;
-    }
+  .card {
+    border: 0;
+    border-radius: 0 !important;
+  }
+  .card-body {
+    overflow: hidden;
+  }
 }
-
 
 /*****MODAL****/
 
 .modal-content .close {
-    position: absolute;
-    top: -20px;
-    right: -20px !important;
-    z-index: 9999;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    border-radius: 50%;
-    /* font-size: 20px; */
-    background: $primary;
-    opacity: 1 !important;
-    box-shadow: 0 1px 0 $black;
-    span {
-        color: $white;
-        text-shadow: 0 1px 0 $black;
-        font-size: 23px !important;
-    }
+  position: absolute;
+  top: -20px;
+  right: -20px !important;
+  z-index: 9999;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
+  /* font-size: 20px; */
+  background: $primary;
+  opacity: 1 !important;
+  box-shadow: 0 1px 0 $black;
+  span {
+    color: $white;
+    text-shadow: 0 1px 0 $black;
+    font-size: 23px !important;
+  }
 }
 
 .modal-body {
-    padding: 0 !important;
+  padding: 0 !important;
 }
-
 
 /**Material**/
 
 .mat-menu-panel {
-    border-radius: 0 !important;
+  border-radius: 0 !important;
 }
-
 
 /**Table**/
 
 .mat-table-list {
-    width: 100%;
+  width: 100%;
 }
 
 .card-text {
-    h2 {
-        font-size: 18px;
-    }
+  h2 {
+    font-size: 18px;
+  }
 }
 
 .col-container {
-    display: table;
-    width: 100%;
+  display: table;
+  width: 100%;
 }
 
 .col {
-    display: table-cell;
+  display: table-cell;
 }

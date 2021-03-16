@@ -96,12 +96,9 @@ export class EditCategoryComponent implements OnInit {
         .updateCategory(this.idCategory, this.updateForm.value)
         .subscribe(
           (data) => {
-            if (data.body.success) {
+            if (data.success) {
               this.uploader.uploadAll();
-              this.notificationService.success(
-                "Félicitaions!",
-                data.body.message
-              );
+              this.notificationService.success("Félicitaions!", data.message);
             } else {
               this.notificationService.error(
                 "Problème!",
@@ -122,6 +119,23 @@ export class EditCategoryComponent implements OnInit {
         );
     }
   }
+  public onFileChange(event) {
+    const reader = new FileReader();
+
+    console.log("event :: ", event.target.files);
+    if (event.target.files && event.target.files.length) {
+      const fileName = event.target.files[0].name;
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.updateForm.patchValue({
+          image: { fileName: fileName, content: reader.result },
+        });
+      };
+    }
+  }
+
   /**
    * After a form is initialized, we link it to our main form
    */

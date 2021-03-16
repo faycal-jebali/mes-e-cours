@@ -1,107 +1,106 @@
 @import "src/assets/variables.scss";
 .bc-carrousel {
-    margin: 100px 0;
-    h3 {
-        font-size: 25px !important;
-        &::first-letter {
-            color: $primary;
-            font-weight: bold;
-        }
+  margin: 100px 0;
+  h3 {
+    font-size: 25px !important;
+    &::first-letter {
+      color: $primary;
+      font-weight: bold;
     }
+  }
 
-    .card {
-        border: 1px solid rgba(0, 0, 0, .125);
-        border-radius: 0 !important;
-        &-body {
-            .card-text {
-                height: 100px;
-             
-            }
-        }
+  .card {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0 !important;
+    &-body {
+      overflow: hidden;
+      .card-text {
+        height: 100px;
+      }
     }
-    .vignette-prix {
-        text-align: right;
-        span {
-            color: $primary;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            font-size: 25px;
-            padding-left: 10px;
-            &.ancien-prix {
-                font-size: 16px;
-                // font-family: Verdana, Geneva, Tahoma, sans-serif;
-                color: $primary;
-                text-decoration: line-through;
-                opacity: 0.5;
-            }
-        }
+  }
+  .vignette-prix {
+    text-align: right;
+    span {
+      color: $primary;
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-size: 25px;
+      padding-left: 10px;
+      &.ancien-prix {
+        font-size: 16px;
+        // font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: $primary;
+        text-decoration: line-through;
+        opacity: 0.5;
+      }
     }
-    mdb-card-title {
-        h4 {
-            font-size: 16px;
-        }
+  }
+  mdb-card-title {
+    h4 {
+      font-size: 16px;
     }
+  }
 }
 
 .animated {
-    -webkit-transition: height 0.2s;
-    -moz-transition: height 0.2s;
-    transition: height 0.2s;
+  -webkit-transition: height 0.2s;
+  -moz-transition: height 0.2s;
+  transition: height 0.2s;
 }
 
 .rating {
-    float: left;
+  float: left;
 }
-
 
 /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
     follow these rules. Every browser that supports :checked also supports :not(), so
     it doesn’t make the test unnecessarily selective */
 
-.rating:not(:checked)>input {
-    position: absolute;
-    top: -9999px;
-    clip: rect(0, 0, 0, 0);
+.rating:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
 }
 
-.rating:not(:checked)>label {
-    float: right;
-    width: 0.4em;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 300%;
-    color: #ddd;
-    padding: 0;
-    height: 30px;
-    line-height: 0.3;
+.rating:not(:checked) > label {
+  float: right;
+  width: 0.4em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 300%;
+  color: #ddd;
+  padding: 0;
+  height: 30px;
+  line-height: 0.3;
 }
 
-.rating:not(:checked)>label:before {
-    font-size: 20px;
-    line-height: 1;
-    margin: 0;
-    content: '★ ';
+.rating:not(:checked) > label:before {
+  font-size: 20px;
+  line-height: 1;
+  margin: 0;
+  content: "★ ";
 }
 
-.rating>input:checked~label {
-    color: #17aa1c;
+.rating > input:checked ~ label {
+  color: #17aa1c;
 }
 
-.rating:not(:checked)>label:hover,
-.rating:not(:checked)>label:hover~label {
-    color: #17aa1c;
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #17aa1c;
 }
 
-.rating>input:checked+label:hover,
-.rating>input:checked+label:hover~label,
-.rating>input:checked~label:hover,
-.rating>input:checked~label:hover~label,
-.rating>label:hover~input:checked~label {
-    color: #17aa1c;
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #17aa1c;
 }
 
-.rating>label:active {
-    position: relative;
-    top: 2px;
-    left: 2px;
+.rating > label:active {
+  position: relative;
+  top: 2px;
+  left: 2px;
 }
