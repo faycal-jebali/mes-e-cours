@@ -1,24 +1,17 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder } from "@angular/forms";
-import { CategoryService } from "../../../shared/services/category.service";
-import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
+import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-import { FileUploader } from "ng2-file-upload";
 import { NotificationService } from "../../../shared/components/notification/notification.service";
+import { CategoryService } from "../../../shared/services/category.service";
 
-const UploadURL = "http://localhost:5100/api/categories/upload";
 @Component({
   selector: "app-new-category",
   templateUrl: "./new-category.component.html",
   styleUrls: ["./new-category.component.scss"],
 })
 export class NewCategoryComponent implements OnInit {
-  public uploader: FileUploader = new FileUploader({
-    url: UploadURL,
-    itemAlias: "photo",
-  });
-
   configEditor = { toolbar: ["heading", "|", "bold", "italic"] };
   public Editor = ClassicEditor;
   newForm: FormGroup;
@@ -49,19 +42,6 @@ export class NewCategoryComponent implements OnInit {
         console.log("Get Catégories Error :: ", error);
       }
     );
-
-    // Upload Files
-    this.uploader.onAfterAddingFile = (file) => {
-      file.withCredentials = false;
-    };
-    this.uploader.onCompleteItem = (
-      item: any,
-      response: any,
-      status: any,
-      headers: any
-    ) => {
-      console.log("FileUpload:uploaded:", item, status, response);
-    };
   }
 
   /**
@@ -74,7 +54,7 @@ export class NewCategoryComponent implements OnInit {
         (data) => {
           console.log("data body: ", data);
           if (data.success) {
-            this.uploader.uploadAll();
+            // this.uploader.uploadAll();
             this.notificationService.success("Félicitaions!", data.message);
           } else {
             this.notificationService.error(
