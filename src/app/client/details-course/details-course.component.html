@@ -31,8 +31,11 @@
 
       <p>{{ currentLesson?.description }}</p>
       <p>
-        <video src="./assets/uploads/courses/v.mp4" height="240" controls>
-          <!-- <video src="./../../e-learning-server/uploads/courses/1.mp4" height="240" controls> -->
+        <video
+          src="http://localhost:5100/filecourses/{{ currentLesson?.video }}"
+          height="240"
+          controls
+        >
           Sorry, your browser doesn't support embedded videos.
         </video>
       </p>

@@ -11,6 +11,7 @@
       <div class="col-12">
         <form novalidate [formGroup]="courseForm" (ngSubmit)="addCourse()">
           <h2>Nouvelle Formation</h2>
+          <pre>{{ this.courseForm.value | json }}</pre>
           <mat-tab-group>
             <!--Tab Données-->
             <mat-tab label="Données">
@@ -97,6 +98,11 @@
                   <div class="col-6">
                     <div class="btn btn-primary btn-sm btn-file float-left">
                       <input
+                        multiple
+                        type="file"
+                        (change)="onFileChange($event)"
+                      />
+                      <!-- <input
                         type="file"
                         multiple
                         #fileInput
@@ -104,7 +110,7 @@
                         ng2FileSelect
                         [uploader]="uploader"
                         formControlName="image"
-                      />
+                      /> -->
                     </div>
                   </div>
                   <div class="col-12">
@@ -219,13 +225,20 @@
                                 <div class="btn btn-primary btn-sm float-left">
                                   <span>Choisir Video</span>
                                   <input
+                                    multiple
+                                    type="file"
+                                    (change)="
+                                      onVideoChange($event, iChapiter, iLesson)
+                                    "
+                                  />
+                                  <!-- <input
                                     type="file"
                                     #fileInput
                                     name="uploaded"
                                     ng2FileSelect
                                     [uploader]="uploader"
                                     formControlName="video"
-                                  />
+                                  /> -->
                                 </div>
                               </div>
                             </div>

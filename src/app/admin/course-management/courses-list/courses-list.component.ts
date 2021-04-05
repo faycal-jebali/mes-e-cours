@@ -10,7 +10,7 @@ import { CoursesService } from "../../../shared/services/courses.service";
 })
 export class CoursesListComponent implements OnInit {
   allCourse = [];
-  displayedColumns: string[] = ["position", "name", "role", "actions"];
+  displayedColumns: string[] = ["image", "position", "name", "role", "actions"];
 
   constructor(
     private CoursesService: CoursesService,

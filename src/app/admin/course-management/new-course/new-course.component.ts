@@ -177,11 +177,53 @@ export class NewCourseComponent implements OnInit {
     }
   }
 
+  public onFileChange(event) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const fileName = event.target.files[0].name;
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.courseForm.patchValue({
+          image: { fileName: fileName, content: reader.result },
+        });
+      };
+    }
+  }
+
+  public onVideoChange(event, iChapiter, iLession) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      const fileName = event.target.files[0].name;
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        const controlLessions = (<FormArray>(
+          this.courseForm.controls["chapiters"]
+        ))
+          .at(iChapiter)
+          .get("lessons").value;
+        controlLessions[iLession].video = {
+          fileName: fileName,
+          content: reader.result,
+        };
+
+        (<FormArray>this.courseForm.controls["chapiters"])
+          .at(iChapiter)
+          .get("lessons")
+          .setValue(controlLessions);
+      };
+    }
+  }
+
   /**
    * Add course
    */
   addCourse() {
-    console.log("this.courseForm.value : ", this.courseForm.value);
     this.CoursesService.addCourse(this.courseForm.value).subscribe(
       (data) => {
         if (data && data.body.success) {
